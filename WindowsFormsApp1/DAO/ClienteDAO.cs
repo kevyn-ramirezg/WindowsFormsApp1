@@ -6,6 +6,12 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.DAO
 {
+    public class ClienteMin
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public override string ToString() => Nombre;
+    }
     public static class ClienteDAO
     {
         public static List<Cliente> Listar()
@@ -13,17 +19,34 @@ namespace WindowsFormsApp1.DAO
             var list = new List<Cliente>();
             using (var cn = Db.Open())
             using (var cmd = new OracleCommand(
-                "SELECT id, nombre, telefono, correo FROM Cliente ORDER BY nombre", cn))
+                "SELECT id, nombre, telefono, correo FROM cliente ORDER BY nombre", cn))
             using (var dr = cmd.ExecuteReader())
             {
                 while (dr.Read())
                 {
-                    var c = new Cliente();
-                    c.Id = dr.GetDecimal(0);
-                    c.Nombre = dr.GetString(1);
-                    c.Telefono = dr.IsDBNull(2) ? "" : dr.GetString(2);
-                    c.Correo = dr.IsDBNull(3) ? "" : dr.GetString(3);
-                    list.Add(c);
+                    list.Add(new Cliente
+                    {
+                        Id = dr.GetInt32(0),
+                        Nombre = dr.GetString(1),
+                        Telefono = dr.IsDBNull(2) ? null : dr.GetString(2),
+                        Correo = dr.IsDBNull(3) ? null : dr.GetString(3)
+                    });
+                }
+            }
+            return list;
+        }
+
+        public static List<ClienteMin> ListarMin()
+        {
+            var list = new List<ClienteMin>();
+            using (var cn = Data.Db.Open())
+            using (var cmd = new OracleCommand(
+                "SELECT id, nombre FROM cliente ORDER BY nombre", cn))
+            using (var dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    list.Add(new ClienteMin { Id = dr.GetInt32(0), Nombre = dr.GetString(1) });
                 }
             }
             return list;

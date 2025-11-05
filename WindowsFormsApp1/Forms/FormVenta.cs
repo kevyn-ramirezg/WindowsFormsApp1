@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Models;
+using Oracle.ManagedDataAccess.Client;
+using WindowsFormsApp1.Data;
 
 namespace WindowsFormsApp1
 {
@@ -14,21 +16,30 @@ namespace WindowsFormsApp1
         // -----------------------------
         // Modelo de fila para el grid
         // -----------------------------
-        private class ItemGrid
+       /* private class ItemGrid
         {
             public decimal ProductoId { get; set; }
             public string Nombre { get; set; }
             public decimal Cantidad { get; set; }   // guardamos como decimal para pasar a DAO sin cast raros
             public decimal PrecioUnit { get; set; }
             public decimal Subtotal { get { return PrecioUnit * Cantidad; } }
-        }
+        }*/
 
-        private BindingList<ItemGrid> carrito = new BindingList<ItemGrid>();
+        //private BindingList<ItemGrid> carrito = new BindingList<ItemGrid>();
+
         private List<Producto> productosCache = new List<Producto>();
+        // Lista en memoria para el carrito
+        private readonly List<ItemCarrito> _items = new List<ItemCarrito>();
+    
 
         public FormVenta()
         {
             InitializeComponent();
+            this.Load += FormVenta_Load;
+            btnAgregar.Click += btnAgregar_Click;   // ajusta si tus nombres de botón son otros
+            btnGuardar.Click += btnGuardar_Click;
+            btnQuitar.Click += btnQuitar_Click;    // opcional si tienes un botón “Quitar”
+            cboProducto.SelectedIndexChanged += (s, e) => ActualizarPrecioDeProducto();
 
             // Asegurar columnas del grid por código si no existen
             gridCarrito.AutoGenerateColumns = false;
@@ -66,27 +77,22 @@ namespace WindowsFormsApp1
                     ReadOnly = true
                 });
             }
-            gridCarrito.DataSource = carrito;
-
 
             // eventos
-            btnAgregar.Click += btnAgregar_Click;
-            btnGuardar.Click += btnGuardar_Click;
-            cboProducto.SelectedIndexChanged += cboProducto_SelectedIndexChanged;
             numCantidad.ValueChanged += delegate { Recalcular(); };
         }
 
         private void FormVenta_Load(object sender, EventArgs e)
         {
             // clientes
-            var clientes = VentaDAO.ListarClientes();
+            var clientes = ClienteDAO.Listar();          // <- usa tu ClienteDAO
             cboCliente.DataSource = clientes;
             cboCliente.DisplayMember = "Nombre";
             cboCliente.ValueMember = "Id";
             cboCliente.SelectedIndex = clientes.Count > 0 ? 0 : -1;
 
             // productos
-            productosCache = VentaDAO.ListarProductos();
+            productosCache = ProductoDAO.Listar();       // <- usa tu ProductoDAO
             cboProducto.DataSource = productosCache;
             cboProducto.DisplayMember = "Nombre";
             cboProducto.ValueMember = "Id";
@@ -112,12 +118,10 @@ namespace WindowsFormsApp1
 
         private void Recalcular()
         {
-            decimal total = 0m;
-            for (int i = 0; i < carrito.Count; i++)
-                total += carrito[i].Subtotal;
-
+            decimal total = _items.Sum(i => i.Total);   // si prefieres solo Subtotal: i.Subtotal
             lblTotal.Text = "Total: " + total.ToString("C", CultureInfo.CurrentCulture);
         }
+
 
         private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -129,97 +133,159 @@ namespace WindowsFormsApp1
         // -----------------------------
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var p = cboProducto.SelectedItem as Producto;
-            if (p == null)
+            if (cboProducto.SelectedItem == null)
             {
-                MessageBox.Show("Seleccione un producto.");
+                MessageBox.Show("Selecciona un producto.");
+                return;
+            }
+            if (numCantidad.Value <= 0)
+            {
+                MessageBox.Show("Cantidad inválida.");
                 return;
             }
 
-            // cantidad
-            int cantidadEntera = (int)numCantidad.Value;
-            if (cantidadEntera <= 0)
+            // productosCache es tu lista actual. Puede ser tipada o DataTable.
+            // Usamos dynamic para no romper tus tipos existentes.
+            dynamic prod = cboProducto.SelectedItem;
+
+            decimal prodId = (decimal)prod.Id;
+            string nombre = (string)prod.Nombre;
+            decimal precio = (decimal)prod.PrecioVenta;
+            decimal stock = (decimal)prod.Stock;
+
+            // IVA: si tu objeto no trae IvaPct, lo consultamos a BD por la categoría.
+            decimal ivaPct = 0m;
+            try { ivaPct = (decimal)prod.IvaPct; } catch { ivaPct = ObtenerIvaDeProducto(prodId); }
+
+            decimal qty = numCantidad.Value;
+
+            var existente = _items.FirstOrDefault(x => x.ProductoId == prodId);
+            var qtyActual = existente?.Cantidad ?? 0m;
+
+            if (qtyActual + qty > stock)
             {
-                MessageBox.Show("La cantidad debe ser mayor a cero.");
+                MessageBox.Show($"Stock insuficiente. Disponible: {(stock - qtyActual):N0}");
                 return;
             }
 
-            // precio
-            decimal precio;
-            if (!decimal.TryParse(txtPrecio.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out precio))
-            {
-                MessageBox.Show("Precio inválido.");
-                return;
-            }
-
-            // agrega o acumula (si ya existe el mismo producto en el carrito)
-            var existente = carrito.FirstOrDefault(x => x.ProductoId == p.Id);
             if (existente != null)
             {
-                existente.Cantidad += cantidadEntera;
-                // notificar al grid
-                var idx = carrito.IndexOf(existente);
-                carrito.ResetItem(idx);
+                existente.Cantidad += qty;
+                RecalcularLinea(existente);
             }
             else
             {
-                carrito.Add(new ItemGrid
+                var item = new ItemCarrito
                 {
-                    ProductoId = p.Id,
-                    Nombre = p.Nombre,
-                    Cantidad = cantidadEntera,
-                    PrecioUnit = precio
-                });
+                    ProductoId = prodId,
+                    Nombre = nombre,
+                    Cantidad = qty,
+                    PrecioUnit = precio,
+                    Stock = stock,
+                    IvaPct = ivaPct
+                };
+                RecalcularLinea(item);
+                _items.Add(item);
             }
 
-            Recalcular();
+            RefrescarGridYTotales();
         }
+
+
 
         // -----------------------------
         // Botón Guardar
         // -----------------------------
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            var c = cboCliente.SelectedItem as Cliente;
-            if (c == null)
+            if (_items.Count == 0) { MessageBox.Show("Carrito vacío."); return; }
+            if (cboCliente.SelectedItem == null) { MessageBox.Show("Selecciona un cliente."); return; }
+
+            dynamic cli = cboCliente.SelectedItem;
+            int clienteId = Convert.ToInt32(cli.Id);
+
+            var cab = new VentaCab
             {
-                MessageBox.Show("Seleccione un cliente.");
-                return;
-            }
+                ClienteId = clienteId,
+                Tipo = "CONTADO" // por ahora vendemos de contado
+            };
 
-            if (carrito.Count == 0)
+            var detalles = _items.Select(x => new VentaDet
             {
-                MessageBox.Show("Agregue al menos un ítem.");
-                return;
-            }
+                ProductoId = Convert.ToInt32(x.ProductoId),
+                Cantidad = x.Cantidad,
+                PrecioUnit = x.PrecioUnit,
+                IvaPct = x.IvaPct,
+                UtilidadPct = 0,
+                LineaSubtotal = x.Subtotal,
+                LineaIva = x.Iva,
+                LineaTotal = x.Total
+            }).ToList();
 
-            // armar listas DECIMAL para el DAO
-            var listProd = carrito.Select(i => i.ProductoId).ToList();                 // ya es decimal
-            var listCant = carrito.Select(i => i.Cantidad).ToList();                   // ya es decimal
-            var listPrec = carrito.Select(i => i.PrecioUnit).ToList();                 // ya es decimal
+            var ventaId = VentaDAO.Guardar(cab, detalles, plan: null);
+            MessageBox.Show($"Venta #{ventaId} guardada correctamente.");
 
-            try
+            _items.Clear();
+            RefrescarGridYTotales();
+        }
+
+
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            if (gridCarrito.CurrentRow == null) return;
+
+            var idObj = gridCarrito.CurrentRow.Cells["ProductoId"].Value;
+            if (idObj == null) return;
+
+            decimal prodId = Convert.ToDecimal(idObj);
+            var it = _items.FirstOrDefault(x => x.ProductoId == prodId);
+            if (it != null) _items.Remove(it);
+
+            RefrescarGridYTotales();
+        }
+
+        private void RecalcularLinea(ItemCarrito it)
+        {
+            it.Subtotal = Math.Round(it.PrecioUnit * it.Cantidad, 2);
+            it.Iva = Math.Round(it.Subtotal * (it.IvaPct / 100m), 2);
+            it.Total = it.Subtotal + it.Iva;
+        }
+
+        private void RefrescarGridYTotales()
+        {
+            gridCarrito.AutoGenerateColumns = false; // usamos tus columnas manuales
+            gridCarrito.DataSource = null;
+            gridCarrito.DataSource = _items.Select(x => new
             {
-                var ventaId = VentaDAO.RegistrarContado(c.Id, listProd, listCant, listPrec);
+                x.ProductoId,
+                x.Nombre,
+                x.Cantidad,
+                x.PrecioUnit,
+                x.Subtotal
+            }).ToList();
 
-                MessageBox.Show("Venta registrada. ID: " + ventaId);
+            var total = _items.Sum(i => i.Total);   // si solo quieres Subtotal, usa i.Subtotal
+            lblTotal.Text = "Total: " + total.ToString("C", CultureInfo.CurrentCulture);
+        }
 
-                // limpiar carrito
-                carrito.Clear();
-                Recalcular();
-
-                // refrescar productos (para ver stock actualizado)
-                productosCache = VentaDAO.ListarProductos();
-                cboProducto.DataSource = null;
-                cboProducto.DataSource = productosCache;
-                cboProducto.DisplayMember = "Nombre";
-                cboProducto.ValueMember = "Id";
-                ActualizarPrecioDeProducto();
-            }
-            catch (Exception ex)
+        // Saca IVA de la categoría cuando el producto de tu lista no lo trae
+        private decimal ObtenerIvaDeProducto(decimal productoId)
+        {
+            using (var cn = Db.Open())
+            using (var cmd = new OracleCommand(@"
+        SELECT c.iva
+        FROM producto p
+        JOIN categoria c ON c.id = p.categoria_id
+        WHERE p.id = :id", cn))
             {
-                MessageBox.Show("Error al guardar la venta: " + ex.Message);
+                cmd.BindByName = true;
+                cmd.Parameters.Add(":id", productoId);
+                var v = cmd.ExecuteScalar();
+                return v == null ? 0m : Convert.ToDecimal(v);
             }
         }
+
+
     }
 }

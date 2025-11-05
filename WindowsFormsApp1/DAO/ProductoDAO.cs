@@ -12,33 +12,49 @@ namespace WindowsFormsApp1.DAO
         {
             var list = new List<Producto>();
             using (var cn = Db.Open())
-            using (var cmd = new Oracle.ManagedDataAccess.Client.OracleCommand(@"
-    SELECT p.id,
-           p.categoria_id,
-           p.nombre,
-           p.costo,
-           p.precio_venta,
-           p.stock,
-           c.nombre AS categoria
-    FROM   APP_USR.PRODUCTO p
-    JOIN   APP_USR.CATEGORIA c ON c.id = p.categoria_id
-    ORDER BY p.nombre", cn))
-
-                
-
+            using (var cmd = new OracleCommand(
+                "SELECT id, categoria_id, nombre, costo, precio_venta, stock FROM producto ORDER BY nombre", cn))
             using (var dr = cmd.ExecuteReader())
             {
                 while (dr.Read())
                 {
-                    var p = new Producto();
-                    p.Id = dr.GetDecimal(0);
-                    p.CategoriaId = dr.GetDecimal(1);
-                    p.Nombre = dr.GetString(2);
-                    p.Costo = dr.GetDecimal(3);
-                    p.PrecioVenta = dr.GetDecimal(4);
-                    p.Stock = dr.GetDecimal(5);
-                    p.Categoria = dr.GetString(6);
-                    list.Add(p);
+                    list.Add(new Producto
+                    {
+                        Id = dr.GetInt32(0),
+                        CategoriaId = dr.GetInt32(1),
+                        Nombre = dr.GetString(2),
+                        Costo = dr.GetDecimal(3),
+                        PrecioVenta = dr.GetDecimal(4),
+                        Stock = dr.GetDecimal(5)
+                    });
+                }
+            }
+            return list;
+        }
+
+        public static List<ProductoForVenta> ListarParaVenta()
+        {
+            var list = new List<ProductoForVenta>();
+            using (var cn = Data.Db.Open())
+            using (var cmd = new OracleCommand(@"
+                SELECT p.id, p.nombre, p.precio_venta, p.stock,
+                       c.iva, c.utilidad_pct
+                FROM producto p
+                JOIN categoria c ON c.id = p.categoria_id
+                ORDER BY p.nombre", cn))
+            using (var dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    list.Add(new ProductoForVenta
+                    {
+                        Id = dr.GetInt32(0),
+                        Nombre = dr.GetString(1),
+                        PrecioVenta = dr.GetDecimal(2),
+                        Stock = dr.GetDecimal(3),
+                        IvaPct = dr.GetDecimal(4),
+                        UtilidadPct = dr.GetDecimal(5)
+                    });
                 }
             }
             return list;
