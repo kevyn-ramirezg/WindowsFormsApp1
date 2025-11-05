@@ -160,8 +160,8 @@ namespace WindowsFormsApp1.Forms
             dt.Columns.Add("Cliente", typeof(string));
             dt.Columns.Add("Producto", typeof(string));
             dt.Columns.Add("Precio", typeof(decimal));
-            dt.Columns.Add("Cant.", typeof(decimal));
-            dt.Columns.Add("Subt.", typeof(decimal));  // solo uno
+            dt.Columns.Add("Cantidad", typeof(decimal));
+            dt.Columns.Add("Subtotal", typeof(decimal));  // solo uno
             dt.Columns.Add("IVA", typeof(decimal));  // solo uno
             dt.Columns.Add("Total línea", typeof(decimal));
 
