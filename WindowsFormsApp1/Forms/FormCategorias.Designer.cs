@@ -56,7 +56,7 @@
             this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Location = new System.Drawing.Point(16, 15);
-            this.grid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid.Margin = new System.Windows.Forms.Padding(4);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
@@ -70,67 +70,76 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(16, 345);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblNombre.Location = new System.Drawing.Point(16, 348);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(59, 16);
+            this.lblNombre.Size = new System.Drawing.Size(73, 20);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre:";
             // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNombre.Location = new System.Drawing.Point(107, 341);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtNombre.Location = new System.Drawing.Point(97, 345);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(399, 22);
+            this.txtNombre.Size = new System.Drawing.Size(399, 26);
             this.txtNombre.TabIndex = 2;
             // 
             // lblIva
             // 
             this.lblIva.AutoSize = true;
-            this.lblIva.Location = new System.Drawing.Point(533, 345);
+            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblIva.Location = new System.Drawing.Point(568, 348);
             this.lblIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIva.Name = "lblIva";
-            this.lblIva.Size = new System.Drawing.Size(54, 16);
+            this.lblIva.Size = new System.Drawing.Size(72, 20);
             this.lblIva.TabIndex = 3;
             this.lblIva.Text = "IVA (%):";
             // 
             // numIva
             // 
+            this.numIva.BackColor = System.Drawing.SystemColors.Info;
             this.numIva.DecimalPlaces = 2;
-            this.numIva.Location = new System.Drawing.Point(600, 341);
-            this.numIva.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numIva.Location = new System.Drawing.Point(648, 346);
+            this.numIva.Margin = new System.Windows.Forms.Padding(4);
             this.numIva.Name = "numIva";
-            this.numIva.Size = new System.Drawing.Size(107, 22);
+            this.numIva.Size = new System.Drawing.Size(107, 26);
             this.numIva.TabIndex = 4;
             // 
             // lblUtilidad
             // 
             this.lblUtilidad.AutoSize = true;
-            this.lblUtilidad.Location = new System.Drawing.Point(733, 345);
+            this.lblUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblUtilidad.Location = new System.Drawing.Point(794, 348);
             this.lblUtilidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUtilidad.Name = "lblUtilidad";
-            this.lblUtilidad.Size = new System.Drawing.Size(79, 16);
+            this.lblUtilidad.Size = new System.Drawing.Size(102, 20);
             this.lblUtilidad.TabIndex = 5;
             this.lblUtilidad.Text = "Utilidad (%):";
             // 
             // numUtilidad
             // 
+            this.numUtilidad.BackColor = System.Drawing.SystemColors.Info;
             this.numUtilidad.DecimalPlaces = 2;
-            this.numUtilidad.Location = new System.Drawing.Point(840, 341);
-            this.numUtilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numUtilidad.Location = new System.Drawing.Point(904, 345);
+            this.numUtilidad.Margin = new System.Windows.Forms.Padding(4);
             this.numUtilidad.Name = "numUtilidad";
-            this.numUtilidad.Size = new System.Drawing.Size(107, 22);
+            this.numUtilidad.Size = new System.Drawing.Size(107, 26);
             this.numUtilidad.TabIndex = 6;
             // 
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnNuevo.Location = new System.Drawing.Point(267, 394);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnNuevo.Location = new System.Drawing.Point(225, 468);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(133, 34);
+            this.btnNuevo.Size = new System.Drawing.Size(152, 48);
             this.btnNuevo.TabIndex = 7;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -139,10 +148,11 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnGuardar.Location = new System.Drawing.Point(427, 394);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGuardar.Location = new System.Drawing.Point(428, 468);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(133, 34);
+            this.btnGuardar.Size = new System.Drawing.Size(152, 48);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -151,10 +161,11 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnEliminar.Location = new System.Drawing.Point(587, 394);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnEliminar.Location = new System.Drawing.Point(636, 468);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(133, 34);
+            this.btnEliminar.Size = new System.Drawing.Size(152, 48);
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -165,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1045, 444);
+            this.ClientSize = new System.Drawing.Size(1045, 548);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
@@ -176,7 +187,7 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorías";

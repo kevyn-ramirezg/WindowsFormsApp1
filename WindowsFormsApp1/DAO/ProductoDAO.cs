@@ -12,8 +12,17 @@ namespace WindowsFormsApp1.DAO
         {
             var list = new List<Producto>();
             using (var cn = Db.Open())
-            using (var cmd = new OracleCommand(
-                "SELECT id, categoria_id, nombre, costo, precio_venta, stock FROM producto ORDER BY nombre", cn))
+            using (var cmd = new OracleCommand(@"
+        SELECT p.id,
+               p.categoria_id,
+               c.nombre AS categoria_nombre,
+               p.nombre,
+               p.costo,
+               p.precio_venta,
+               p.stock
+        FROM producto p
+        JOIN categoria c ON c.id = p.categoria_id
+        ORDER BY p.nombre", cn))
             using (var dr = cmd.ExecuteReader())
             {
                 while (dr.Read())
@@ -22,15 +31,17 @@ namespace WindowsFormsApp1.DAO
                     {
                         Id = dr.GetInt32(0),
                         CategoriaId = dr.GetInt32(1),
-                        Nombre = dr.GetString(2),
-                        Costo = dr.GetDecimal(3),
-                        PrecioVenta = dr.GetDecimal(4),
-                        Stock = dr.GetDecimal(5)
+                        Categoria = dr.GetString(2),
+                        Nombre = dr.GetString(3),
+                        Costo = dr.GetDecimal(4),
+                        PrecioVenta = dr.GetDecimal(5),
+                        Stock = dr.GetDecimal(6)
                     });
                 }
             }
             return list;
         }
+
 
         public static List<ProductoForVenta> ListarParaVenta()
         {

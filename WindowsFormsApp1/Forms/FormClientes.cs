@@ -35,8 +35,42 @@ namespace WindowsFormsApp1.Forms
             if (grid.Columns["Telefono"] != null) grid.Columns["Telefono"].HeaderText = "Teléfono";
             if (grid.Columns["Correo"] != null) grid.Columns["Correo"].HeaderText = "Correo";
 
+            AjustarGridClientes();
             Limpiar();
         }
+
+        private void AjustarGridClientes()
+        {
+            var g = grid;
+
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            g.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            g.AllowUserToResizeRows = false;
+            g.RowHeadersVisible = false; // oculta el borde/triángulo de fila
+            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            g.MultiSelect = false;
+
+            if (g.Columns["Id"] != null)
+            {
+                g.Columns["Id"].FillWeight = 10;
+                g.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            if (g.Columns["Nombre"] != null)
+            {
+                g.Columns["Nombre"].FillWeight = 35;
+            }
+            if (g.Columns["Telefono"] != null || g.Columns["Teléfono"] != null)
+            {
+                var col = g.Columns["Telefono"] ?? g.Columns["Teléfono"];
+                col.FillWeight = 20;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            if (g.Columns["Correo"] != null)
+            {
+                g.Columns["Correo"].FillWeight = 35;
+            }
+        }
+
 
         private void Limpiar()
         {

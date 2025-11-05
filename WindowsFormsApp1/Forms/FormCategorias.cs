@@ -33,6 +33,8 @@ namespace WindowsFormsApp1.Forms
             if (grid.Columns["Iva"] != null) grid.Columns["Iva"].HeaderText = "IVA (%)";
             if (grid.Columns["UtilidadPct"] != null) grid.Columns["UtilidadPct"].HeaderText = "Utilidad (%)";
 
+            AjustarGridCategorias();
+
             Limpiar();
         }
 
@@ -55,6 +57,47 @@ namespace WindowsFormsApp1.Forms
                 numUtilidad.Value = c.UtilidadPct;
             }
         }
+
+        private void AjustarGridCategorias()
+        {
+            var g = grid; // usa el nombre real de tu DataGridView
+
+            // 1) Estilos base
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            g.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            g.AllowUserToResizeRows = false;
+            g.RowHeadersVisible = false;              // si no necesitas el triángulo de fila
+            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            g.MultiSelect = false;
+
+            // 2) Asegura que existan y reparte con FillWeight
+            if (g.Columns["Id"] != null)
+            {
+                g.Columns["Id"].FillWeight = 12;      // angosta
+                g.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            if (g.Columns["Nombre"] != null)
+            {
+                g.Columns["Nombre"].FillWeight = 55;  // la más ancha
+            }
+            if (g.Columns["Iva"] != null || g.Columns["IVA"] != null || g.Columns["IvaPct"] != null)
+            {
+                var col = g.Columns["Iva"] ?? g.Columns["IVA"] ?? g.Columns["IvaPct"];
+                col.HeaderText = "IVA (%)";
+                col.FillWeight = 16;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                col.DefaultCellStyle.Format = "N0";
+            }
+            if (g.Columns["Utilidad"] != null || g.Columns["UtilidadPct"] != null)
+            {
+                var col = g.Columns["Utilidad"] ?? g.Columns["UtilidadPct"];
+                col.HeaderText = "Utilidad (%)";
+                col.FillWeight = 17;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                col.DefaultCellStyle.Format = "N0";
+            }
+        }
+
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {

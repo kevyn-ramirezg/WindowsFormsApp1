@@ -19,9 +19,16 @@ namespace WindowsFormsApp1.Forms
         public FormLogin()
         {
             InitializeComponent();
-            this.AcceptButton = btnIngresar;   // Enter = click en btnIngresar
-            this.CancelButton = btnCancelar;   // Esc = click en btnCancelar (opcional)
+            // Asegura que el click esté conectado por código:
+            btnIngresar.Click += btnIngresar_Click;
+            btnCancelar.Click += (s, e) => { this.DialogResult = DialogResult.Cancel; this.Close(); };
+
+            // Enter = Ingresar, Esc = Cancelar
+            this.AcceptButton = btnIngresar;
+            this.CancelButton = btnCancelar;
         }
+
+
 
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -35,38 +42,26 @@ namespace WindowsFormsApp1.Forms
                 return;
             }
 
-            var h = HashHelper.Sha256(p); // hex en minúsculas
+            var h = HashHelper.Sha256(p); // hex minúsculas
 
             try
             {
                 using (var cn = Db.Open())
                 {
-                    // 1) ¿a qué usuario Oracle nos conectamos?
+                    // Aviso si no estás en APP_USR
                     using (var cmdWho = new OracleCommand("SELECT USER FROM dual", cn))
                     {
                         var who = (string)cmdWho.ExecuteScalar();
-                        if (!string.Equals(who, "APP_USR", StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show("Conectado como: " + who + " (debe ser APP_USR)");
-                        }
+                        if (!who.Equals("APP_USR", StringComparison.OrdinalIgnoreCase))
+                            MessageBox.Show("Conectado como: " + who + " (debería ser APP_USR)");
                     }
 
-                    // 2) Trae el hash guardado para el login digitado (si existe)
-                    string hashBD = null;
-                    using (var cmd1 = new OracleCommand(
-                        "SELECT clave_hash FROM USUARIO WHERE UPPER(login)=UPPER(:u)", cn))
-                    {
-                        cmd1.BindByName = true;
-                        cmd1.Parameters.Add(":u", u);
-                        var v = cmd1.ExecuteScalar();
-                        hashBD = v == null ? null : v.ToString();
-                    }
-
-                    // 3) Validación real (login case-insensitive, hash exacto)
+                    // Validación
                     using (var cmd = new OracleCommand(@"
                 SELECT id, nivel
-                FROM USUARIO
-                WHERE UPPER(login)=UPPER(:u) AND UPPER(clave_hash)=UPPER(:h)", cn))
+                  FROM USUARIO
+                 WHERE UPPER(login)=UPPER(:u)
+                   AND UPPER(clave_hash)=UPPER(:h)", cn))
                     {
                         cmd.BindByName = true;
                         cmd.Parameters.Add(":u", u);
@@ -96,7 +91,17 @@ namespace WindowsFormsApp1.Forms
                         }
                     }
 
-                    // Si no pasó, mostramos comparación para ver qué está mal
+                    // Diagnóstico si no coincide
+                    string hashBD = null;
+                    using (var cmd1 = new OracleCommand(
+                        "SELECT clave_hash FROM USUARIO WHERE UPPER(login)=UPPER(:u)", cn))
+                    {
+                        cmd1.BindByName = true;
+                        cmd1.Parameters.Add(":u", u);
+                        var v = cmd1.ExecuteScalar();
+                        hashBD = v == null ? null : v.ToString();
+                    }
+
                     MessageBox.Show(
                         "Credenciales inválidas.\n\n" +
                         $"Usuario digitado : {u}\n" +
@@ -109,6 +114,5 @@ namespace WindowsFormsApp1.Forms
                 MessageBox.Show("Error al validar credenciales: " + ex.Message);
             }
         }
-
     }
 }

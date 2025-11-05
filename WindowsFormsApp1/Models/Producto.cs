@@ -16,5 +16,8 @@ namespace WindowsFormsApp1.Models
         public decimal Stock { get; set; }
         // (opcional) Nombre de la categoría para mostrar en grids
         public string Categoria { get; set; }
+
+        public string CategoriaNombre { get; set; }
+
     }
 }

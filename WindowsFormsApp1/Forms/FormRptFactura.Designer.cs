@@ -1,0 +1,140 @@
+﻿namespace WindowsFormsApp1.Forms
+{
+    partial class FormRptFactura
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.numVentaId = new System.Windows.Forms.NumericUpDown();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.grid = new System.Windows.Forms.DataGridView();
+            this.lblTotales = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numVentaId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // numVentaId
+            // 
+            this.numVentaId.BackColor = System.Drawing.SystemColors.Info;
+            this.numVentaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numVentaId.Location = new System.Drawing.Point(104, 309);
+            this.numVentaId.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numVentaId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numVentaId.Name = "numVentaId";
+            this.numVentaId.Size = new System.Drawing.Size(140, 26);
+            this.numVentaId.TabIndex = 0;
+            this.numVentaId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnBuscar.Location = new System.Drawing.Point(294, 293);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(123, 56);
+            this.btnBuscar.TabIndex = 1;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            // 
+            // grid
+            // 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Location = new System.Drawing.Point(12, 12);
+            this.grid.Name = "grid";
+            this.grid.ReadOnly = true;
+            this.grid.RowHeadersVisible = false;
+            this.grid.RowHeadersWidth = 51;
+            this.grid.RowTemplate.Height = 24;
+            this.grid.Size = new System.Drawing.Size(1366, 248);
+            this.grid.TabIndex = 2;
+            // 
+            // lblTotales
+            // 
+            this.lblTotales.AutoSize = true;
+            this.lblTotales.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotales.Location = new System.Drawing.Point(462, 309);
+            this.lblTotales.Name = "lblTotales";
+            this.lblTotales.Size = new System.Drawing.Size(392, 34);
+            this.lblTotales.TabIndex = 3;
+            this.lblTotales.Text = "Subtotal: 0 IVA: 0 Total: 0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(12, 311);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Venta #:";
+            // 
+            // FormRptFactura
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ClientSize = new System.Drawing.Size(1390, 387);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTotales);
+            this.Controls.Add(this.grid);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.numVentaId);
+            this.Name = "FormRptFactura";
+            this.Text = "FormRptFactura";
+            ((System.ComponentModel.ISupportInitialize)(this.numVentaId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.NumericUpDown numVentaId;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.Label lblTotales;
+        private System.Windows.Forms.Label label1;
+    }
+}

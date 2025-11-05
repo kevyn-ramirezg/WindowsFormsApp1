@@ -60,58 +60,68 @@
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(945, 295);
+            this.grid.Size = new System.Drawing.Size(945, 334);
             this.grid.TabIndex = 0;
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
             // cboCategoria
             // 
+            this.cboCategoria.BackColor = System.Drawing.SystemColors.Info;
+            this.cboCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(155, 330);
+            this.cboCategoria.Location = new System.Drawing.Point(232, 371);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(121, 24);
+            this.cboCategoria.Size = new System.Drawing.Size(210, 28);
             this.cboCategoria.TabIndex = 1;
             this.cboCategoria.Text = "Categoria";
             // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNombre.Location = new System.Drawing.Point(155, 391);
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtNombre.Location = new System.Drawing.Point(232, 435);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 22);
+            this.txtNombre.Size = new System.Drawing.Size(210, 26);
             this.txtNombre.TabIndex = 2;
             this.txtNombre.Text = "Nombre";
             // 
             // numCosto
             // 
+            this.numCosto.BackColor = System.Drawing.SystemColors.Info;
             this.numCosto.DecimalPlaces = 2;
-            this.numCosto.Location = new System.Drawing.Point(433, 330);
+            this.numCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numCosto.Location = new System.Drawing.Point(556, 373);
             this.numCosto.Name = "numCosto";
-            this.numCosto.Size = new System.Drawing.Size(120, 22);
+            this.numCosto.Size = new System.Drawing.Size(155, 26);
             this.numCosto.TabIndex = 3;
             // 
             // numPrecio
             // 
+            this.numPrecio.BackColor = System.Drawing.SystemColors.Info;
             this.numPrecio.DecimalPlaces = 2;
-            this.numPrecio.Location = new System.Drawing.Point(433, 391);
+            this.numPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numPrecio.Location = new System.Drawing.Point(556, 435);
             this.numPrecio.Name = "numPrecio";
-            this.numPrecio.Size = new System.Drawing.Size(120, 22);
+            this.numPrecio.Size = new System.Drawing.Size(155, 26);
             this.numPrecio.TabIndex = 4;
             // 
             // numStock
             // 
-            this.numStock.Location = new System.Drawing.Point(710, 363);
+            this.numStock.BackColor = System.Drawing.SystemColors.Info;
+            this.numStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numStock.Location = new System.Drawing.Point(814, 406);
             this.numStock.Name = "numStock";
-            this.numStock.Size = new System.Drawing.Size(120, 22);
+            this.numStock.Size = new System.Drawing.Size(120, 26);
             this.numStock.TabIndex = 5;
             // 
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNuevo.Location = new System.Drawing.Point(178, 542);
+            this.btnNuevo.Location = new System.Drawing.Point(183, 537);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(112, 48);
+            this.btnNuevo.Size = new System.Drawing.Size(126, 59);
             this.btnNuevo.TabIndex = 6;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -120,9 +130,10 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnGuardar.Location = new System.Drawing.Point(379, 542);
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGuardar.Location = new System.Drawing.Point(384, 537);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(118, 48);
+            this.btnGuardar.Size = new System.Drawing.Size(132, 59);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -131,9 +142,10 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnEliminar.Location = new System.Drawing.Point(591, 542);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnEliminar.Location = new System.Drawing.Point(596, 537);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(116, 48);
+            this.btnEliminar.Size = new System.Drawing.Size(130, 59);
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -142,47 +154,52 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 331);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(18, 375);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 16);
+            this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Categoría";
+            this.label1.Text = "Categoría:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 393);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(18, 438);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 16);
+            this.label2.Size = new System.Drawing.Size(170, 20);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Nombre del producto";
+            this.label2.Text = "Nombre del producto:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(376, 333);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Location = new System.Drawing.Point(492, 376);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 16);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Costo";
+            this.label3.Text = "Costo:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(376, 394);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label4.Location = new System.Drawing.Point(492, 437);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Venta";
+            this.label4.Text = "Venta:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(663, 365);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.Location = new System.Drawing.Point(742, 408);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.Size = new System.Drawing.Size(56, 20);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Stock";
+            this.label5.Text = "Stock:";
             // 
             // FormProductos
             // 

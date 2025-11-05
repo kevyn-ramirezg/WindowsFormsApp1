@@ -111,8 +111,26 @@ namespace WindowsFormsApp1
             }
             catch { /* opcional: log */ }
 
-            Session.Clear();
-            this.Close(); // cierra Form1 y termina la app
+            Application.Restart();
+        }
+
+        private void btnFactura_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormRptFactura())
+                f.ShowDialog(this);
+        }
+
+        private void btnVentasMes_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormRptVentasMes())
+                f.ShowDialog(this);
+        }
+
+
+        private void btnIvaTrimestre_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormRptIvaTrimestre())
+                f.ShowDialog(this);
         }
 
     }

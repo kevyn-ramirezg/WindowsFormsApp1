@@ -34,67 +34,102 @@
             this.txtClave = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 85);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label1.Location = new System.Drawing.Point(170, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(79, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario:";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(205, 85);
+            this.txtUsuario.BackColor = System.Drawing.SystemColors.Info;
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtUsuario.Location = new System.Drawing.Point(252, 211);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(100, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(123, 26);
             this.txtUsuario.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 139);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label2.Location = new System.Drawing.Point(173, 265);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 16);
+            this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Clave:";
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(205, 139);
+            this.txtClave.BackColor = System.Drawing.SystemColors.Info;
+            this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtClave.Location = new System.Drawing.Point(252, 265);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(100, 22);
+            this.txtClave.Size = new System.Drawing.Size(123, 26);
             this.txtClave.TabIndex = 3;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(205, 328);
+            this.btnIngresar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnIngresar.Location = new System.Drawing.Point(252, 369);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(100, 40);
+            this.btnIngresar.Size = new System.Drawing.Size(116, 47);
             this.btnIngresar.TabIndex = 4;
             this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(384, 328);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCancelar.Location = new System.Drawing.Point(431, 369);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(116, 47);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 23F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(12, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(753, 40);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "BIENVENIDOS A LA TIENDA DE ORLO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label4.Location = new System.Drawing.Point(169, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(157, 24);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Ingrese sus datos";
             // 
             // FormLogin
             // 
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(830, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtClave);
@@ -102,7 +137,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label1);
             this.Name = "FormLogin";
-            this.Text = "FormLogin";
+            this.Text = "Inicio Sesión";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +151,7 @@
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

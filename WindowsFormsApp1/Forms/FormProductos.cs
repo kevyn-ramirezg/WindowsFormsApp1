@@ -19,7 +19,18 @@ namespace WindowsFormsApp1.Forms
         private void FormProductos_Load(object sender, EventArgs e)
         {
             // grid
-            grid.AutoGenerateColumns = true;
+            grid.AutoGenerateColumns = false;
+            if (grid.Columns.Count == 0)
+            {
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "ID", DataPropertyName = "Id", Width = 40 });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Categoria", HeaderText = "Categoría", DataPropertyName = "Categoria", Width = 80 });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "CategoriaId", HeaderText = "CategoríaId", DataPropertyName = "CategoriaId", Width = 80 });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Nombre", HeaderText = "Nombre", DataPropertyName = "Nombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Costo", HeaderText = "Costo", DataPropertyName = "Costo", Width = 80 });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "PrecioVenta", HeaderText = "Precio Venta", DataPropertyName = "PrecioVenta", Width = 100 });
+                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Stock", HeaderText = "Stock", DataPropertyName = "Stock", Width = 90 });
+            }
+
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
             grid.ReadOnly = true;
@@ -43,16 +54,9 @@ namespace WindowsFormsApp1.Forms
         private void Cargar()
         {
             grid.DataSource = ProductoDAO.Listar();
-
-            if (grid.Columns["Id"] != null) grid.Columns["Id"].HeaderText = "ID";
-            if (grid.Columns["Categoria"] != null) grid.Columns["Categoria"].HeaderText = "Categoría";
-            if (grid.Columns["Nombre"] != null) grid.Columns["Nombre"].HeaderText = "Nombre";
-            if (grid.Columns["Costo"] != null) grid.Columns["Costo"].HeaderText = "Costo";
-            if (grid.Columns["PrecioVenta"] != null) grid.Columns["PrecioVenta"].HeaderText = "Precio Venta";
-            if (grid.Columns["Stock"] != null) grid.Columns["Stock"].HeaderText = "Stock";
-
             Limpiar();
         }
+
 
         private void Limpiar()
         {

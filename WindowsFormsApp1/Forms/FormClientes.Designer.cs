@@ -59,38 +59,42 @@
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.Info;
             this.txtNombre.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNombre.Location = new System.Drawing.Point(234, 293);
+            this.txtNombre.Location = new System.Drawing.Point(122, 297);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 22);
+            this.txtNombre.Size = new System.Drawing.Size(166, 26);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.Text = "Nombre";
             // 
             // txtTelefono
             // 
             this.txtTelefono.BackColor = System.Drawing.SystemColors.Info;
-            this.txtTelefono.Location = new System.Drawing.Point(486, 293);
+            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtTelefono.Location = new System.Drawing.Point(411, 297);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(198, 26);
             this.txtTelefono.TabIndex = 2;
             this.txtTelefono.Text = "Telefono";
             // 
             // txtCorreo
             // 
             this.txtCorreo.BackColor = System.Drawing.SystemColors.Info;
-            this.txtCorreo.Location = new System.Drawing.Point(709, 293);
+            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtCorreo.Location = new System.Drawing.Point(730, 297);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(100, 22);
+            this.txtCorreo.Size = new System.Drawing.Size(241, 26);
             this.txtCorreo.TabIndex = 3;
             this.txtCorreo.Text = "Correo";
             // 
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNuevo.Location = new System.Drawing.Point(302, 387);
+            this.btnNuevo.Location = new System.Drawing.Point(213, 413);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(102, 40);
+            this.btnNuevo.Size = new System.Drawing.Size(131, 54);
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -99,9 +103,10 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnGuardar.Location = new System.Drawing.Point(455, 387);
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGuardar.Location = new System.Drawing.Point(417, 413);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(102, 40);
+            this.btnGuardar.Size = new System.Drawing.Size(131, 54);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -110,9 +115,10 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnEliminar.Location = new System.Drawing.Point(614, 387);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnEliminar.Location = new System.Drawing.Point(613, 413);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(91, 40);
+            this.btnEliminar.Size = new System.Drawing.Size(120, 54);
             this.btnEliminar.TabIndex = 6;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -121,36 +127,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 296);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(26, 300);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Nombre";
+            this.label1.Text = "Nombre:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(419, 296);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(316, 300);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 16);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Teléfono";
+            this.label2.Text = "Teléfono:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(655, 296);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Location = new System.Drawing.Point(647, 300);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Correo";
+            this.label3.Text = "Correo:";
             // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(997, 466);
+            this.ClientSize = new System.Drawing.Size(997, 494);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

@@ -36,44 +36,54 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.Load += FormVenta_Load;
-            btnAgregar.Click += btnAgregar_Click;   // ajusta si tus nombres de botón son otros
-            btnGuardar.Click += btnGuardar_Click;
-            btnQuitar.Click += btnQuitar_Click;    // opcional si tienes un botón “Quitar”
+            // opcional si tienes un botón “Quitar”
             cboProducto.SelectedIndexChanged += (s, e) => ActualizarPrecioDeProducto();
 
-            // Asegurar columnas del grid por código si no existen
+            rbContado.CheckedChanged += (_, __) => ToggleCredito();
+            rbCredito.CheckedChanged += (_, __) => ToggleCredito();
+
+            cboMeses.Items.Clear();
+            cboMeses.Items.AddRange(new object[] { 12, 18, 24 });
+            if (cboMeses.Items.Count > 0) cboMeses.SelectedIndex = 0;
+
+            // Asegurar columnas del grid (una sola vez)
             gridCarrito.AutoGenerateColumns = false;
             if (gridCarrito.Columns.Count == 0)
             {
                 gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
                 {
+                    Name = "ProductoId",
                     HeaderText = "ProductoId",
                     DataPropertyName = "ProductoId",
-                    Width = 90
+                    Width = 110
                 });
                 gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
                 {
+                    Name = "Nombre",
                     HeaderText = "Nombre",
                     DataPropertyName = "Nombre",
                     AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
                 });
                 gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
                 {
+                    Name = "Cantidad",
                     HeaderText = "Cantidad",
                     DataPropertyName = "Cantidad",
-                    Width = 90
-                });
-                gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    HeaderText = "PrecioUnit",
-                    DataPropertyName = "PrecioUnit",
                     Width = 100
                 });
                 gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
                 {
+                    Name = "PrecioUnit",
+                    HeaderText = "PrecioUnit",
+                    DataPropertyName = "PrecioUnit",
+                    Width = 110
+                });
+                gridCarrito.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Subtotal",
                     HeaderText = "Subtotal",
                     DataPropertyName = "Subtotal",
-                    Width = 100,
+                    Width = 110,
                     ReadOnly = true
                 });
             }
@@ -98,6 +108,10 @@ namespace WindowsFormsApp1
             cboProducto.ValueMember = "Id";
             cboProducto.SelectedIndex = productosCache.Count > 0 ? 0 : -1;
 
+            cboMeses.SelectedIndexChanged += (_, __) => { if (rbCredito.Checked) PrevisualizarCuotas(); };
+
+            ToggleCredito();
+
             // precio inicial
             ActualizarPrecioDeProducto();
             Recalcular();
@@ -106,6 +120,42 @@ namespace WindowsFormsApp1
         // -----------------------------
         // Utilidades de UI
         // -----------------------------
+
+        private void ToggleCredito()
+        {
+            bool esCred = rbCredito.Checked;
+            cboMeses.Enabled = esCred;
+            lblCuotaInicial.Visible = esCred;
+            lblCuotaMensual.Visible = esCred;
+
+            if (esCred) PrevisualizarCuotas();
+        }
+
+        private void PrevisualizarCuotas()
+        {
+            // Total actual (ya lo calculas con _items)
+            decimal total = _items.Sum(i => i.Total);
+
+            // Reglas del enunciado:
+            //  - cuota inicial = 30% del total
+            //  - se financia el 70% + 5% de interés (simple para el total financiado)
+            //  - meses: 12/18/24 según combo
+            if (total <= 0 || cboMeses.SelectedItem == null)
+            {
+                lblCuotaInicial.Text = "Cuota inicial: $0";
+                lblCuotaMensual.Text = "Cuota mensual: $0";
+                return;
+            }
+
+            int meses = Convert.ToInt32(cboMeses.SelectedItem);
+            decimal cuotaInicial = Math.Round(total * 0.30m, 2);
+            decimal capitalFinanciar = Math.Round(total * 0.70m * 1.05m, 2); // +5%
+            decimal cuotaMensual = Math.Round(capitalFinanciar / meses, 2);
+
+            lblCuotaInicial.Text = $"Cuota inicial: {cuotaInicial:N0}";
+            lblCuotaMensual.Text = $"Cuota mensual: {cuotaMensual:N0}";
+        }
+
         private void ActualizarPrecioDeProducto()
         {
             var p = cboProducto.SelectedItem as Producto;
@@ -201,15 +251,18 @@ namespace WindowsFormsApp1
             if (_items.Count == 0) { MessageBox.Show("Carrito vacío."); return; }
             if (cboCliente.SelectedItem == null) { MessageBox.Show("Selecciona un cliente."); return; }
 
+            // 1) Cliente
             dynamic cli = cboCliente.SelectedItem;
             int clienteId = Convert.ToInt32(cli.Id);
 
+            // 2) Cabecera: tipo según radio
             var cab = new VentaCab
             {
                 ClienteId = clienteId,
-                Tipo = "CONTADO" // por ahora vendemos de contado
+                Tipo = rbCredito.Checked ? "CREDITO" : "CONTADO"   // ⬅️ aquí se define el tipo
             };
 
+            // 3) Detalles (como ya los tienes)
             var detalles = _items.Select(x => new VentaDet
             {
                 ProductoId = Convert.ToInt32(x.ProductoId),
@@ -222,12 +275,33 @@ namespace WindowsFormsApp1
                 LineaTotal = x.Total
             }).ToList();
 
-            var ventaId = VentaDAO.Guardar(cab, detalles, plan: null);
+            // 4) Plan de crédito solo si aplica
+            PlanCreditoInfo plan = null;
+            if (rbCredito.Checked)
+            {
+                if (cboMeses.SelectedItem == null)
+                {
+                    MessageBox.Show("Selecciona meses (12 / 18 / 24).");
+                    return;
+                }
+                plan = new PlanCreditoInfo
+                {
+                    Meses = Convert.ToInt32(cboMeses.SelectedItem)
+                };
+            }
+
+            // 5) Guardar (llama SP_RECALCULAR_TOTALES y, si hay plan, SP_CONFIGURAR_CREDITO)
+            var ventaId = VentaDAO.Guardar(cab, detalles, plan);
+
             MessageBox.Show($"Venta #{ventaId} guardada correctamente.");
 
+            // 6) Limpiar UI
             _items.Clear();
             RefrescarGridYTotales();
+            rbContado.Checked = true;          // vuelve a contado por defecto
+                                               // si quieres, también: cboMeses.SelectedIndex = 0;
         }
+
 
 
 
@@ -235,15 +309,20 @@ namespace WindowsFormsApp1
         {
             if (gridCarrito.CurrentRow == null) return;
 
-            var idObj = gridCarrito.CurrentRow.Cells["ProductoId"].Value;
+            var col = gridCarrito.Columns["ProductoId"];
+            if (col == null) { MessageBox.Show("Columna ProductoId no existe en el grid."); return; }
+
+            var idObj = gridCarrito.CurrentRow.Cells[col.Index].Value;
             if (idObj == null) return;
 
-            decimal prodId = Convert.ToDecimal(idObj);
+            var prodId = Convert.ToDecimal(idObj);
             var it = _items.FirstOrDefault(x => x.ProductoId == prodId);
             if (it != null) _items.Remove(it);
 
             RefrescarGridYTotales();
         }
+
+
 
         private void RecalcularLinea(ItemCarrito it)
         {
@@ -267,6 +346,8 @@ namespace WindowsFormsApp1
 
             var total = _items.Sum(i => i.Total);   // si solo quieres Subtotal, usa i.Subtotal
             lblTotal.Text = "Total: " + total.ToString("C", CultureInfo.CurrentCulture);
+
+            if (rbCredito.Checked) PrevisualizarCuotas();
         }
 
         // Saca IVA de la categoría cuando el producto de tu lista no lo trae
@@ -285,7 +366,5 @@ namespace WindowsFormsApp1
                 return v == null ? 0m : Convert.ToDecimal(v);
             }
         }
-
-
     }
 }
