@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
+    <Compile Include="DAO\CreditoDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
     <Compile Include="DAO\VentaDAO.cs" />
     <Compile Include="Data\Db.cs" />
@@ -109,6 +110,12 @@
     </Compile>
     <Compile Include="Forms\FormClientes.Designer.cs">
       <DependentUpon>FormClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCreditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreditos.Designer.cs">
+      <DependentUpon>FormCreditos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
@@ -148,6 +155,7 @@
     </Compile>
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Cuota.cs" />
     <Compile Include="Models\ItemCarrito.cs" />
     <Compile Include="Models\ItemGrid.cs" />
     <Compile Include="Models\ItemVenta.cs" />
@@ -165,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormClientes.resx">
       <DependentUpon>FormClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreditos.resx">
+      <DependentUpon>FormCreditos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

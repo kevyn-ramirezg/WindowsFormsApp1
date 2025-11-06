@@ -38,6 +38,7 @@
             this.btnFactura = new System.Windows.Forms.Button();
             this.btnVentasMes = new System.Windows.Forms.Button();
             this.btnIvaTrimestre = new System.Windows.Forms.Button();
+            this.btnCreditos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategorias
@@ -158,12 +159,25 @@
             this.btnIvaTrimestre.UseVisualStyleBackColor = false;
             this.btnIvaTrimestre.Click += new System.EventHandler(this.btnIvaTrimestre_Click);
             // 
+            // btnCreditos
+            // 
+            this.btnCreditos.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCreditos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCreditos.Location = new System.Drawing.Point(58, 298);
+            this.btnCreditos.Name = "btnCreditos";
+            this.btnCreditos.Size = new System.Drawing.Size(171, 54);
+            this.btnCreditos.TabIndex = 10;
+            this.btnCreditos.Text = "Créditos";
+            this.btnCreditos.UseVisualStyleBackColor = false;
+            this.btnCreditos.Click += new System.EventHandler(this.btnCreditos_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCreditos);
             this.Controls.Add(this.btnIvaTrimestre);
             this.Controls.Add(this.btnVentasMes);
             this.Controls.Add(this.btnFactura);
@@ -193,6 +207,7 @@
         private System.Windows.Forms.Button btnFactura;
         private System.Windows.Forms.Button btnVentasMes;
         private System.Windows.Forms.Button btnIvaTrimestre;
+        private System.Windows.Forms.Button btnCreditos;
     }
 }
 

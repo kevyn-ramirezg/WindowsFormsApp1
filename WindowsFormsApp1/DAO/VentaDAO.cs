@@ -108,6 +108,19 @@ namespace WindowsFormsApp1.DAO
                         cmdTot.ExecuteNonQuery();
                     }
 
+                    // >>> NUEVO: leer el TOTAL calculado para pasarlo al SP de crédito
+                    decimal totalVenta = 0m;
+                    using (var cmdGetTotal = new OracleCommand("SELECT TOTAL FROM VENTA WHERE ID = :id", cn))
+                    {
+                        cmdGetTotal.Transaction = tx;
+                        cmdGetTotal.BindByName = true;
+                        cmdGetTotal.Parameters.Add(":id", OracleDbType.Int32).Value = ventaId;
+
+                        var v = cmdGetTotal.ExecuteScalar();
+                        if (v != null && v != DBNull.Value)
+                            totalVenta = Convert.ToDecimal(v);
+                    }
+
                     // 4) Si es crédito, plan
                     if (cab.Tipo == "CREDITO" && plan != null)
                     {
@@ -115,11 +128,16 @@ namespace WindowsFormsApp1.DAO
                         {
                             cmdCred.Transaction = tx;
                             cmdCred.CommandType = CommandType.StoredProcedure;
+                            cmdCred.BindByName = true;
+
                             cmdCred.Parameters.Add("p_venta_id", OracleDbType.Int32).Value = ventaId;
                             cmdCred.Parameters.Add("p_meses", OracleDbType.Int32).Value = plan.Meses;
+                            cmdCred.Parameters.Add("p_total", OracleDbType.Decimal).Value = totalVenta;
+
                             cmdCred.ExecuteNonQuery();
                         }
                     }
+
 
                     tx.Commit();
                     return ventaId;

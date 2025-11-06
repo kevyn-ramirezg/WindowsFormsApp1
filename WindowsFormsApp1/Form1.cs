@@ -133,5 +133,11 @@ namespace WindowsFormsApp1
                 f.ShowDialog(this);
         }
 
+        private void btnCreditos_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormCreditos())
+                f.ShowDialog(this);
+        }
+
     }
 }

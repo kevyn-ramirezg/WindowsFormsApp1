@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,40 +12,84 @@ namespace WindowsFormsApp1
 {
     public partial class FormVenta : Form
     {
-        // -----------------------------
-        // Modelo de fila para el grid
-        // -----------------------------
-       /* private class ItemGrid
-        {
-            public decimal ProductoId { get; set; }
-            public string Nombre { get; set; }
-            public decimal Cantidad { get; set; }   // guardamos como decimal para pasar a DAO sin cast raros
-            public decimal PrecioUnit { get; set; }
-            public decimal Subtotal { get { return PrecioUnit * Cantidad; } }
-        }*/
-
-        //private BindingList<ItemGrid> carrito = new BindingList<ItemGrid>();
-
         private List<Producto> productosCache = new List<Producto>();
-        // Lista en memoria para el carrito
         private readonly List<ItemCarrito> _items = new List<ItemCarrito>();
-    
 
         public FormVenta()
         {
             InitializeComponent();
             this.Load += FormVenta_Load;
-            // opcional si tienes un botón “Quitar”
+
+            // Precio al cambiar producto
             cboProducto.SelectedIndexChanged += (s, e) => ActualizarPrecioDeProducto();
 
-            rbContado.CheckedChanged += (_, __) => ToggleCredito();
-            rbCredito.CheckedChanged += (_, __) => ToggleCredito();
+            // ====== Controles de crédito (creados por código) ======
+            // rbContado
+            this.rbContado = new RadioButton();
+            this.rbContado.AutoSize = true;
+            this.rbContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbContado.Location = new System.Drawing.Point(170, 435);
+            this.rbContado.Name = "rbContado";
+            this.rbContado.Size = new System.Drawing.Size(100, 21);
+            this.rbContado.TabIndex = 14;
+            this.rbContado.TabStop = true;
+            this.rbContado.Text = "Contado";
+            this.rbContado.UseVisualStyleBackColor = true;
+            this.rbContado.Checked = true;
 
-            cboMeses.Items.Clear();
-            cboMeses.Items.AddRange(new object[] { 12, 18, 24 });
-            if (cboMeses.Items.Count > 0) cboMeses.SelectedIndex = 0;
+            // rbCredito
+            this.rbCredito = new RadioButton();
+            this.rbCredito.AutoSize = true;
+            this.rbCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbCredito.Location = new System.Drawing.Point(260, 435);
+            this.rbCredito.Name = "rbCredito";
+            this.rbCredito.Size = new System.Drawing.Size(78, 21);
+            this.rbCredito.TabIndex = 15;
+            this.rbCredito.Text = "Crédito";
+            this.rbCredito.UseVisualStyleBackColor = true;
 
-            // Asegurar columnas del grid (una sola vez)
+            // cboMeses
+            this.cboMeses = new ComboBox();
+            this.cboMeses.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboMeses.BackColor = System.Drawing.SystemColors.Info;
+            this.cboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cboMeses.Location = new System.Drawing.Point(360, 435);
+            this.cboMeses.Name = "cboMeses";
+            this.cboMeses.Size = new System.Drawing.Size(120, 28);
+            this.cboMeses.TabIndex = 16;
+            this.cboMeses.Visible = false;
+
+            // lblCuotaInicial
+            this.lblCuotaInicial = new Label();
+            this.lblCuotaInicial.AutoSize = true;
+            this.lblCuotaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCuotaInicial.Location = new System.Drawing.Point(515, 435);
+            this.lblCuotaInicial.Name = "lblCuotaInicial";
+            this.lblCuotaInicial.Size = new System.Drawing.Size(142, 20);
+            this.lblCuotaInicial.TabIndex = 17;
+            this.lblCuotaInicial.Text = "Cuota inicial: $0";
+            this.lblCuotaInicial.Visible = false;
+
+            // lblCuotaMensual
+            this.lblCuotaMensual = new Label();
+            this.lblCuotaMensual.AutoSize = true;
+            this.lblCuotaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCuotaMensual.Location = new System.Drawing.Point(700, 435);
+            this.lblCuotaMensual.Name = "lblCuotaMensual";
+            this.lblCuotaMensual.Size = new System.Drawing.Size(165, 20);
+            this.lblCuotaMensual.TabIndex = 18;
+            this.lblCuotaMensual.Text = "Cuota mensual: $0";
+            this.lblCuotaMensual.Visible = false;
+
+            // Agregar a la forma
+            this.Controls.Add(this.rbContado);
+            this.Controls.Add(this.rbCredito);
+            this.Controls.Add(this.cboMeses);
+            this.Controls.Add(this.lblCuotaInicial);
+            this.Controls.Add(this.lblCuotaMensual);
+            // ========================================================
+
+            // Config columnas del grid una sola vez
             gridCarrito.AutoGenerateColumns = false;
             if (gridCarrito.Columns.Count == 0)
             {
@@ -88,59 +131,72 @@ namespace WindowsFormsApp1
                 });
             }
 
-            // eventos
-            numCantidad.ValueChanged += delegate { Recalcular(); };
+            numCantidad.ValueChanged += (s, e) => Recalcular();
         }
 
         private void FormVenta_Load(object sender, EventArgs e)
         {
-            // clientes
-            var clientes = ClienteDAO.Listar();          // <- usa tu ClienteDAO
+            // Cargar combos
+            var clientes = ClienteDAO.Listar();
             cboCliente.DataSource = clientes;
             cboCliente.DisplayMember = "Nombre";
             cboCliente.ValueMember = "Id";
             cboCliente.SelectedIndex = clientes.Count > 0 ? 0 : -1;
 
-            // productos
-            productosCache = ProductoDAO.Listar();       // <- usa tu ProductoDAO
+            productosCache = ProductoDAO.Listar();
             cboProducto.DataSource = productosCache;
             cboProducto.DisplayMember = "Nombre";
             cboProducto.ValueMember = "Id";
             cboProducto.SelectedIndex = productosCache.Count > 0 ? 0 : -1;
 
-            cboMeses.SelectedIndexChanged += (_, __) => { if (rbCredito.Checked) PrevisualizarCuotas(); };
+            // Eventos crédito
+            rbCredito.CheckedChanged += rbCredito_CheckedChanged;
+            cboMeses.SelectedIndexChanged += (_, __) =>
+            {
+                if (rbCredito.Checked) PrevisualizarCuotas();
+            };
 
+            rbContado.Checked = true; // default
             ToggleCredito();
 
-            // precio inicial
+            // Precio inicial
             ActualizarPrecioDeProducto();
             Recalcular();
         }
 
-        // -----------------------------
-        // Utilidades de UI
-        // -----------------------------
+        // ======== Lógica de crédito (sin lblPlanInfo) ========
+        private void rbCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleCredito();
+
+            if (rbCredito.Checked && cboMeses.Items.Count == 0)
+            {
+                cboMeses.Items.Add(12);
+                cboMeses.Items.Add(18);
+                cboMeses.Items.Add(24);
+                cboMeses.SelectedIndex = 0;
+            }
+        }
 
         private void ToggleCredito()
         {
             bool esCred = rbCredito.Checked;
-            cboMeses.Enabled = esCred;
+            cboMeses.Visible = esCred;
             lblCuotaInicial.Visible = esCred;
             lblCuotaMensual.Visible = esCred;
 
             if (esCred) PrevisualizarCuotas();
+            else
+            {
+                lblCuotaInicial.Text = "Cuota inicial: $0";
+                lblCuotaMensual.Text = "Cuota mensual: $0";
+            }
         }
 
         private void PrevisualizarCuotas()
         {
-            // Total actual (ya lo calculas con _items)
             decimal total = _items.Sum(i => i.Total);
-
-            // Reglas del enunciado:
-            //  - cuota inicial = 30% del total
-            //  - se financia el 70% + 5% de interés (simple para el total financiado)
-            //  - meses: 12/18/24 según combo
-            if (total <= 0 || cboMeses.SelectedItem == null)
+            if (!rbCredito.Checked || total <= 0 || cboMeses.SelectedItem == null)
             {
                 lblCuotaInicial.Text = "Cuota inicial: $0";
                 lblCuotaMensual.Text = "Cuota mensual: $0";
@@ -155,32 +211,25 @@ namespace WindowsFormsApp1
             lblCuotaInicial.Text = $"Cuota inicial: {cuotaInicial:N0}";
             lblCuotaMensual.Text = $"Cuota mensual: {cuotaMensual:N0}";
         }
+        // =====================================================
 
         private void ActualizarPrecioDeProducto()
         {
             var p = cboProducto.SelectedItem as Producto;
             if (p != null)
-            {
-                // muestra el precio del producto. Si prefieres permitir editarlo, deja txtPrecio editable.
                 txtPrecio.Text = p.PrecioVenta.ToString("0.##", CultureInfo.CurrentCulture);
-            }
         }
 
         private void Recalcular()
         {
-            decimal total = _items.Sum(i => i.Total);   // si prefieres solo Subtotal: i.Subtotal
+            decimal total = _items.Sum(i => i.Total);
             lblTotal.Text = "Total: " + total.ToString("C", CultureInfo.CurrentCulture);
         }
 
-
         private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ActualizarPrecioDeProducto();
-        }
+            => ActualizarPrecioDeProducto();
 
-        // -----------------------------
-        // Botón Agregar
-        // -----------------------------
+        // ======== Agregar ========
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (cboProducto.SelectedItem == null)
@@ -194,8 +243,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // productosCache es tu lista actual. Puede ser tipada o DataTable.
-            // Usamos dynamic para no romper tus tipos existentes.
             dynamic prod = cboProducto.SelectedItem;
 
             decimal prodId = (decimal)prod.Id;
@@ -203,9 +250,9 @@ namespace WindowsFormsApp1
             decimal precio = (decimal)prod.PrecioVenta;
             decimal stock = (decimal)prod.Stock;
 
-            // IVA: si tu objeto no trae IvaPct, lo consultamos a BD por la categoría.
             decimal ivaPct = 0m;
-            try { ivaPct = (decimal)prod.IvaPct; } catch { ivaPct = ObtenerIvaDeProducto(prodId); }
+            try { ivaPct = (decimal)prod.IvaPct; }
+            catch { ivaPct = ObtenerIvaDeProducto(prodId); }
 
             decimal qty = numCantidad.Value;
 
@@ -241,28 +288,21 @@ namespace WindowsFormsApp1
             RefrescarGridYTotales();
         }
 
-
-
-        // -----------------------------
-        // Botón Guardar
-        // -----------------------------
+        // ======== Guardar ========
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (_items.Count == 0) { MessageBox.Show("Carrito vacío."); return; }
             if (cboCliente.SelectedItem == null) { MessageBox.Show("Selecciona un cliente."); return; }
 
-            // 1) Cliente
             dynamic cli = cboCliente.SelectedItem;
             int clienteId = Convert.ToInt32(cli.Id);
 
-            // 2) Cabecera: tipo según radio
             var cab = new VentaCab
             {
                 ClienteId = clienteId,
-                Tipo = rbCredito.Checked ? "CREDITO" : "CONTADO"   // ⬅️ aquí se define el tipo
+                Tipo = rbCredito.Checked ? "CREDITO" : "CONTADO"
             };
 
-            // 3) Detalles (como ya los tienes)
             var detalles = _items.Select(x => new VentaDet
             {
                 ProductoId = Convert.ToInt32(x.ProductoId),
@@ -275,7 +315,6 @@ namespace WindowsFormsApp1
                 LineaTotal = x.Total
             }).ToList();
 
-            // 4) Plan de crédito solo si aplica
             PlanCreditoInfo plan = null;
             if (rbCredito.Checked)
             {
@@ -284,27 +323,18 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Selecciona meses (12 / 18 / 24).");
                     return;
                 }
-                plan = new PlanCreditoInfo
-                {
-                    Meses = Convert.ToInt32(cboMeses.SelectedItem)
-                };
+                plan = new PlanCreditoInfo { Meses = Convert.ToInt32(cboMeses.SelectedItem) };
             }
 
-            // 5) Guardar (llama SP_RECALCULAR_TOTALES y, si hay plan, SP_CONFIGURAR_CREDITO)
             var ventaId = VentaDAO.Guardar(cab, detalles, plan);
-
             MessageBox.Show($"Venta #{ventaId} guardada correctamente.");
 
-            // 6) Limpiar UI
             _items.Clear();
             RefrescarGridYTotales();
-            rbContado.Checked = true;          // vuelve a contado por defecto
-                                               // si quieres, también: cboMeses.SelectedIndex = 0;
+            rbContado.Checked = true; // default
         }
 
-
-
-
+        // ======== Quitar ========
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             if (gridCarrito.CurrentRow == null) return;
@@ -322,8 +352,6 @@ namespace WindowsFormsApp1
             RefrescarGridYTotales();
         }
 
-
-
         private void RecalcularLinea(ItemCarrito it)
         {
             it.Subtotal = Math.Round(it.PrecioUnit * it.Cantidad, 2);
@@ -333,7 +361,7 @@ namespace WindowsFormsApp1
 
         private void RefrescarGridYTotales()
         {
-            gridCarrito.AutoGenerateColumns = false; // usamos tus columnas manuales
+            gridCarrito.AutoGenerateColumns = false;
             gridCarrito.DataSource = null;
             gridCarrito.DataSource = _items.Select(x => new
             {
@@ -344,21 +372,20 @@ namespace WindowsFormsApp1
                 x.Subtotal
             }).ToList();
 
-            var total = _items.Sum(i => i.Total);   // si solo quieres Subtotal, usa i.Subtotal
+            var total = _items.Sum(i => i.Total);
             lblTotal.Text = "Total: " + total.ToString("C", CultureInfo.CurrentCulture);
 
             if (rbCredito.Checked) PrevisualizarCuotas();
         }
 
-        // Saca IVA de la categoría cuando el producto de tu lista no lo trae
         private decimal ObtenerIvaDeProducto(decimal productoId)
         {
             using (var cn = Db.Open())
             using (var cmd = new OracleCommand(@"
-        SELECT c.iva
-        FROM producto p
-        JOIN categoria c ON c.id = p.categoria_id
-        WHERE p.id = :id", cn))
+                SELECT c.iva
+                FROM producto p
+                JOIN categoria c ON c.id = p.categoria_id
+                WHERE p.id = :id", cn))
             {
                 cmd.BindByName = true;
                 cmd.Parameters.Add(":id", productoId);
