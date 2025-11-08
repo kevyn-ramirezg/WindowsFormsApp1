@@ -54,81 +54,36 @@ public static class CreditoDAO
         {
             try
             {
-                // 1) Validar que la cuota exista y no esté pagada
-                using (var chk = new OracleCommand(@"
-                    SELECT ESTADO, MONTO_CUOTA
-                      FROM CREDITO_CUOTA
-                     WHERE VENTA_ID = :v AND NUM_CUOTA = :n
-                    ", cn))
+                using (var cmd = new OracleCommand("SP_PAGAR_CUOTA", cn))
                 {
-                    chk.BindByName = true;
-                    chk.Transaction = tx;
-                    chk.Parameters.Add(":v", ventaId);
-                    chk.Parameters.Add(":n", numCuota);
+                    cmd.Transaction = tx;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.BindByName = true;
 
-                    using (var dr = chk.ExecuteReader())
-                    {
-                        if (!dr.Read()) { tx.Rollback(); return false; }
-                        var estado = dr.GetString(0);
-                        var montoCuota = dr.GetDecimal(1);
-                        if (estado.Equals("PAGADA", StringComparison.OrdinalIgnoreCase)) { tx.Rollback(); return false; }
-                        // Si quieres validar exactitud del monto:
-                        // if (monto != montoCuota) { tx.Rollback(); return false; }
-                    }
-                }
+                    cmd.Parameters.Add("p_venta_id", OracleDbType.Int32).Value = ventaId;
+                    cmd.Parameters.Add("p_n_cuota", OracleDbType.Int32).Value = numCuota;
+                    cmd.Parameters.Add("p_monto", OracleDbType.Decimal).Value = monto;
+                    cmd.Parameters.Add("p_fecha", OracleDbType.Date).Value = fecha;
 
-                // 2) Registrar pago (opcional si no llevas tabla de pagos)
-                using (var ins = new OracleCommand(@"
-                    INSERT INTO CREDITO_PAGO (VENTA_ID, NUM_CUOTA, MONTO, FECHA_PAGO)
-                    VALUES (:v, :n, :m, :f)
-                ", cn))
-                {
-                    ins.BindByName = true;
-                    ins.Transaction = tx;
-                    ins.Parameters.Add(":v", ventaId);
-                    ins.Parameters.Add(":n", numCuota);
-                    ins.Parameters.Add(":m", monto);
-                    ins.Parameters.Add(":f", fecha);
-                    ins.ExecuteNonQuery();
-                }
-
-                // 3) Marcar cuota como pagada
-                using (var upd = new OracleCommand(@"
-                    UPDATE CREDITO_CUOTA
-                       SET ESTADO = 'PAGADA',
-                           MONTO_PAGADO = :m,
-                           FECHA_PAGO = :f
-                     WHERE VENTA_ID = :v AND NUM_CUOTA = :n
-                ", cn))
-                {
-                    upd.BindByName = true;
-                    upd.Transaction = tx;
-                    upd.Parameters.Add(":m", monto);
-                    upd.Parameters.Add(":f", fecha);
-                    upd.Parameters.Add(":v", ventaId);
-                    upd.Parameters.Add(":n", numCuota);
-                    upd.ExecuteNonQuery();
-                }
-
-                // 4) Recalcular totales del crédito (si llevas acumulados en otra tabla)
-                using (var recalc = new OracleCommand("SP_RECALCULAR_TOTALES", cn))
-                {
-                    recalc.CommandType = CommandType.StoredProcedure;
-                    recalc.BindByName = true;
-                    recalc.Transaction = tx;
-                    recalc.Parameters.Add("P_VENTA_ID", OracleDbType.Int32).Value = ventaId;
-                    recalc.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
 
                 tx.Commit();
                 return true;
             }
-            catch
+            catch (OracleException ex)
             {
-                tx.Rollback();
+                // Te muestra la causa real si algo falla (FK, NO_DATA_FOUND, etc.)
+                System.Windows.Forms.MessageBox.Show("Oracle: " + ex.Message);
+                try { tx.Rollback(); } catch { }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
+                try { tx.Rollback(); } catch { }
                 return false;
             }
         }
     }
-
 }

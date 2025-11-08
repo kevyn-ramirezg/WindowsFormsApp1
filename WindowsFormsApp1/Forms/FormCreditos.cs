@@ -25,6 +25,11 @@ namespace WindowsFormsApp1.Forms
             ConfigurarGridCuotas();
             LimpiarTotales();
 
+            // ⇩ Ajustes del NumericUpDown de monto
+            numMonto.DecimalPlaces = 0;     
+            numMonto.ThousandsSeparator = true;
+            numMonto.Maximum = 999_999_999;
+
         }
 
         private void EstilarGrid()
@@ -79,6 +84,46 @@ namespace WindowsFormsApp1.Forms
             lblPendiente.Text = "0";
         }
 
+        // Crea las columnas 1 sola vez con los nombres que usamos en el código
+        /*private void EnsureGridColumns()
+        {
+            if (gridCuotas.Columns.Count > 0) return;
+
+            gridCuotas.AutoGenerateColumns = false;
+
+            gridCuotas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NUM_CUOTA",            // <- este Name es el que usas para leer la celda al pagar
+                HeaderText = "Cuota",
+                DataPropertyName = "NUM_CUOTA"
+            });
+            gridCuotas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "FECHA_VENC",
+                HeaderText = "Vence",
+                DataPropertyName = "FECHA_VENC"
+            });
+            gridCuotas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "VALOR_CUOTA",
+                HeaderText = "Valor cuota",
+                DataPropertyName = "VALOR_CUOTA"
+            });
+            gridCuotas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "VALOR_PAGADO",
+                HeaderText = "Pagado",
+                DataPropertyName = "VALOR_PAGADO"
+            });
+            gridCuotas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ESTADO",
+                HeaderText = "Estado",
+                DataPropertyName = "ESTADO"
+            });
+        }*/
+
+
         private void ConfigurarGridCuotas()
         {
             var g = gridCuotas;
@@ -106,10 +151,10 @@ namespace WindowsFormsApp1.Forms
             // Que el ancho se reparta proporcionalmente
             g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Columnas
+            // OJO: DataPropertyName = nombres de columna del DataTable
             var colNum = new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "NumCuota",     // propiedad del modelo Cuota
+                DataPropertyName = "NumCuota",
                 HeaderText = "Cuota",
                 MinimumWidth = 70,
                 FillWeight = 12,
@@ -124,10 +169,7 @@ namespace WindowsFormsApp1.Forms
                 MinimumWidth = 110,
                 FillWeight = 18,
                 SortMode = DataGridViewColumnSortMode.NotSortable,
-                DefaultCellStyle = {
-            Format    = "dd/MM/yyyy",
-            Alignment = DataGridViewContentAlignment.MiddleCenter
-        }
+                DefaultCellStyle = { Format = "dd/MM/yyyy", Alignment = DataGridViewContentAlignment.MiddleCenter }
             };
 
             var colCuota = new DataGridViewTextBoxColumn
@@ -137,10 +179,7 @@ namespace WindowsFormsApp1.Forms
                 MinimumWidth = 120,
                 FillWeight = 30,
                 SortMode = DataGridViewColumnSortMode.NotSortable,
-                DefaultCellStyle = {
-            Format    = "N0",                          // 1.234.567
-            Alignment = DataGridViewContentAlignment.MiddleRight
-        }
+                DefaultCellStyle = { Format = "N0", Alignment = DataGridViewContentAlignment.MiddleRight }
             };
 
             var colPagado = new DataGridViewTextBoxColumn
@@ -150,10 +189,7 @@ namespace WindowsFormsApp1.Forms
                 MinimumWidth = 120,
                 FillWeight = 30,
                 SortMode = DataGridViewColumnSortMode.NotSortable,
-                DefaultCellStyle = {
-            Format    = "N0",
-            Alignment = DataGridViewContentAlignment.MiddleRight
-        }
+                DefaultCellStyle = { Format = "N0", Alignment = DataGridViewContentAlignment.MiddleRight }
             };
 
             var colEstado = new DataGridViewTextBoxColumn
@@ -166,9 +202,10 @@ namespace WindowsFormsApp1.Forms
                 DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter }
             };
 
+
             g.Columns.AddRange(colNum, colFec, colCuota, colPagado, colEstado);
 
-            // Opcional: ajuste fino para pantallas pequeñas
+            // Ajuste fino uniforme
             foreach (DataGridViewColumn c in g.Columns)
                 c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -207,73 +244,86 @@ namespace WindowsFormsApp1.Forms
         {
             var ventaId = (int)numVentaId.Value;
 
-            // Llama a tu DAO que devuelve DataTable o lista
-            var dt = CreditoDAO.ListarCuotasPorVenta(ventaId); // implementado en tu DAO
+            var cuotas = CreditoDAO.ListarCuotasPorVenta(ventaId); // List<Cuota>
+            gridCuotas.DataSource = cuotas;
 
-            gridCuotas.DataSource = dt;
             AjustarColumnas();
             RecalcularTotales();
 
-            // Sugerencia: posiciona la 1ª vencida
-            if (gridCuotas.Columns.Contains("ESTADO"))
+            // Selecciona la primera PENDIENTE
+            foreach (DataGridViewRow r in gridCuotas.Rows)
             {
-                foreach (DataGridViewRow r in gridCuotas.Rows)
+                if (r.DataBoundItem is Cuota c &&
+                    string.Equals(c.Estado, "PENDIENTE", StringComparison.OrdinalIgnoreCase))
                 {
-                    if ((r.Cells["ESTADO"].Value?.ToString() ?? "").Equals("PENDIENTE", StringComparison.OrdinalIgnoreCase))
-                    {
-                        r.Selected = true;
-                        gridCuotas.CurrentCell = r.Cells[0];
-                        break;
-                    }
+                    r.Selected = true;
+                    gridCuotas.CurrentCell = r.Cells[0];
+                    break;
                 }
             }
         }
 
+
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            if (gridCuotas.CurrentRow == null)
-            {
-                MessageBox.Show("Selecciona una cuota.");
-                return;
-            }
+            if (gridCuotas.CurrentRow == null) { MessageBox.Show("Selecciona una cuota."); return; }
 
             var sel = gridCuotas.CurrentRow.DataBoundItem as Cuota;
-            if (sel == null)
-            {
-                MessageBox.Show("No se pudo obtener la cuota seleccionada.");
-                return;
-            }
+            if (sel == null) { MessageBox.Show("No se pudo leer la cuota."); return; }
 
             int ventaId = (int)numVentaId.Value;
-            int numCuota = sel.NumCuota;              // <— ¡aquí está el número de cuota!
+            int numCuota = sel.NumCuota;
             decimal monto = numMonto.Value;
             DateTime fecha = dtpFecha.Value.Date;
 
             if (monto <= 0) { MessageBox.Show("Ingresa un monto mayor que cero."); return; }
 
             var ok = CreditoDAO.PagarCuota(ventaId, numCuota, monto, fecha);
-            if (!ok) { MessageBox.Show("No fue posible registrar el pago."); return; }
+            if (!ok) return;
 
-            btnBuscar_Click(null, null); // refrescar
+            btnBuscar_Click(null, null);
         }
+
 
 
         private void gridCuotas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var r = gridCuotas.Rows[e.RowIndex];
 
-            // Si tu consulta trae RESTO_PENDIENTE, úsalo como sugerencia
-            if (gridCuotas.Columns.Contains("RESTO_PENDIENTE") && r.Cells["RESTO_PENDIENTE"].Value != null)
+            // Fila y objeto enlazado
+            var row = gridCuotas.Rows[e.RowIndex];
+            var sel = row.DataBoundItem as Cuota;
+            if (sel == null) return;
+
+            // Resto pendiente calculado desde el modelo
+            decimal resto = Math.Max(0m, sel.ValorCuota - sel.ValorPagado);
+
+            // Sugerencias de UI para el NumericUpDown
+            numMonto.ThousandsSeparator = true;   // ya lo tienes en Load, por si acaso
+            numMonto.DecimalPlaces = 0;
+
+            // Ajusta límites y propone el resto pendiente como valor por defecto
+            if (resto > 0m)
             {
-                var resto = Convert.ToDecimal(r.Cells["RESTO_PENDIENTE"].Value);
-                if (resto > 0)
-                {
-                    if (resto < numMonto.Minimum) numMonto.Minimum = resto;
-                    if (resto > numMonto.Maximum) numMonto.Maximum = resto;
-                    numMonto.Value = resto;
-                }
+                if (resto > numMonto.Maximum) numMonto.Maximum = resto; // asegura tope
+                if (numMonto.Minimum > 0m) numMonto.Minimum = 0m;   // permitir abonos parciales si quieres
+                numMonto.Value = resto;                                   // propone pagar el restante
             }
+            else
+            {
+                numMonto.Value = 0m;
+            }
+
+            // Fecha sugerida: hoy (si tu DateTimePicker quedó en una fecha pasada)
+            if (dtpFecha.Value.Date < DateTime.Today)
+                dtpFecha.Value = DateTime.Today;
+
+            // Mantén la fila seleccionada
+            gridCuotas.ClearSelection();
+            row.Selected = true;
+            gridCuotas.CurrentCell = row.Cells[0];
         }
+
     }
 }

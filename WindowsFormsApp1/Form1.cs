@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
 
         private void btnVentasMes_Click(object sender, EventArgs e)
         {
-            using (var f = new WindowsFormsApp1.Forms.FormRptVentasMes())
+            using (var f = new WindowsFormsApp1.Forms.FormReporteVentas())
                 f.ShowDialog(this);
         }
 
@@ -138,6 +138,5 @@ namespace WindowsFormsApp1
             using (var f = new WindowsFormsApp1.Forms.FormCreditos())
                 f.ShowDialog(this);
         }
-
     }
 }

@@ -47,29 +47,31 @@ namespace WindowsFormsApp1.DAO
                     // 1) Cabecera
                     int ventaId;
                     using (var cmd = new OracleCommand(@"
-                        INSERT INTO VENTA (CLIENTE_ID, TIPO, SUBTOTAL, IVA_TOTAL, TOTAL)
-                        VALUES (:c, :t, 0, 0, 0)
-                        RETURNING ID INTO :id", cn))
+                INSERT INTO VENTA (CLIENTE_ID, TIPO, SUBTOTAL, IVA_TOTAL, TOTAL)
+                VALUES (:c, :t, 0, 0, 0)
+                RETURNING ID INTO :id", cn))
                     {
                         cmd.Transaction = tx;
                         cmd.BindByName = true;
                         cmd.Parameters.Add(":c", cab.ClienteId);
                         cmd.Parameters.Add(":t", cab.Tipo);
+
                         var pOut = new OracleParameter(":id", OracleDbType.Int32)
                         {
                             Direction = ParameterDirection.Output
                         };
                         cmd.Parameters.Add(pOut);
+
                         cmd.ExecuteNonQuery();
                         ventaId = Convert.ToInt32(pOut.Value.ToString());
                     }
 
                     // 2) Detalles
                     using (var cmdD = new OracleCommand(@"
-                        INSERT INTO DETALLEVENTA
-                          (VENTA_ID, PRODUCTO_ID, CANTIDAD, PRECIO_UNIT, IVA_PCT, UTILIDAD_PCT,
-                           LINEA_SUBTOTAL, LINEA_IVA, LINEA_TOTAL)
-                        VALUES(:v,:p,:q,:pu,:iva,:uti,:ls,:li,:lt)", cn))
+                INSERT INTO DETALLEVENTA
+                  (VENTA_ID, PRODUCTO_ID, CANTIDAD, PRECIO_UNIT, IVA_PCT, UTILIDAD_PCT,
+                   LINEA_SUBTOTAL, LINEA_IVA, LINEA_TOTAL)
+                VALUES(:v,:p,:q,:pu,:iva,:uti,:ls,:li,:lt)", cn))
                     {
                         cmdD.Transaction = tx;
                         cmdD.BindByName = true;
@@ -104,11 +106,12 @@ namespace WindowsFormsApp1.DAO
                     {
                         cmdTot.Transaction = tx;
                         cmdTot.CommandType = CommandType.StoredProcedure;
+                        cmdTot.BindByName = true;
                         cmdTot.Parameters.Add("p_venta_id", OracleDbType.Int32).Value = ventaId;
                         cmdTot.ExecuteNonQuery();
                     }
 
-                    // >>> NUEVO: leer el TOTAL calculado para pasarlo al SP de crédito
+                    // 3.1) Leer TOTAL calculado (para plan de crédito)
                     decimal totalVenta = 0m;
                     using (var cmdGetTotal = new OracleCommand("SELECT TOTAL FROM VENTA WHERE ID = :id", cn))
                     {
@@ -121,7 +124,7 @@ namespace WindowsFormsApp1.DAO
                             totalVenta = Convert.ToDecimal(v);
                     }
 
-                    // 4) Si es crédito, plan
+                    // 4) Configurar crédito (si aplica)
                     if (cab.Tipo == "CREDITO" && plan != null)
                     {
                         using (var cmdCred = new OracleCommand("SP_CONFIGURAR_CREDITO", cn))
@@ -129,16 +132,14 @@ namespace WindowsFormsApp1.DAO
                             cmdCred.Transaction = tx;
                             cmdCred.CommandType = CommandType.StoredProcedure;
                             cmdCred.BindByName = true;
-
                             cmdCred.Parameters.Add("p_venta_id", OracleDbType.Int32).Value = ventaId;
                             cmdCred.Parameters.Add("p_meses", OracleDbType.Int32).Value = plan.Meses;
                             cmdCred.Parameters.Add("p_total", OracleDbType.Decimal).Value = totalVenta;
-
                             cmdCred.ExecuteNonQuery();
                         }
                     }
 
-
+                    // IMPORTANTE: ya NO llamamos SP_DESCONTAR_STOCK (lo maneja el trigger)
                     tx.Commit();
                     return ventaId;
                 }
@@ -149,5 +150,6 @@ namespace WindowsFormsApp1.DAO
                 }
             }
         }
+
     }
 }
