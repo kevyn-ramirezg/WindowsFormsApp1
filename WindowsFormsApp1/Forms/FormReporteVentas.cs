@@ -136,33 +136,59 @@ namespace WindowsFormsApp1.Forms
 
         private void btnExportCsv_Click(object sender, EventArgs e)
         {
-            var dt = gridVentas.DataSource as DataTable; // C# 7.3 compatible
-            if (dt == null || dt.Rows.Count == 0)
+            if (gridVentas.Rows.Count == 0)
             {
                 MessageBox.Show("No hay datos para exportar.");
                 return;
             }
 
-            using (var sfd = new SaveFileDialog
+            var sfd = new SaveFileDialog
             {
+                Title = "Exportar a CSV",
                 Filter = "CSV (*.csv)|*.csv",
-                FileName = $"ventas_{dtpIni.Value:yyyyMMdd}_{dtpFin.Value:yyyyMMdd}.csv"
-            })
+                FileName = $"reporte_ventas_{DateTime.Now:yyyyMMdd_HHmm}.csv",
+                OverwritePrompt = true
+            };
+
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+
+            try
             {
-                if (sfd.ShowDialog(this) == DialogResult.OK)
+                var sb = new System.Text.StringBuilder();
+
+                // Encabezados
+                for (int i = 0; i < gridVentas.Columns.Count; i++)
                 {
-                    try
-                    {
-                        ExportToCsv(dt, sfd.FileName);
-                        MessageBox.Show("Exportado correctamente.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error exportando: " + ex.Message);
-                    }
+                    if (i > 0) sb.Append(',');
+                    sb.Append(gridVentas.Columns[i].HeaderText.Replace(',', ' '));
                 }
+                sb.AppendLine();
+
+                // Filas
+                foreach (DataGridViewRow row in gridVentas.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    for (int c = 0; c < gridVentas.Columns.Count; c++)
+                    {
+                        if (c > 0) sb.Append(',');
+                        var v = row.Cells[c].Value?.ToString() ?? "";
+                        // escapado básico
+                        v = v.Replace("\"", "\"\"");
+                        if (v.Contains(",") || v.Contains("\"")) v = $"\"{v}\"";
+                        sb.Append(v);
+                    }
+                    sb.AppendLine();
+                }
+
+                System.IO.File.WriteAllText(sfd.FileName, sb.ToString(), System.Text.Encoding.UTF8);
+                MessageBox.Show("Archivo exportado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo exportar: " + ex.Message);
             }
         }
+
 
         private void ExportToCsv(DataTable dt, string path)
         {
