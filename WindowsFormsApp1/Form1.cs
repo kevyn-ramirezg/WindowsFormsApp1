@@ -14,6 +14,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.Load += Form1_Load;
+            
+
+            // Opcional: aplica permisos por rol apenas abra
+            //AplicarPermisosPorRol();
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
@@ -105,7 +109,7 @@ namespace WindowsFormsApp1
                     "INSERT INTO BITACORA (USUARIO_ID, EVENTO) VALUES (:id,'LOGOUT')", cn))
                 {
                     cmd.BindByName = true;
-                    cmd.Parameters.Add(":id", Session.UsuarioId);
+                    cmd.Parameters.Add(":id", Session.UserId);
                     cmd.ExecuteNonQuery();
                 }
             }
