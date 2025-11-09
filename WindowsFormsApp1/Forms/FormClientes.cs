@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Security;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -12,6 +13,7 @@ namespace WindowsFormsApp1.Forms
         public FormClientes()
         {
             InitializeComponent();
+            Load += SecureLoad_Clientes;
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
@@ -37,6 +39,12 @@ namespace WindowsFormsApp1.Forms
 
             AjustarGridClientes();
             Limpiar();
+        }
+
+        private void SecureLoad_Clientes(object sender, EventArgs e)
+        {
+            try { Acl.Require(Feature.Clientes); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
         }
 
         private void AjustarGridClientes()

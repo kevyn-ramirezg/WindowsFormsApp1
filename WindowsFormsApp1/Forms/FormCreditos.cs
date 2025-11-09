@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Security;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -13,6 +14,7 @@ namespace WindowsFormsApp1.Forms
         {
             InitializeComponent();
             // Enlaza eventos (el diseñador también puede hacerlo; así te aseguras)
+            Load += SecureLoad_Creditos;
             btnBuscar.Click += btnBuscar_Click;
             btnPagar.Click += btnPagar_Click;
             gridCuotas.CellDoubleClick += gridCuotas_CellDoubleClick;
@@ -30,6 +32,12 @@ namespace WindowsFormsApp1.Forms
             numMonto.ThousandsSeparator = true;
             numMonto.Maximum = 999_999_999;
 
+        }
+
+        private void SecureLoad_Creditos(object sender, EventArgs e)
+        {
+            try { Acl.Require(Feature.Creditos); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
         }
 
         private void EstilarGrid()

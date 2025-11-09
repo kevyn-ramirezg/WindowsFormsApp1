@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Security;
+
 
 namespace WindowsFormsApp1.Forms
 {
@@ -12,6 +14,7 @@ namespace WindowsFormsApp1.Forms
         public FormCategorias()
         {
             InitializeComponent();
+            Load += SecureLoad_Categorias;
         }
 
         private void FormCategorias_Load(object sender, EventArgs e)
@@ -22,6 +25,20 @@ namespace WindowsFormsApp1.Forms
             grid.MultiSelect = false;
 
             Cargar();
+        }
+
+        private void SecureLoad_Categorias(object sender, EventArgs e)
+        {
+            try
+            {
+                // Cambia Feature.XXXX por el correcto del form
+                Acl.Require(Feature.Categorias);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show(ex.Message);
+                Close();
+            }
         }
 
         private void Cargar()

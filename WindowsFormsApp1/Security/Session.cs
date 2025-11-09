@@ -2,23 +2,21 @@
 {
     public static class Session
     {
-        public static int? UserId { get; private set; }
-        public static string Login { get; private set; }
-        public static int Nivel { get; private set; }
+        public static int UserId { get; private set; }
+        public static string Username { get; private set; }
+        public static int Nivel { get; private set; } // 1=Admin, 2=Paramétrico, 3=Esporádico
 
-        public static bool IsActive => UserId.HasValue;
-
-        public static void Set(int userId, string login, int nivel)
+        public static void Set(int userId, string username, int nivel)
         {
             UserId = userId;
-            Login = login;
+            Username = username ?? string.Empty;
             Nivel = nivel;
         }
 
         public static void Clear()
         {
-            UserId = null;
-            Login = null;
+            UserId = 0;
+            Username = string.Empty;
             Nivel = 0;
         }
     }

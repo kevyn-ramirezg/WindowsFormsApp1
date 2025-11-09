@@ -29,9 +29,6 @@ namespace WindowsFormsApp1.Forms
             this.CancelButton = btnCancelar;
         }
 
-
-
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             var u = (txtUsuario.Text ?? "").Trim();
@@ -49,7 +46,7 @@ namespace WindowsFormsApp1.Forms
             {
                 using (var cn = Db.Open())
                 {
-                    // (Opcional) Aviso si no estás en APP_USR
+                    // (Opcional) Diagnóstico rápido para saber con qué usuario de BD te conectaste
                     using (var cmdWho = new OracleCommand("SELECT USER FROM dual", cn))
                     {
                         var who = (string)cmdWho.ExecuteScalar();
@@ -57,7 +54,7 @@ namespace WindowsFormsApp1.Forms
                             MessageBox.Show("Conectado como: " + who + " (debería ser APP_USR)");
                     }
 
-                    // ===== Validación de credenciales =====
+                    // Validación contra tabla USUARIO (login y hash)
                     using (var cmd = new OracleCommand(@"
                 SELECT id, nivel
                   FROM USUARIO
@@ -65,8 +62,8 @@ namespace WindowsFormsApp1.Forms
                    AND UPPER(clave_hash)=UPPER(:h)", cn))
                     {
                         cmd.BindByName = true;
-                        cmd.Parameters.Add(":u", OracleDbType.Varchar2, 100).Value = u;
-                        cmd.Parameters.Add(":h", OracleDbType.Varchar2, 64).Value = h;
+                        cmd.Parameters.Add(":u", u);
+                        cmd.Parameters.Add(":h", h);
 
                         using (var dr = cmd.ExecuteReader())
                         {
@@ -75,15 +72,17 @@ namespace WindowsFormsApp1.Forms
                                 var userId = dr.GetInt32(0);
                                 var nivel = dr.GetInt32(1);
 
-                                // 1) Sesión viva
                                 Session.Set(userId, u, nivel);
 
-                                // 2) ⬇⬇⬇ REEMPLAZO: antes insertabas aquí en BITACORA con un OracleCommand inline
-                                //    Ahora centralizamos:
-                                try { BitacoraDAO.RegistrarIngreso(userId); }
-                                catch { /* si falla la bitácora, no bloquea el login */ }
+                                // Bitácora de login
+                                using (var bit = new OracleCommand(
+                                    "INSERT INTO BITACORA (USUARIO_ID, EVENTO) VALUES (:id,'LOGIN')", cn))
+                                {
+                                    bit.BindByName = true;
+                                    bit.Parameters.Add(":id", userId);
+                                    bit.ExecuteNonQuery();
+                                }
 
-                                // 3) Volver al contenedor principal
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
                                 return;
@@ -91,13 +90,13 @@ namespace WindowsFormsApp1.Forms
                         }
                     }
 
-                    // ===== Diagnóstico si no coincide =====
+                    // Si no coincidió, mostramos diagnóstico (útil en desarrollo)
                     string hashBD = null;
                     using (var cmd1 = new OracleCommand(
                         "SELECT clave_hash FROM USUARIO WHERE UPPER(login)=UPPER(:u)", cn))
                     {
                         cmd1.BindByName = true;
-                        cmd1.Parameters.Add(":u", OracleDbType.Varchar2, 100).Value = u;
+                        cmd1.Parameters.Add(":u", u);
                         var v = cmd1.ExecuteScalar();
                         hashBD = v == null ? null : v.ToString();
                     }

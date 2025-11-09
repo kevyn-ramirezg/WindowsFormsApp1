@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
-using WindowsFormsApp1.Models;
-using Oracle.ManagedDataAccess.Client;
 using WindowsFormsApp1.Data;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Security;
 
 namespace WindowsFormsApp1
 {
@@ -18,6 +19,7 @@ namespace WindowsFormsApp1
         public FormVenta()
         {
             InitializeComponent();
+            Load += SecureLoad_Ventas;
             this.Load += FormVenta_Load;
 
             // Precio al cambiar producto
@@ -132,6 +134,12 @@ namespace WindowsFormsApp1
             }
 
             numCantidad.ValueChanged += (s, e) => Recalcular();
+        }
+
+        private void SecureLoad_Ventas(object sender, EventArgs e)
+        {
+            try { Acl.Require(Feature.Ventas); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
         }
 
         private void FormVenta_Load(object sender, EventArgs e)

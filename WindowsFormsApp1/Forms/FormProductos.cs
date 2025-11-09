@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Data;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.Security;
 
 namespace WindowsFormsApp1.Forms
 {
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1.Forms
         public FormProductos()
         {
             InitializeComponent();
+            Load += SecureLoad_Productos;
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -41,6 +43,12 @@ namespace WindowsFormsApp1.Forms
             // combos y datos
             CargarCategoriasCombo();
             Cargar();
+        }
+
+        private void SecureLoad_Productos(object sender, EventArgs e)
+        {
+            try { Acl.Require(Feature.Productos); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
         }
 
         private void CargarCategoriasCombo()
