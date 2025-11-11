@@ -45,7 +45,7 @@
             // 
             this.btnCategorias.BackColor = System.Drawing.Color.SkyBlue;
             this.btnCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCategorias.Location = new System.Drawing.Point(240, 152);
+            this.btnCategorias.Location = new System.Drawing.Point(383, 168);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(146, 80);
             this.btnCategorias.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             this.btnProductos.BackColor = System.Drawing.Color.SkyBlue;
             this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnProductos.Location = new System.Drawing.Point(47, 152);
+            this.btnProductos.Location = new System.Drawing.Point(190, 168);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(139, 80);
             this.btnProductos.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             this.btnClientes.BackColor = System.Drawing.Color.SkyBlue;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnClientes.Location = new System.Drawing.Point(431, 152);
+            this.btnClientes.Location = new System.Drawing.Point(574, 168);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(144, 80);
             this.btnClientes.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(223, 80);
+            this.label1.Location = new System.Drawing.Point(366, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(325, 44);
             this.label1.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             this.btnProbar.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnProbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnProbar.Location = new System.Drawing.Point(12, 384);
+            this.btnProbar.Location = new System.Drawing.Point(155, 400);
             this.btnProbar.Name = "btnProbar";
             this.btnProbar.Size = new System.Drawing.Size(146, 55);
             this.btnProbar.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             this.btnVentas.BackColor = System.Drawing.Color.SkyBlue;
             this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnVentas.Location = new System.Drawing.Point(609, 152);
+            this.btnVentas.Location = new System.Drawing.Point(752, 168);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(138, 80);
             this.btnVentas.TabIndex = 5;
@@ -115,7 +115,7 @@
             // 
             this.btnCerrarSesion.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCerrarSesion.Location = new System.Drawing.Point(678, 384);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(821, 400);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(110, 54);
             this.btnCerrarSesion.TabIndex = 6;
@@ -127,7 +127,7 @@
             // 
             this.btnFactura.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnFactura.Location = new System.Drawing.Point(231, 385);
+            this.btnFactura.Location = new System.Drawing.Point(374, 401);
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Size = new System.Drawing.Size(171, 54);
             this.btnFactura.TabIndex = 7;
@@ -139,7 +139,7 @@
             // 
             this.btnVentasMes.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnVentasMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnVentasMes.Location = new System.Drawing.Point(438, 384);
+            this.btnVentasMes.Location = new System.Drawing.Point(581, 400);
             this.btnVentasMes.Name = "btnVentasMes";
             this.btnVentasMes.Size = new System.Drawing.Size(171, 55);
             this.btnVentasMes.TabIndex = 8;
@@ -151,7 +151,7 @@
             // 
             this.btnIvaTrimestre.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnIvaTrimestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnIvaTrimestre.Location = new System.Drawing.Point(333, 298);
+            this.btnIvaTrimestre.Location = new System.Drawing.Point(476, 314);
             this.btnIvaTrimestre.Name = "btnIvaTrimestre";
             this.btnIvaTrimestre.Size = new System.Drawing.Size(171, 54);
             this.btnIvaTrimestre.TabIndex = 9;
@@ -163,7 +163,7 @@
             // 
             this.btnCreditos.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnCreditos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCreditos.Location = new System.Drawing.Point(58, 298);
+            this.btnCreditos.Location = new System.Drawing.Point(201, 314);
             this.btnCreditos.Name = "btnCreditos";
             this.btnCreditos.Size = new System.Drawing.Size(171, 54);
             this.btnCreditos.TabIndex = 10;
@@ -176,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1100, 570);
             this.Controls.Add(this.btnCreditos);
             this.Controls.Add(this.btnIvaTrimestre);
             this.Controls.Add(this.btnVentasMes);
