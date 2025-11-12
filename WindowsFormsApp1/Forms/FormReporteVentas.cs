@@ -5,11 +5,18 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using Microsoft.Reporting.WinForms;
+using Oracle.ManagedDataAccess.Client;
+
+
 
 namespace WindowsFormsApp1.Forms
 {
+
     public partial class FormReporteVentas : Form
     {
+        private DataTable _ventasMes;  // lo reutilizamos para ReportViewer y CSV si lo tienes
+
         public FormReporteVentas()
         {
             InitializeComponent();
@@ -59,10 +66,39 @@ namespace WindowsFormsApp1.Forms
 
         private void btnConsultar_Click(object sender, EventArgs e) => Consultar();
 
+        private void RenderizarReporteVentas(DataTable dt, DateTime ini, DateTime fin)
+        {
+            reportViewer1.ProcessingMode = ProcessingMode.Local;
+
+            // Opción recomendada: RDLC como Embedded Resource
+            // Si tu proyecto se llama distinto o el RDLC está en carpeta, cambia el namespace:
+            reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.ReporteVentasMes.rdlc";
+            // Si prefieres ruta en disco:
+            // var ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReporteVentasMes.rdlc");
+            // reportViewer1.LocalReport.ReportPath = ruta;
+
+            reportViewer1.LocalReport.DataSources.Clear();
+            // IMPORTANTE: "VentasMes" debe ser EXACTAMENTE el nombre del Dataset del RDLC
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("VentasMes", dt));
+
+            // Parámetros del encabezado (si los creaste en el RDLC)
+            var ps = new[]
+            {
+        new ReportParameter("FECHA_INICIO", ini.ToString("dd/MM/yyyy")),
+        new ReportParameter("FECHA_FIN",    fin.ToString("dd/MM/yyyy"))
+    };
+            reportViewer1.LocalReport.SetParameters(ps);
+
+            reportViewer1.RefreshReport();
+        }
+
+
+
         private void Consultar()
         {
             var ini = dtpIni.Value.Date;
             var fin = dtpFin.Value.Date;
+
 
             if (fin < ini)
             {
@@ -85,6 +121,14 @@ namespace WindowsFormsApp1.Forms
             DataTable dtTop = ReporteDAO.TopProductos(ini, fin, 10);
             gridTop.DataSource = dtTop;
             FormatearGridTop();
+
+            _ventasMes = dtVentas;
+
+            // Si tus nombres de columnas NO coinciden con el RDLC, mapea:
+            // var dtParaReporte = MapearParaReporte(dtVentas);
+            // _ventasMes = dtParaReporte;
+
+            RenderizarReporteVentas(_ventasMes, ini, fin);
         }
 
         private void FormatearGridVentas()
@@ -223,6 +267,12 @@ namespace WindowsFormsApp1.Forms
                 if (s.Contains(",") || s.Contains("\"") || s.Contains("\n")) s = $"\"{s}\"";
                 return s;
             }
+        }
+
+        private void FormReporteVentas_Load_1(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }

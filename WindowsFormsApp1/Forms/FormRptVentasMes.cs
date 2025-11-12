@@ -4,11 +4,16 @@ using System.Linq;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using WindowsFormsApp1.Data;
+using Microsoft.Reporting.WinForms;
+
+
 
 namespace WindowsFormsApp1.Forms
 {
     public partial class FormRptVentasMes : Form
     {
+        private DataTable _ventasMes;  // lo reutilizamos para ReportViewer y CSV si lo tienes
+
         public FormRptVentasMes()
         {
             InitializeComponent();

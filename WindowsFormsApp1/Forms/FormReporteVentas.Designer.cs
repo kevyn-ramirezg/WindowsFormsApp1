@@ -43,6 +43,7 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTotalTitle = new System.Windows.Forms.Label();
             this.lblIvaTitle = new System.Windows.Forms.Label();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).BeginInit();
             this.SuspendLayout();
@@ -204,12 +205,21 @@
             this.lblIvaTitle.TabIndex = 14;
             this.lblIvaTitle.Text = "IVA:";
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Location = new System.Drawing.Point(711, 16);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(691, 218);
+            this.reportViewer1.TabIndex = 15;
+            // 
             // FormReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1456, 706);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.lblIvaTitle);
             this.Controls.Add(this.lblTotalTitle);
             this.Controls.Add(this.lblSubtotal);
@@ -229,6 +239,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReporteVentas";
             this.Text = "FormReporteVentas";
+            this.Load += new System.EventHandler(this.FormReporteVentas_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).EndInit();
             this.ResumeLayout(false);
@@ -253,5 +264,6 @@
         private System.Windows.Forms.Label lblSubtotal;
         private System.Windows.Forms.Label lblTotalTitle;
         private System.Windows.Forms.Label lblIvaTitle;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

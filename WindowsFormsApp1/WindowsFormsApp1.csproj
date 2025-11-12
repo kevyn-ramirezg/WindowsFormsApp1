@@ -247,6 +247,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ReporteFactura.rdlc" />
+    <EmbeddedResource Include="ReporteVentasMes.rdlc" />
     <None Include="DsReportes.xsc">
       <DependentUpon>DsReportes.xsd</DependentUpon>
     </None>
