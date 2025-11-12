@@ -34,6 +34,7 @@
             this.lblTotales = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.numVentaId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +88,7 @@
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1366, 303);
+            this.grid.Size = new System.Drawing.Size(1392, 303);
             this.grid.TabIndex = 2;
             // 
             // lblTotales
@@ -120,12 +121,21 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Reporte de Factura";
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Location = new System.Drawing.Point(12, 540);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1392, 280);
+            this.reportViewer1.TabIndex = 6;
+            // 
             // FormRptFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1390, 516);
+            this.ClientSize = new System.Drawing.Size(1416, 832);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTotales);
@@ -149,5 +159,6 @@
         private System.Windows.Forms.Label lblTotales;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

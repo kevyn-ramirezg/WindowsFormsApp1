@@ -4,11 +4,15 @@ using System.Linq;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using WindowsFormsApp1.Data;
+using Microsoft.Reporting.WinForms; // ← importante
+
 
 namespace WindowsFormsApp1.Forms
 {
     public partial class FormRptFactura : Form
     {
+
+        private DataTable _ultimaFactura;   // guardará el dt para recargar el visor
         public FormRptFactura()
         {
             InitializeComponent();
@@ -101,6 +105,8 @@ namespace WindowsFormsApp1.Forms
                     decimal ivaTot = dt.AsEnumerable().Max(r => Convert.ToDecimal(r["IVA_TOTAL"]));
                     decimal sub = total - ivaTot;
                     lblTotales.Text = $"Subtotal: {sub:N0}   IVA: {ivaTot:N0}   Total: {total:N0}";
+                    _ultimaFactura = dt;
+                    RenderizarReporte();
                 }
 
             }
@@ -109,6 +115,37 @@ namespace WindowsFormsApp1.Forms
                 MessageBox.Show("Error al cargar factura: " + ex.Message);
             }
         }
+
+        private void RenderizarReporte()
+        {
+            // Si no hay datos, limpia el visor y sal.
+            if (_ultimaFactura == null || _ultimaFactura.Rows.Count == 0)
+            {
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.RefreshReport();
+                return;
+            }
+
+            // 1) Modo local
+            reportViewer1.ProcessingMode = ProcessingMode.Local;
+
+            // 2) Ruta del RDLC (ajústala si lo moviste de carpeta)
+            reportViewer1.LocalReport.ReportPath = "ReporteFactura.rdlc";
+            // Si lo pusiste como Embedded Resource, usa:
+            // reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.ReporteFactura.rdlc";
+
+            // 3) Enlazar datos
+            reportViewer1.LocalReport.DataSources.Clear();
+
+            // OJO: este nombre "Factura" DEBE ser EXACTO al del conjunto de datos en tu RDLC
+            reportViewer1.LocalReport.DataSources.Add(
+                new ReportDataSource("Factura", _ultimaFactura)
+            );
+
+            // 4) Refrescar
+            reportViewer1.RefreshReport();
+        }
+
 
         private void SetHeadersAndFormats()
         {
