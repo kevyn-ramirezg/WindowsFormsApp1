@@ -132,6 +132,7 @@
             this.Controls.Add(this.grid);
             this.Name = "FormRptIvaTrimestre";
             this.Text = "FormRptIvaTrimestre";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAnio)).EndInit();
             this.ResumeLayout(false);

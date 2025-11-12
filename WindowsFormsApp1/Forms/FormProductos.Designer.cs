@@ -223,6 +223,7 @@
             this.Controls.Add(this.grid);
             this.Name = "FormProductos";
             this.Text = "Productos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCosto)).EndInit();

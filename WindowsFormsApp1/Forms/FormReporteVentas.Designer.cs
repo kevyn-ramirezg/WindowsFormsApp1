@@ -239,6 +239,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReporteVentas";
             this.Text = "FormReporteVentas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormReporteVentas_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).EndInit();

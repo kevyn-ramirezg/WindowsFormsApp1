@@ -224,6 +224,7 @@
             this.Controls.Add(this.cboCliente);
             this.Name = "FormVenta";
             this.Text = "Ventas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();

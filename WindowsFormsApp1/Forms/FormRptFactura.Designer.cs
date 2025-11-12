@@ -144,6 +144,7 @@
             this.Controls.Add(this.numVentaId);
             this.Name = "FormRptFactura";
             this.Text = "FormRptFactura";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numVentaId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);

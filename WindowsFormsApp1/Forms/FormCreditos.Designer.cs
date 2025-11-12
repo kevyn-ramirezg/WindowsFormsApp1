@@ -279,6 +279,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormCreditos";
             this.Text = "Creditos/Pagos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numVentaId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCuotas)).EndInit();
             this.grpTotales.ResumeLayout(false);
