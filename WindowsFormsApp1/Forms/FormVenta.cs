@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
             this.rbContado = new RadioButton();
             this.rbContado.AutoSize = true;
             this.rbContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbContado.Location = new System.Drawing.Point(170, 435);
+            this.rbContado.Location = new System.Drawing.Point(170, 470);
             this.rbContado.Name = "rbContado";
             this.rbContado.Size = new System.Drawing.Size(100, 21);
             this.rbContado.TabIndex = 14;
@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
             this.rbCredito = new RadioButton();
             this.rbCredito.AutoSize = true;
             this.rbCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbCredito.Location = new System.Drawing.Point(260, 435);
+            this.rbCredito.Location = new System.Drawing.Point(260, 470);
             this.rbCredito.Name = "rbCredito";
             this.rbCredito.Size = new System.Drawing.Size(78, 21);
             this.rbCredito.TabIndex = 15;
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             this.cboMeses.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboMeses.BackColor = System.Drawing.SystemColors.Info;
             this.cboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cboMeses.Location = new System.Drawing.Point(360, 435);
+            this.cboMeses.Location = new System.Drawing.Point(360, 470);
             this.cboMeses.Name = "cboMeses";
             this.cboMeses.Size = new System.Drawing.Size(120, 28);
             this.cboMeses.TabIndex = 16;
@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
             this.lblCuotaInicial = new Label();
             this.lblCuotaInicial.AutoSize = true;
             this.lblCuotaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCuotaInicial.Location = new System.Drawing.Point(515, 435);
+            this.lblCuotaInicial.Location = new System.Drawing.Point(515, 470);
             this.lblCuotaInicial.Name = "lblCuotaInicial";
             this.lblCuotaInicial.Size = new System.Drawing.Size(142, 20);
             this.lblCuotaInicial.TabIndex = 17;
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
             this.lblCuotaMensual = new Label();
             this.lblCuotaMensual.AutoSize = true;
             this.lblCuotaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCuotaMensual.Location = new System.Drawing.Point(700, 435);
+            this.lblCuotaMensual.Location = new System.Drawing.Point(700, 470);
             this.lblCuotaMensual.Name = "lblCuotaMensual";
             this.lblCuotaMensual.Size = new System.Drawing.Size(165, 20);
             this.lblCuotaMensual.TabIndex = 18;

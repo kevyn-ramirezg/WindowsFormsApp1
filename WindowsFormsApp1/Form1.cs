@@ -118,21 +118,24 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = string.Format("Principal - {0} (Nivel {1})", Session.Username, Session.Nivel);
+            Text = $"Principal - {Session.Username} (Nivel {Session.Nivel})";
 
-            if (Session.Nivel == 1) // Admin
+            switch (Session.Nivel)
             {
-                Habilitar(true, true, true, true, true, true, true, true, true);
+                case 3: // Admin
+                    Habilitar(true, true, true, true, true, true, true, true, true);
+                    break;
+
+                case 2: // Paramétrico
+                    Habilitar(true, true, true, true, true, true, true, true, true);
+                    break;
+
+                default: // 1 Esporádico
+                    Habilitar(false, false, false, false, true, false, false, false, true);
+                    break;
             }
-            else if (Session.Nivel == 2) // Paramétrico
-            {
-                Habilitar(true, true, true, true, true, true, true, true, true);
-            }
-            else // Esporádico
-            {
-                // Deja sólo lo que quieras habilitar para consulta
-                Habilitar(false, false, false, false, true, false, false, false, true);
-            }
+
+
         }
 
         private void Habilitar(bool categorias, bool productos, bool clientes, bool ventas,
@@ -202,6 +205,38 @@ namespace WindowsFormsApp1
             {
                 f.ShowDialog(this);
             }
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+                using (var f = new WindowsFormsApp1.Forms.FormUsuarios())
+                {
+                    f.ShowDialog(this);
+            }
+        }
+
+        private void btnMorosos_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormMorosos())
+            {
+                f.ShowDialog(this);
+            }
+        }
+
+        private void btnTopProductos_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormTopProductos())
+            {
+                f.ShowDialog(this);
+            }
+        }
+
+        private void btnExistenciasBajas_Click(object sender, EventArgs e)
+        {
+            using (var f = new WindowsFormsApp1.Forms.FormExistenciasBajas())
+            {
+                f.ShowDialog(this);
+            }   
         }
     }
 }

@@ -99,7 +99,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnBuscar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnBuscar.Location = new System.Drawing.Point(250, 106);
             this.btnBuscar.Name = "btnBuscar";
@@ -114,9 +114,9 @@
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 22.2F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(16, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(390, 38);
+            this.label1.Size = new System.Drawing.Size(516, 38);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Reporte IVA Trimestre";
+            this.label1.Text = "REPORTE IVA TRIMESTRE";
             // 
             // FormRptIvaTrimestre
             // 

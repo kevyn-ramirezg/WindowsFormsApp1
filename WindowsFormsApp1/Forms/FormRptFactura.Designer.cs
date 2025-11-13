@@ -65,7 +65,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnBuscar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnBuscar.Location = new System.Drawing.Point(300, 108);
             this.btnBuscar.Name = "btnBuscar";
@@ -117,12 +117,13 @@
             this.label2.Font = new System.Drawing.Font("Modern No. 20", 22.2F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(22, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 38);
+            this.label2.Size = new System.Drawing.Size(454, 38);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Reporte de Factura";
+            this.label2.Text = "REPORTE DE FACTURA";
             // 
             // reportViewer1
             // 
+            this.reportViewer1.BackColor = System.Drawing.Color.Silver;
             this.reportViewer1.Location = new System.Drawing.Point(12, 540);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

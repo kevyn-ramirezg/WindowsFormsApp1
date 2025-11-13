@@ -55,12 +55,13 @@
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(307, 38);
+            this.label1.Size = new System.Drawing.Size(428, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Reporte de Ventas";
+            this.label1.Text = "REPORTE DE VENTAS";
             // 
             // dtpIni
             // 
+            this.dtpIni.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpIni.Location = new System.Drawing.Point(147, 93);
@@ -71,6 +72,7 @@
             // 
             // dtpFin
             // 
+            this.dtpFin.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFin.Location = new System.Drawing.Point(147, 174);
@@ -207,6 +209,7 @@
             // 
             // reportViewer1
             // 
+            this.reportViewer1.BackColor = System.Drawing.Color.Silver;
             this.reportViewer1.Location = new System.Drawing.Point(711, 16);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

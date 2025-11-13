@@ -32,15 +32,18 @@
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUmbral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // numUmbral
             // 
-            this.numUmbral.Location = new System.Drawing.Point(99, 61);
+            this.numUmbral.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numUmbral.Location = new System.Drawing.Point(215, 130);
             this.numUmbral.Name = "numUmbral";
-            this.numUmbral.Size = new System.Drawing.Size(120, 22);
+            this.numUmbral.Size = new System.Drawing.Size(120, 26);
             this.numUmbral.TabIndex = 0;
             this.numUmbral.Value = new decimal(new int[] {
             5,
@@ -50,37 +53,65 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(365, 43);
+            this.btnConsultar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnConsultar.Location = new System.Drawing.Point(414, 107);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(131, 57);
             this.btnConsultar.TabIndex = 1;
             this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.UseVisualStyleBackColor = false;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(622, 43);
+            this.btnExportar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnExportar.Location = new System.Drawing.Point(574, 107);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(131, 57);
             this.btnExportar.TabIndex = 2;
             this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.UseVisualStyleBackColor = false;
             // 
             // grid
             // 
+            this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(12, 242);
+            this.grid.Location = new System.Drawing.Point(12, 209);
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1383, 150);
+            this.grid.Size = new System.Drawing.Size(1383, 402);
             this.grid.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(359, 34);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "EXISTENCIAS BAJAS";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(19, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Mínimo de existencias:";
             // 
             // FormExistenciasBajas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1407, 623);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnConsultar);
@@ -90,6 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUmbral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -99,5 +131,7 @@
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

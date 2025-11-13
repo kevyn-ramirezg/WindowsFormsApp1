@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnQuitar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridCarrito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.cboCliente.BackColor = System.Drawing.SystemColors.Info;
             this.cboCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboCliente.FormattingEnabled = true;
-            this.cboCliente.Location = new System.Drawing.Point(292, 453);
+            this.cboCliente.Location = new System.Drawing.Point(292, 523);
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(258, 28);
             this.cboCliente.TabIndex = 0;
@@ -60,7 +61,7 @@
             this.cboProducto.BackColor = System.Drawing.SystemColors.Info;
             this.cboProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboProducto.FormattingEnabled = true;
-            this.cboProducto.Location = new System.Drawing.Point(812, 377);
+            this.cboProducto.Location = new System.Drawing.Point(812, 447);
             this.cboProducto.Name = "cboProducto";
             this.cboProducto.Size = new System.Drawing.Size(224, 28);
             this.cboProducto.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             this.txtPrecio.BackColor = System.Drawing.SystemColors.Info;
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtPrecio.Location = new System.Drawing.Point(293, 377);
+            this.txtPrecio.Location = new System.Drawing.Point(293, 447);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(257, 26);
             this.txtPrecio.TabIndex = 3;
@@ -80,7 +81,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridCarrito.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.gridCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCarrito.Location = new System.Drawing.Point(12, 12);
+            this.gridCarrito.Location = new System.Drawing.Point(12, 82);
             this.gridCarrito.Name = "gridCarrito";
             this.gridCarrito.RowHeadersWidth = 51;
             this.gridCarrito.RowTemplate.Height = 24;
@@ -91,7 +92,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.Location = new System.Drawing.Point(911, 589);
+            this.lblTotal.Location = new System.Drawing.Point(911, 659);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(112, 35);
             this.lblTotal.TabIndex = 5;
@@ -99,9 +100,9 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnAgregar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAgregar.Location = new System.Drawing.Point(328, 582);
+            this.btnAgregar.Location = new System.Drawing.Point(328, 652);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(122, 57);
             this.btnAgregar.TabIndex = 6;
@@ -111,9 +112,9 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnGuardar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnGuardar.Location = new System.Drawing.Point(496, 582);
+            this.btnGuardar.Location = new System.Drawing.Point(496, 652);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(122, 57);
             this.btnGuardar.TabIndex = 7;
@@ -131,7 +132,7 @@
             0,
             0,
             131072});
-            this.numCantidad.Location = new System.Drawing.Point(812, 454);
+            this.numCantidad.Location = new System.Drawing.Point(812, 524);
             this.numCantidad.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -155,7 +156,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(151, 380);
+            this.label1.Location = new System.Drawing.Point(151, 450);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 9;
@@ -165,7 +166,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(152, 456);
+            this.label2.Location = new System.Drawing.Point(152, 526);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 10;
@@ -175,7 +176,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(653, 380);
+            this.label3.Location = new System.Drawing.Point(653, 450);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 20);
             this.label3.TabIndex = 11;
@@ -185,7 +186,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(655, 452);
+            this.label4.Location = new System.Drawing.Point(655, 522);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 20);
             this.label4.TabIndex = 12;
@@ -193,9 +194,9 @@
             // 
             // btnQuitar
             // 
-            this.btnQuitar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnQuitar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnQuitar.Location = new System.Drawing.Point(659, 582);
+            this.btnQuitar.Location = new System.Drawing.Point(659, 652);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(122, 57);
             this.btnQuitar.TabIndex = 13;
@@ -203,12 +204,23 @@
             this.btnQuitar.UseVisualStyleBackColor = false;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(149, 34);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "VENTAS";
+            // 
             // FormVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1311, 655);
+            this.ClientSize = new System.Drawing.Size(1311, 721);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -255,5 +267,6 @@
         private System.Windows.Forms.ComboBox cboMeses;
         private System.Windows.Forms.Label lblCuotaInicial;
         private System.Windows.Forms.Label lblCuotaMensual;
+        private System.Windows.Forms.Label label5;
     }
 }

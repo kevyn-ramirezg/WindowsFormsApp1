@@ -36,13 +36,14 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnCrearCuenta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(906, 494);
+            this.label1.Location = new System.Drawing.Point(873, 448);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 24);
             this.label1.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.SystemColors.Info;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtUsuario.Location = new System.Drawing.Point(988, 494);
+            this.txtUsuario.Location = new System.Drawing.Point(955, 448);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(123, 26);
             this.txtUsuario.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label2.Location = new System.Drawing.Point(909, 548);
+            this.label2.Location = new System.Drawing.Point(876, 502);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 2;
@@ -71,7 +72,7 @@
             // 
             this.txtClave.BackColor = System.Drawing.SystemColors.Info;
             this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtClave.Location = new System.Drawing.Point(988, 548);
+            this.txtClave.Location = new System.Drawing.Point(955, 502);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(123, 26);
             this.txtClave.TabIndex = 3;
@@ -79,23 +80,23 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnIngresar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnIngresar.Location = new System.Drawing.Point(988, 652);
+            this.btnIngresar.Location = new System.Drawing.Point(796, 609);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(116, 47);
+            this.btnIngresar.Size = new System.Drawing.Size(146, 47);
             this.btnIngresar.TabIndex = 4;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCancelar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancelar.Location = new System.Drawing.Point(1167, 652);
+            this.btnCancelar.Location = new System.Drawing.Point(975, 609);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(116, 47);
+            this.btnCancelar.Size = new System.Drawing.Size(146, 47);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -104,7 +105,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Modern No. 20", 23F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(748, 342);
+            this.label3.Location = new System.Drawing.Point(715, 296);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(753, 40);
             this.label3.TabIndex = 6;
@@ -114,11 +115,22 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(905, 452);
+            this.label4.Location = new System.Drawing.Point(872, 406);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 24);
             this.label4.TabIndex = 7;
             this.label4.Text = "Ingrese sus datos";
+            // 
+            // btnCrearCuenta
+            // 
+            this.btnCrearCuenta.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnCrearCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCrearCuenta.Location = new System.Drawing.Point(1156, 609);
+            this.btnCrearCuenta.Name = "btnCrearCuenta";
+            this.btnCrearCuenta.Size = new System.Drawing.Size(146, 47);
+            this.btnCrearCuenta.TabIndex = 8;
+            this.btnCrearCuenta.Text = "Crear cuenta";
+            this.btnCrearCuenta.UseVisualStyleBackColor = false;
             // 
             // FormLogin
             // 
@@ -128,6 +140,7 @@
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(1520, 719);
+            this.Controls.Add(this.btnCrearCuenta);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
@@ -154,5 +167,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCrearCuenta;
     }
 }

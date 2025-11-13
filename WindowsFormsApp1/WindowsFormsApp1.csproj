@@ -208,6 +208,12 @@
     <Compile Include="Forms\FormProductos.Designer.cs">
       <DependentUpon>FormProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormRegistroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRegistroUsuario.Designer.cs">
+      <DependentUpon>FormRegistroUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormReporteVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,9 @@
     <EmbeddedResource Include="Forms\FormProductos.resx">
       <DependentUpon>FormProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegistroUsuario.resx">
+      <DependentUpon>FormRegistroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReporteVentas.resx">
       <DependentUpon>FormReporteVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,6 +332,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReporteFactura.rdlc" />
     <EmbeddedResource Include="ReporteVentasMes.rdlc" />
@@ -358,6 +368,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2025-10-09 103911.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

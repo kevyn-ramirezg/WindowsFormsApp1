@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Forms
                 Text = "Acerca de";
                 lblTitulo.Text = "Sistema de Ventas - Proyecto Final BD1";
                 lblVersion.Text = $"Versión {Application.ProductVersion}";
-                lblAutor.Text = "Autor: Tu Nombre - Universidad del Quindío";
+                lblAutor.Text = "Autores: Kevyn Ramírez - Juan Mejía - Alex Gutierrez - Universidad del Quindío";
                 lblDescripcion.Text = "WinForms + Oracle (ODP.NET) + RDLC. Módulos: Ventas, Créditos, Reportes, Utilidades.";
             };
             btnCerrar.Click += (_, __) => Close();

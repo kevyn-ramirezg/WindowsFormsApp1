@@ -23,6 +23,18 @@ namespace WindowsFormsApp1.Forms
             // Asegura que el click esté conectado por código:
             btnIngresar.Click += btnIngresar_Click;
             btnCancelar.Click += (s, e) => { this.DialogResult = DialogResult.Cancel; this.Close(); };
+            btnCrearCuenta.Click += (_, __) =>
+            {
+                using (var frm = new Forms.FormRegistroUsuario())
+                {
+                    if (frm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        txtUsuario.Text = frm.UsernameCreado;
+                        txtClave.Focus();
+                    }
+                }
+            };
+            ;
 
             // Enter = Ingresar, Esc = Cancelar
             this.AcceptButton = btnIngresar;
@@ -46,20 +58,20 @@ namespace WindowsFormsApp1.Forms
             {
                 using (var cn = Db.Open())
                 {
-                    // (Opcional) Diagnóstico rápido para saber con qué usuario de BD te conectaste
+                    // (Opcional) Ver usuario de BD
                     using (var cmdWho = new OracleCommand("SELECT USER FROM dual", cn))
                     {
                         var who = (string)cmdWho.ExecuteScalar();
-                        if (!who.Equals("APP_USR", StringComparison.OrdinalIgnoreCase))
-                            MessageBox.Show("Conectado como: " + who + " (debería ser APP_USR)");
+                        // Puedes comentar esto en producción
+                        // MessageBox.Show("Conectado como: " + who);
                     }
 
-                    // Validación contra tabla USUARIO (login y hash)
+                    // 1) Buscar el usuario por LOGIN y hash (CLAVE_HASH)
                     using (var cmd = new OracleCommand(@"
-                SELECT id, nivel
-                  FROM USUARIO
-                 WHERE UPPER(login)=UPPER(:u)
-                   AND UPPER(clave_hash)=UPPER(:h)", cn))
+            SELECT id, nombre, nivel, activo
+              FROM USUARIO
+             WHERE UPPER(login)=UPPER(:u)
+               AND UPPER(clave_hash)=UPPER(:h)", cn))
                     {
                         cmd.BindByName = true;
                         cmd.Parameters.Add(":u", u);
@@ -69,12 +81,21 @@ namespace WindowsFormsApp1.Forms
                         {
                             if (dr.Read())
                             {
-                                var userId = dr.GetInt32(0);
-                                var nivel = dr.GetInt32(1);
+                                var userId = Convert.ToInt32(dr["ID"]);
+                                var nombre = dr["NOMBRE"] == DBNull.Value ? u : dr["NOMBRE"].ToString();
+                                var nivel = Convert.ToInt32(dr["NIVEL"]);
+                                var activo = Convert.ToInt32(dr["ACTIVO"]) == 1;
 
-                                Session.Set(userId, u, nivel);
+                                if (!activo)
+                                {
+                                    MessageBox.Show("Cuenta inactiva. Contacte al administrador.");
+                                    return;
+                                }
 
-                                // Bitácora de login
+                                // 2) Cargar sesión
+                                Session.Set(userId, u, nivel); // ya la tienes; usa tu implementación
+
+                                // 3) Registrar en bitácora
                                 using (var bit = new OracleCommand(
                                     "INSERT INTO BITACORA (USUARIO_ID, EVENTO) VALUES (:id,'LOGIN')", cn))
                                 {
@@ -83,6 +104,7 @@ namespace WindowsFormsApp1.Forms
                                     bit.ExecuteNonQuery();
                                 }
 
+                                // 4) Cerrar login y continuar
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
                                 return;
@@ -90,7 +112,7 @@ namespace WindowsFormsApp1.Forms
                         }
                     }
 
-                    // Si no coincidió, mostramos diagnóstico (útil en desarrollo)
+                    // 5) Diagnóstico cuando falla (útil en desarrollo)
                     string hashBD = null;
                     using (var cmd1 = new OracleCommand(
                         "SELECT clave_hash FROM USUARIO WHERE UPPER(login)=UPPER(:u)", cn))
@@ -112,6 +134,7 @@ namespace WindowsFormsApp1.Forms
             {
                 MessageBox.Show("Error al validar credenciales: " + ex.Message);
             }
+
         }
 
     }

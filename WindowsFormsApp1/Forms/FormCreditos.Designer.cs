@@ -56,12 +56,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 38);
+            this.label1.Size = new System.Drawing.Size(346, 35);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Creditos y Pagos";
+            this.label1.Text = "CRÉDITOS Y PAGOS";
             // 
             // label2
             // 
@@ -75,6 +75,7 @@
             // 
             // numVentaId
             // 
+            this.numVentaId.BackColor = System.Drawing.SystemColors.Info;
             this.numVentaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.numVentaId.Location = new System.Drawing.Point(105, 66);
             this.numVentaId.Maximum = new decimal(new int[] {
@@ -98,7 +99,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnBuscar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnBuscar.Location = new System.Drawing.Point(288, 59);
             this.btnBuscar.Name = "btnBuscar";
@@ -213,7 +214,7 @@
             // 
             // btnPagar
             // 
-            this.btnPagar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnPagar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnPagar.Location = new System.Drawing.Point(90, 221);
             this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(165, 41);
@@ -223,8 +224,9 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(90, 132);
+            this.dtpFecha.Location = new System.Drawing.Point(90, 133);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(168, 26);
             this.dtpFecha.TabIndex = 3;
@@ -240,6 +242,7 @@
             // 
             // numMonto
             // 
+            this.numMonto.BackColor = System.Drawing.SystemColors.Info;
             this.numMonto.Increment = new decimal(new int[] {
             1000,
             0,
