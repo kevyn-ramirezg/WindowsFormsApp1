@@ -77,12 +77,14 @@ namespace WindowsFormsApp1.Forms
         {
             using (var cn = Data.Db.Open())
             using (var da = new OracleDataAdapter(@"
-        SELECT p.nombre AS PRODUCTO,
-               SUM(d.cantidad) AS CANTIDAD,
-               SUM(ROUND(d.cantidad*d.precio_unit*(1+p.iva/100),0)) AS VENTAS
+        SELECT 
+            p.nombre AS PRODUCTO,
+            SUM(d.cantidad) AS CANTIDAD,
+            SUM(ROUND(d.cantidad * d.precio_unit * (1 + c.iva/100), 0)) AS VENTAS
         FROM venta v
         JOIN detalleventa d ON d.venta_id = v.id
         JOIN producto p     ON p.id = d.producto_id
+        JOIN categoria c    ON c.id = p.categoria_id
         WHERE TRUNC(v.fecha) BETWEEN :ini AND :fin
         GROUP BY p.nombre
         ORDER BY VENTAS DESC", cn))
@@ -98,6 +100,7 @@ namespace WindowsFormsApp1.Forms
                 return top.Any() ? top.CopyToDataTable() : dt.Clone();
             }
         }
+
 
         private DataTable QMorosos()
         {
