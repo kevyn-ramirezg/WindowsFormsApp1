@@ -19,6 +19,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormTopProductos()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
 
             Load += (_, __) =>

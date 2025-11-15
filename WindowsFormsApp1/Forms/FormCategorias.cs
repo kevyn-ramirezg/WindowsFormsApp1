@@ -4,41 +4,59 @@ using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Security;
 
-
 namespace WindowsFormsApp1.Forms
 {
     public partial class FormCategorias : Form
     {
-        private Categoria seleccion; // puede quedar null
+        private Categoria _seleccion;
 
         public FormCategorias()
         {
             InitializeComponent();
-            Load += SecureLoad_Categorias;
+            // NO enganches Load aquí; el Designer llama a FormCategorias_Load
+            // grid_SelectionChanged sí lo engancha el Designer
         }
 
+        // ====== LO QUE PIDE EL DESIGNER ======
         private void FormCategorias_Load(object sender, EventArgs e)
         {
-            // Config extra del grid
+            try { Acl.Require(Feature.Categorias); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); return; }
+
+            ConfigurarGrid();
+            ApplyLocalPermissions();
+            Cargar();
+        }
+        private void btnNuevo_Click(object sender, EventArgs e) => Limpiar();
+        private void btnGuardar_Click(object sender, EventArgs e) => Guardar();
+        private void btnEliminar_Click(object sender, EventArgs e) => Eliminar();
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e) { /* opcional */ }
+        // =====================================
+
+        private void ConfigurarGrid()
+        {
             grid.AutoGenerateColumns = true;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
-
-            Cargar();
+            grid.ReadOnly = true;
+            grid.AllowUserToAddRows = false;
         }
 
-        private void SecureLoad_Categorias(object sender, EventArgs e)
+        private void ApplyLocalPermissions()
         {
-            try
-            {
-                // Cambia Feature.XXXX por el correcto del form
-                Acl.Require(Feature.Categorias);
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBox.Show(ex.Message);
-                Close();
-            }
+            bool canCreate = Acl.Can(Feature.CategoriasCreate);
+            bool canUpdate = Acl.Can(Feature.CategoriasUpdate);
+            bool canDelete = Acl.Can(Feature.CategoriasDelete);
+            bool canEdit = canCreate || canUpdate;
+
+            btnNuevo.Enabled = canCreate;
+            btnGuardar.Enabled = canEdit;
+            btnEliminar.Enabled = canDelete;
+
+            bool ro = !canEdit;
+            txtNombre.ReadOnly = ro;
+            numIva.Enabled = !ro;
+            numUtilidad.Enabled = !ro;
         }
 
         private void Cargar()
@@ -50,14 +68,45 @@ namespace WindowsFormsApp1.Forms
             if (grid.Columns["Iva"] != null) grid.Columns["Iva"].HeaderText = "IVA (%)";
             if (grid.Columns["UtilidadPct"] != null) grid.Columns["UtilidadPct"].HeaderText = "Utilidad (%)";
 
-            AjustarGridCategorias();
-
+            AjustarGrid();
             Limpiar();
+        }
+
+        private void AjustarGrid()
+        {
+            var g = grid;
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            g.AllowUserToResizeRows = false;
+            g.RowHeadersVisible = false;
+
+            if (g.Columns["Id"] != null)
+            {
+                g.Columns["Id"].FillWeight = 12;
+                g.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            if (g.Columns["Nombre"] != null) g.Columns["Nombre"].FillWeight = 55;
+
+            if (g.Columns["Iva"] != null)
+            {
+                var c = g.Columns["Iva"];
+                c.HeaderText = "IVA (%)";
+                c.FillWeight = 16;
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                c.DefaultCellStyle.Format = "N0";
+            }
+            if (g.Columns["UtilidadPct"] != null)
+            {
+                var c = g.Columns["UtilidadPct"];
+                c.HeaderText = "Utilidad (%)";
+                c.FillWeight = 17;
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                c.DefaultCellStyle.Format = "N0";
+            }
         }
 
         private void Limpiar()
         {
-            seleccion = null;
+            _seleccion = null;
             txtNombre.Text = "";
             numIva.Value = 0;
             numUtilidad.Value = 0;
@@ -68,66 +117,17 @@ namespace WindowsFormsApp1.Forms
         {
             if (grid.CurrentRow != null && grid.CurrentRow.DataBoundItem is Categoria c)
             {
-                seleccion = c;
+                _seleccion = c;
                 txtNombre.Text = c.Nombre;
                 numIva.Value = c.Iva;
                 numUtilidad.Value = c.UtilidadPct;
             }
         }
 
-        private void AjustarGridCategorias()
-        {
-            var g = grid; // usa el nombre real de tu DataGridView
-
-            // 1) Estilos base
-            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            g.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            g.AllowUserToResizeRows = false;
-            g.RowHeadersVisible = false;              // si no necesitas el triángulo de fila
-            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            g.MultiSelect = false;
-
-            // 2) Asegura que existan y reparte con FillWeight
-            if (g.Columns["Id"] != null)
-            {
-                g.Columns["Id"].FillWeight = 12;      // angosta
-                g.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            if (g.Columns["Nombre"] != null)
-            {
-                g.Columns["Nombre"].FillWeight = 55;  // la más ancha
-            }
-            if (g.Columns["Iva"] != null || g.Columns["IVA"] != null || g.Columns["IvaPct"] != null)
-            {
-                var col = g.Columns["Iva"] ?? g.Columns["IVA"] ?? g.Columns["IvaPct"];
-                col.HeaderText = "IVA (%)";
-                col.FillWeight = 16;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                col.DefaultCellStyle.Format = "N0";
-            }
-            if (g.Columns["Utilidad"] != null || g.Columns["UtilidadPct"] != null)
-            {
-                var col = g.Columns["Utilidad"] ?? g.Columns["UtilidadPct"];
-                col.HeaderText = "Utilidad (%)";
-                col.FillWeight = 17;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                col.DefaultCellStyle.Format = "N0";
-            }
-        }
-
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void Guardar()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                MessageBox.Show("Nombre es obligatorio");
-                return;
-            }
+            { MessageBox.Show("Nombre es obligatorio"); return; }
 
             var c = new Categoria
             {
@@ -136,38 +136,31 @@ namespace WindowsFormsApp1.Forms
                 UtilidadPct = numUtilidad.Value
             };
 
-            if (seleccion == null)
+            if (_seleccion == null)
             {
+                if (!Acl.Can(Feature.CategoriasCreate)) { MessageBox.Show("Sin permiso para crear."); return; }
                 CategoriaDAO.Insertar(c);
             }
             else
             {
-                c.Id = seleccion.Id;
+                if (!Acl.Can(Feature.CategoriasUpdate)) { MessageBox.Show("Sin permiso para actualizar."); return; }
+                c.Id = _seleccion.Id;
                 CategoriaDAO.Actualizar(c);
             }
 
             Cargar();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void Eliminar()
         {
-            if (seleccion == null)
-            {
-                MessageBox.Show("Selecciona un registro");
-                return;
-            }
+            if (!Acl.Can(Feature.CategoriasDelete)) { MessageBox.Show("Sin permiso para eliminar."); return; }
+            if (_seleccion == null) { MessageBox.Show("Selecciona un registro"); return; }
 
             if (MessageBox.Show("¿Eliminar la categoría seleccionada?", "Confirmar",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                CategoriaDAO.Eliminar(seleccion.Id);
-                Cargar();
-            }
-        }
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
 
-        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            CategoriaDAO.Eliminar(_seleccion.Id);
+            Cargar();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboCliente = new System.Windows.Forms.ComboBox();
             this.cboProducto = new System.Windows.Forms.ComboBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -51,7 +52,7 @@
             this.cboCliente.BackColor = System.Drawing.SystemColors.Info;
             this.cboCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboCliente.FormattingEnabled = true;
-            this.cboCliente.Location = new System.Drawing.Point(292, 523);
+            this.cboCliente.Location = new System.Drawing.Point(319, 522);
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(258, 28);
             this.cboCliente.TabIndex = 0;
@@ -61,7 +62,7 @@
             this.cboProducto.BackColor = System.Drawing.SystemColors.Info;
             this.cboProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cboProducto.FormattingEnabled = true;
-            this.cboProducto.Location = new System.Drawing.Point(812, 447);
+            this.cboProducto.Location = new System.Drawing.Point(835, 447);
             this.cboProducto.Name = "cboProducto";
             this.cboProducto.Size = new System.Drawing.Size(224, 28);
             this.cboProducto.TabIndex = 1;
@@ -70,7 +71,7 @@
             // 
             this.txtPrecio.BackColor = System.Drawing.SystemColors.Info;
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtPrecio.Location = new System.Drawing.Point(293, 447);
+            this.txtPrecio.Location = new System.Drawing.Point(320, 446);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(257, 26);
             this.txtPrecio.TabIndex = 3;
@@ -80,6 +81,14 @@
             this.gridCarrito.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridCarrito.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCarrito.Location = new System.Drawing.Point(12, 82);
             this.gridCarrito.Name = "gridCarrito";
@@ -101,7 +110,8 @@
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(328, 652);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(122, 57);
@@ -113,7 +123,8 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(496, 652);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(122, 57);
@@ -132,7 +143,7 @@
             0,
             0,
             131072});
-            this.numCantidad.Location = new System.Drawing.Point(812, 524);
+            this.numCantidad.Location = new System.Drawing.Point(835, 524);
             this.numCantidad.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -155,52 +166,53 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(151, 450);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Precio:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(152, 526);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.Size = new System.Drawing.Size(140, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Elige el cliente:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(653, 450);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 20);
+            this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Elige el producto:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(655, 522);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(655, 526);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 20);
+            this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "Cantidad:";
             // 
             // btnQuitar
             // 
             this.btnQuitar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitar.Location = new System.Drawing.Point(659, 652);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(122, 57);
             this.btnQuitar.TabIndex = 13;
-            this.btnQuitar.Text = "Quitar";
+            this.btnQuitar.Text = "Eliminar";
             this.btnQuitar.UseVisualStyleBackColor = false;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 

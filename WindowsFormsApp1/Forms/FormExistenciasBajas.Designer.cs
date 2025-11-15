@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.numUmbral = new System.Windows.Forms.NumericUpDown();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -40,8 +41,9 @@
             // 
             // numUmbral
             // 
+            this.numUmbral.BackColor = System.Drawing.SystemColors.Info;
             this.numUmbral.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numUmbral.Location = new System.Drawing.Point(215, 130);
+            this.numUmbral.Location = new System.Drawing.Point(252, 128);
             this.numUmbral.Name = "numUmbral";
             this.numUmbral.Size = new System.Drawing.Size(120, 26);
             this.numUmbral.TabIndex = 0;
@@ -54,8 +56,9 @@
             // btnConsultar
             // 
             this.btnConsultar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnConsultar.Location = new System.Drawing.Point(414, 107);
+            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultar.Location = new System.Drawing.Point(454, 112);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(131, 57);
             this.btnConsultar.TabIndex = 1;
@@ -65,8 +68,9 @@
             // btnExportar
             // 
             this.btnExportar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnExportar.Location = new System.Drawing.Point(574, 107);
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.Location = new System.Drawing.Point(614, 112);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(131, 57);
             this.btnExportar.TabIndex = 2;
@@ -76,6 +80,14 @@
             // grid
             // 
             this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Location = new System.Drawing.Point(12, 209);
             this.grid.Name = "grid";
@@ -97,10 +109,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(19, 130);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 20);
+            this.label2.Size = new System.Drawing.Size(202, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mínimo de existencias:";
             // 
@@ -118,6 +130,7 @@
             this.Controls.Add(this.numUmbral);
             this.Name = "FormExistenciasBajas";
             this.Text = "FormExistenciasBajas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.numUmbral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);

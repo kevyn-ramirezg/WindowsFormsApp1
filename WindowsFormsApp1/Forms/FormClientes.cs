@@ -8,24 +8,55 @@ namespace WindowsFormsApp1.Forms
 {
     public partial class FormClientes : Form
     {
-        private Cliente seleccion; // puede quedar null
+        private Cliente _seleccion; // puede quedar null
 
         public FormClientes()
         {
             InitializeComponent();
-            Load += SecureLoad_Clientes;
+            // NO enganches eventos Load aquí; el Designer ya llama a FormClientes_Load
+            grid.SelectionChanged += grid_SelectionChanged; // este sí no lo engancha el Designer
         }
 
+        // ====== LO QUE PIDE EL DESIGNER ======
         private void FormClientes_Load(object sender, EventArgs e)
+        {
+            try { Acl.Require(Feature.Clientes); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); return; }
+
+            ConfigurarGrid();
+            ApplyLocalPermissions();
+            Cargar();
+            SeleccionarPrimera();
+        }
+        private void btnNuevo_Click(object sender, EventArgs e) => Limpiar();
+        private void btnGuardar_Click(object sender, EventArgs e) => Guardar();
+        private void btnEliminar_Click(object sender, EventArgs e) => Eliminar();
+        // =====================================
+
+        private void ConfigurarGrid()
         {
             grid.AutoGenerateColumns = true;
             grid.MultiSelect = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.ReadOnly = true;
             grid.AllowUserToAddRows = false;
+        }
 
-            Cargar();              // tu método que llena el grid
-            SeleccionarPrimera();  // para que siempre haya una fila seleccionada
+        private void ApplyLocalPermissions()
+        {
+            bool canCreate = Acl.Can(Feature.ClientesCreate);
+            bool canUpdate = Acl.Can(Feature.ClientesUpdate);
+            bool canDelete = Acl.Can(Feature.ClientesDelete);
+            bool canEdit = canCreate || canUpdate;
+
+            btnNuevo.Enabled = canCreate;
+            btnGuardar.Enabled = canEdit;
+            btnEliminar.Enabled = canDelete;
+
+            bool ro = !canEdit;
+            txtNombre.ReadOnly = ro;
+            txtTelefono.ReadOnly = ro;
+            txtCorreo.ReadOnly = ro;
         }
 
         private void Cargar()
@@ -41,117 +72,36 @@ namespace WindowsFormsApp1.Forms
             Limpiar();
         }
 
-        private void SecureLoad_Clientes(object sender, EventArgs e)
-        {
-            try { Acl.Require(Feature.Clientes); }
-            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
-        }
-
         private void AjustarGridClientes()
         {
             var g = grid;
-
             g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            g.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             g.AllowUserToResizeRows = false;
-            g.RowHeadersVisible = false; // oculta el borde/triángulo de fila
-            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            g.MultiSelect = false;
+            g.RowHeadersVisible = false;
 
             if (g.Columns["Id"] != null)
             {
                 g.Columns["Id"].FillWeight = 10;
                 g.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            if (g.Columns["Nombre"] != null)
+            if (g.Columns["Nombre"] != null) g.Columns["Nombre"].FillWeight = 35;
+            if (g.Columns["Telefono"] != null)
             {
-                g.Columns["Nombre"].FillWeight = 35;
+                var c = g.Columns["Telefono"];
+                c.FillWeight = 20;
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            if (g.Columns["Telefono"] != null || g.Columns["Teléfono"] != null)
-            {
-                var col = g.Columns["Telefono"] ?? g.Columns["Teléfono"];
-                col.FillWeight = 20;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            if (g.Columns["Correo"] != null)
-            {
-                g.Columns["Correo"].FillWeight = 35;
-            }
+            if (g.Columns["Correo"] != null) g.Columns["Correo"].FillWeight = 35;
         }
-
 
         private void Limpiar()
         {
-            seleccion = null;
+            _seleccion = null;
             txtNombre.Text = "";
             txtTelefono.Text = "";
             txtCorreo.Text = "";
             grid.ClearSelection();
         }
-
-        private void grid_SelectionChanged(object sender, EventArgs e)
-        {
-            seleccion = grid.CurrentRow?.DataBoundItem as Cliente;
-            // Rellena los TextBox si quieres:
-            if (seleccion != null)
-            {
-                txtNombre.Text = seleccion.Nombre;
-                txtTelefono.Text = seleccion.Telefono;
-                txtCorreo.Text = seleccion.Correo;
-            }
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e) => Limpiar();
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                MessageBox.Show("Nombre es obligatorio"); return;
-            }
-
-            var c = new Cliente();
-            c.Nombre = txtNombre.Text.Trim();
-            c.Telefono = string.IsNullOrWhiteSpace(txtTelefono.Text) ? "" : txtTelefono.Text.Trim();
-            c.Correo = string.IsNullOrWhiteSpace(txtCorreo.Text) ? "" : txtCorreo.Text.Trim();
-
-            if (seleccion == null)  // insertar
-                ClienteDAO.Insertar(c);
-            else                    // actualizar
-            {
-                c.Id = seleccion.Id;
-                ClienteDAO.Actualizar(c);
-            }
-
-            Cargar();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            // 1) Obtén el objeto desde la selección actual del grid
-            var cli = (seleccion ??
-                       grid.CurrentRow?.DataBoundItem as Cliente ??
-                       (grid.SelectedRows.Count > 0 ? grid.SelectedRows[0].DataBoundItem as Cliente : null));
-
-            if (cli == null)
-            {
-                MessageBox.Show("Selecciona un registro");
-                return;
-            }
-
-            // 2) Confirma
-            var ok = MessageBox.Show($"¿Eliminar a {cli.Nombre} (ID {cli.Id})?",
-                                     "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (ok != DialogResult.Yes) return;
-
-            // 3) Borra en BD
-            ClienteDAO.Eliminar(cli.Id);
-
-            // 4) Recarga y deja una fila seleccionada
-            Cargar();
-            SeleccionarPrimera();
-        }
-
 
         private void SeleccionarPrimera()
         {
@@ -163,5 +113,61 @@ namespace WindowsFormsApp1.Forms
             }
         }
 
+        private void grid_SelectionChanged(object sender, EventArgs e)
+        {
+            _seleccion = grid.CurrentRow?.DataBoundItem as Cliente;
+            if (_seleccion != null)
+            {
+                txtNombre.Text = _seleccion.Nombre;
+                txtTelefono.Text = _seleccion.Telefono;
+                txtCorreo.Text = _seleccion.Correo;
+            }
+        }
+
+        private void Guardar()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            { MessageBox.Show("Nombre es obligatorio"); return; }
+
+            var c = new Cliente
+            {
+                Nombre = txtNombre.Text.Trim(),
+                Telefono = string.IsNullOrWhiteSpace(txtTelefono.Text) ? "" : txtTelefono.Text.Trim(),
+                Correo = string.IsNullOrWhiteSpace(txtCorreo.Text) ? "" : txtCorreo.Text.Trim()
+            };
+
+            if (_seleccion == null)
+            {
+                if (!Acl.Can(Feature.ClientesCreate)) { MessageBox.Show("Sin permiso para crear."); return; }
+                ClienteDAO.Insertar(c);
+            }
+            else
+            {
+                if (!Acl.Can(Feature.ClientesUpdate)) { MessageBox.Show("Sin permiso para actualizar."); return; }
+                c.Id = _seleccion.Id;
+                ClienteDAO.Actualizar(c);
+            }
+
+            Cargar();
+            SeleccionarPrimera();
+        }
+
+        private void Eliminar()
+        {
+            if (!Acl.Can(Feature.ClientesDelete)) { MessageBox.Show("Sin permiso para eliminar."); return; }
+
+            var cli = _seleccion ??
+                      grid.CurrentRow?.DataBoundItem as Cliente ??
+                      (grid.SelectedRows.Count > 0 ? grid.SelectedRows[0].DataBoundItem as Cliente : null);
+
+            if (cli == null) { MessageBox.Show("Selecciona un registro"); return; }
+
+            if (MessageBox.Show($"¿Eliminar a {cli.Nombre} (ID {cli.Id})?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            ClienteDAO.Eliminar(cli.Id);
+            Cargar();
+            SeleccionarPrimera();
+        }
     }
 }

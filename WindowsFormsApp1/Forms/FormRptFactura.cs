@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Forms
         private DataTable _ultimaFactura;   // guardará el dt para recargar el visor
         public FormRptFactura()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
 
             this.Load += FormRptFactura_Load;
@@ -23,6 +25,8 @@ namespace WindowsFormsApp1.Forms
 
         private void FormRptFactura_Load(object sender, EventArgs e)
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             grid.ReadOnly = true;
             grid.AllowUserToAddRows = false;
             grid.AutoGenerateColumns = true;

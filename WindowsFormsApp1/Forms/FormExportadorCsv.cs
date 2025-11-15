@@ -18,6 +18,8 @@ namespace WindowsFormsApp1.Forms
 
         public FormExportadorCsv()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += (_, __) =>
             {

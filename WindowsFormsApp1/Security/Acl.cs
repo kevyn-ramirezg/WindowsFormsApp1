@@ -7,44 +7,116 @@ namespace WindowsFormsApp1.Security
 {
     public static class Acl
     {
-        // Devuelve true si el nivel actual tiene permiso para "accion".
-        public static bool Permite(string accion)
+        // Niveles de rol esperados:
+        // 3 = Administrador (todo)
+        // 2 = Paramétrico   (entidades + transacciones + reportes + utilidades; sin Usuarios/Bitácora)
+        // 1 = Esporádico    (solo lectura en entidades + reportes; sin transacciones ni utilidades)
+
+        // ¿Puedo ABRIR una pantalla / menú?
+        public static bool CanOpen(Feature f)
         {
-            try
+            int n = Session.Nivel; // usa tu Session actual
+
+            if (n >= 3) return true; // Admin hace todo
+
+            switch (f)
             {
-                using (var cn = Db.Open())
-                {
-                    using (var cmd = new OracleCommand(
-                        "SELECT COUNT(*) FROM PERMISO WHERE NIVEL = :niv AND ACCION = :a", cn))
-                    {
-                        cmd.BindByName = true;
-                        cmd.Parameters.Add(":niv", Session.Nivel);
-                        cmd.Parameters.Add(":a", accion);
-                        var n = Convert.ToInt32(cmd.ExecuteScalar());
-                        return n > 0;
-                    }
-                }
-            }
-            catch
-            {
-                // Si algo falla, por seguridad retorna false
-                return false;
+                // Entidades: 1+ puede abrir. (El 1 verá solo lectura porque botones se deshabilitan con Acl.Can)
+                case Feature.Categorias:
+                case Feature.Clientes:
+                case Feature.Productos:
+                    return n >= 1;
+
+                // Transacciones: 2+
+                case Feature.Ventas:
+                case Feature.Creditos:
+                    return n >= 2;
+
+                // Usuarios y Bitácora: solo Admin
+                case Feature.Usuarios:
+                case Feature.Bitacora:
+                    return n >= 3;
+
+                // Reportes: 1+
+                case Feature.ReporteFactura:
+                case Feature.ReporteVentasMes:
+                case Feature.ReporteIvaTrimestre:
+                case Feature.ReporteMorosos:
+                case Feature.ReporteTopProductos:
+                case Feature.ReporteExistenciasBajas:
+                    return n >= 1;
+
+                // Utilidades: 2+  (si quieres permitir calculadora al 1, cambia a "return n >= 1;")
+                case Feature.Util_Calculadora:
+                case Feature.Util_Calendario:
+                case Feature.Util_ExportarCsv:
+                    return n >= 2;
+
+                default:
+                    return false;
             }
         }
 
-        // Azúcar sintáctico para los forms: muestra mensaje si no tiene permiso
-        public static bool Require(string accion)
+        // ¿Puedo EJECUTAR una acción concreta (botón/operación)?
+        public static bool Can(Feature action)
         {
-            if (Permite(accion)) return true;
-            MessageBox.Show("No tienes permisos para realizar esta acción: " + accion,
-                            "Permisos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
+            int n = Session.Nivel;
+
+            if (n >= 3) return true; // Admin todo
+
+            switch (action)
+            {
+                // CRUD de entidades (crear/editar/borrar): 2+
+                case Feature.CategoriasCreate:
+                case Feature.CategoriasUpdate:
+                case Feature.CategoriasDelete:
+                case Feature.ClientesCreate:
+                case Feature.ClientesUpdate:
+                case Feature.ClientesDelete:
+                case Feature.ProductosCreate:
+                case Feature.ProductosUpdate:
+                case Feature.ProductosDelete:
+                    return n >= 2;
+
+                // Transacciones: 2+
+                case Feature.VentasCreate:
+                case Feature.VentasAnular:
+                case Feature.CreditosPagar:
+                    return n >= 2;
+
+                // Usuarios: solo Admin
+                case Feature.UsuariosCreate:
+                case Feature.UsuariosUpdate:
+                case Feature.UsuariosDelete:
+                case Feature.UsuariosResetPwd:
+                case Feature.UsuariosToggleActivo:
+                    return n >= 3;
+
+                // Reportes: 1+
+                case Feature.ReporteFactura:
+                case Feature.ReporteVentasMes:
+                case Feature.ReporteIvaTrimestre:
+                case Feature.ReporteMorosos:
+                case Feature.ReporteTopProductos:
+                case Feature.ReporteExistenciasBajas:
+                    return n >= 1;
+
+                // Utilidades: 2+
+                case Feature.Util_Calculadora:
+                case Feature.Util_Calendario:
+                case Feature.Util_ExportarCsv:
+                    return n >= 2;
+
+                default:
+                    return false;
+            }
         }
 
-        public static bool Require(Feature feature)
+        // Lanza excepción si NO se puede abrir (útil en Load del form para cerrarlo de una)
+        public static void Require(Feature feature)
         {
-            // Usa el nombre del enum como texto de acción en PERMISO.ACCION
-            return Require(feature.ToString());
+            if (!CanOpen(feature))
+                throw new UnauthorizedAccessException("No tienes permisos para acceder a esta opción.");
         }
     }
 }

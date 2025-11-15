@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormExistenciasBajas()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += (_, __) => { numUmbral.Value = 5; Consultar(); };
             btnConsultar.Click += (_, __) => Consultar();

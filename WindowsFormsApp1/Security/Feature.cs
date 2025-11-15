@@ -1,37 +1,41 @@
 ﻿namespace WindowsFormsApp1.Security
 {
-    // Define las acciones que vamos a controlar con PERMISO.ACCION
-    // Incluye "macro" features para pantallas completas y otros granulares.
+    // Macros = pantallas/menús completos
+    // Granulares = botones/acciones dentro de cada pantalla
     public enum Feature
     {
-        // ===== Macros por pantalla (los que usan tus forms) =====
+        // ===== Macros por pantalla =====
         Categorias,
         Clientes,
         Productos,
         Ventas,
         Creditos,
+        Usuarios,        // NUEVO (solo Admin)
+        Bitacora,        // NUEVO (solo Admin)
 
-        // ===== Acciones granulares (útiles si quieres restringir por botón) =====
-        CategoriasCreate,
-        CategoriasUpdate,
-        CategoriasDelete,
-
-        ClientesCreate,
-        ClientesUpdate,
-        ClientesDelete,
-
-        ProductosCreate,
-        ProductosUpdate,
-        ProductosDelete,
-
-        VentasCreate,
-        VentasAnular,
-
-        CreditosPagar,
-
-        // Reportes
+        // Reportes (como macros porque abren pantallas)
         ReporteFactura,
         ReporteVentasMes,
-        ReporteIvaTrimestre
+        ReporteIvaTrimestre,
+        ReporteMorosos,            // NUEVO
+        ReporteTopProductos,       // NUEVO
+        ReporteExistenciasBajas,   // NUEVO
+
+        // Utilidades (si las quieres gobernar por permisos)
+        Util_Calculadora,          // NUEVO
+        Util_Calendario,           // NUEVO
+        Util_ExportarCsv,          // NUEVO
+
+        // ===== Acciones granulares en entidades =====
+        CategoriasCreate, CategoriasUpdate, CategoriasDelete,
+        ClientesCreate, ClientesUpdate, ClientesDelete,
+        ProductosCreate, ProductosUpdate, ProductosDelete,
+
+        // ===== Acciones granulares en transacciones =====
+        VentasCreate, VentasAnular,
+        CreditosPagar,
+
+        // ===== Acciones granulares en Usuarios =====
+        UsuariosCreate, UsuariosUpdate, UsuariosDelete, UsuariosResetPwd, UsuariosToggleActivo
     }
 }

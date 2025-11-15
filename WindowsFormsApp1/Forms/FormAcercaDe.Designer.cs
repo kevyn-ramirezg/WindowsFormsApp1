@@ -42,7 +42,7 @@
             // picLogo
             // 
             this.picLogo.Image = global::WindowsFormsApp1.Properties.Resources.Captura_de_pantalla_2025_10_09_103911;
-            this.picLogo.Location = new System.Drawing.Point(47, 461);
+            this.picLogo.Location = new System.Drawing.Point(174, 329);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(101, 112);
             this.picLogo.TabIndex = 0;
@@ -102,6 +102,7 @@
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Location = new System.Drawing.Point(47, 360);
             this.btnCerrar.Name = "btnCerrar";

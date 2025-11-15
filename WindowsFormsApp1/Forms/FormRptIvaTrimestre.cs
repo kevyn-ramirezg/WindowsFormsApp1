@@ -11,6 +11,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormRptIvaTrimestre()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             // eventos de UI
             this.Load += FormRptIvaTrimestre_Load;
@@ -20,6 +22,8 @@ namespace WindowsFormsApp1.Forms
 
         private void FormRptIvaTrimestre_Load(object sender, EventArgs e)
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             // Año por defecto = actual
             numAnio.Value = DateTime.Now.Year;
 

@@ -9,6 +9,7 @@ using WindowsFormsApp1.Data;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Security;
 
+
 namespace WindowsFormsApp1
 {
     public partial class FormVenta : Form
@@ -18,6 +19,8 @@ namespace WindowsFormsApp1
 
         public FormVenta()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += SecureLoad_Ventas;
             this.Load += FormVenta_Load;
@@ -144,6 +147,8 @@ namespace WindowsFormsApp1
 
         private void FormVenta_Load(object sender, EventArgs e)
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             // Cargar combos
             var clientes = ClienteDAO.Listar();
             cboCliente.DataSource = clientes;

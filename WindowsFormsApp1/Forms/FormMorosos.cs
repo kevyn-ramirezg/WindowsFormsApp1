@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormMorosos()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += (_, __) => Consultar();
             btnActualizar.Click += (_, __) => Consultar();

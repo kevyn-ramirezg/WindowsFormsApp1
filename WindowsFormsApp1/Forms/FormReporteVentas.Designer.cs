@@ -44,6 +44,7 @@
             this.lblTotalTitle = new System.Windows.Forms.Label();
             this.lblIvaTitle = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTop)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             this.dtpIni.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpIni.Location = new System.Drawing.Point(147, 93);
+            this.dtpIni.Location = new System.Drawing.Point(163, 93);
             this.dtpIni.Margin = new System.Windows.Forms.Padding(4);
             this.dtpIni.Name = "dtpIni";
             this.dtpIni.Size = new System.Drawing.Size(249, 26);
@@ -75,7 +76,7 @@
             this.dtpFin.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFin.Location = new System.Drawing.Point(147, 174);
+            this.dtpFin.Location = new System.Drawing.Point(163, 174);
             this.dtpFin.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(249, 26);
@@ -84,29 +85,30 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(19, 99);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Fecha Inicio: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(19, 179);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.Size = new System.Drawing.Size(104, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Fecha Fin: ";
             // 
             // btnConsultar
             // 
-            this.btnConsultar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnConsultar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Location = new System.Drawing.Point(483, 88);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(132, 41);
@@ -116,8 +118,9 @@
             // 
             // btnExportCsv
             // 
-            this.btnExportCsv.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnExportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnExportCsv.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnExportCsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportCsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportCsv.Location = new System.Drawing.Point(483, 158);
             this.btnExportCsv.Name = "btnExportCsv";
             this.btnExportCsv.Size = new System.Drawing.Size(132, 41);
@@ -133,25 +136,25 @@
             this.gridVentas.Name = "gridVentas";
             this.gridVentas.RowHeadersWidth = 51;
             this.gridVentas.RowTemplate.Height = 24;
-            this.gridVentas.Size = new System.Drawing.Size(1432, 244);
+            this.gridVentas.Size = new System.Drawing.Size(1323, 244);
             this.gridVentas.TabIndex = 7;
             // 
             // gridTop
             // 
             this.gridTop.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.gridTop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridTop.Location = new System.Drawing.Point(12, 515);
+            this.gridTop.Location = new System.Drawing.Point(12, 537);
             this.gridTop.Name = "gridTop";
             this.gridTop.RowHeadersWidth = 51;
             this.gridTop.RowTemplate.Height = 24;
-            this.gridTop.Size = new System.Drawing.Size(674, 168);
+            this.gridTop.Size = new System.Drawing.Size(674, 157);
             this.gridTop.TabIndex = 8;
             // 
             // lblSubtotalTitle
             // 
             this.lblSubtotalTitle.AutoSize = true;
             this.lblSubtotalTitle.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblSubtotalTitle.Location = new System.Drawing.Point(775, 537);
+            this.lblSubtotalTitle.Location = new System.Drawing.Point(720, 516);
             this.lblSubtotalTitle.Name = "lblSubtotalTitle";
             this.lblSubtotalTitle.Size = new System.Drawing.Size(148, 35);
             this.lblSubtotalTitle.TabIndex = 9;
@@ -161,7 +164,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.Location = new System.Drawing.Point(1198, 596);
+            this.lblTotal.Location = new System.Drawing.Point(874, 636);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(31, 35);
             this.lblTotal.TabIndex = 10;
@@ -171,7 +174,7 @@
             // 
             this.lblIva.AutoSize = true;
             this.lblIva.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblIva.Location = new System.Drawing.Point(929, 637);
+            this.lblIva.Location = new System.Drawing.Point(874, 575);
             this.lblIva.Name = "lblIva";
             this.lblIva.Size = new System.Drawing.Size(31, 35);
             this.lblIva.TabIndex = 11;
@@ -181,7 +184,7 @@
             // 
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblSubtotal.Location = new System.Drawing.Point(929, 537);
+            this.lblSubtotal.Location = new System.Drawing.Point(874, 516);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(31, 35);
             this.lblSubtotal.TabIndex = 12;
@@ -191,7 +194,7 @@
             // 
             this.lblTotalTitle.AutoSize = true;
             this.lblTotalTitle.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTotalTitle.Location = new System.Drawing.Point(1089, 596);
+            this.lblTotalTitle.Location = new System.Drawing.Point(720, 636);
             this.lblTotalTitle.Name = "lblTotalTitle";
             this.lblTotalTitle.Size = new System.Drawing.Size(103, 35);
             this.lblTotalTitle.TabIndex = 13;
@@ -201,7 +204,7 @@
             // 
             this.lblIvaTitle.AutoSize = true;
             this.lblIvaTitle.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.lblIvaTitle.Location = new System.Drawing.Point(775, 637);
+            this.lblIvaTitle.Location = new System.Drawing.Point(720, 575);
             this.lblIvaTitle.Name = "lblIvaTitle";
             this.lblIvaTitle.Size = new System.Drawing.Size(87, 35);
             this.lblIvaTitle.TabIndex = 14;
@@ -210,18 +213,30 @@
             // reportViewer1
             // 
             this.reportViewer1.BackColor = System.Drawing.Color.Silver;
-            this.reportViewer1.Location = new System.Drawing.Point(711, 16);
+            this.reportViewer1.Location = new System.Drawing.Point(637, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(691, 218);
+            this.reportViewer1.Size = new System.Drawing.Size(698, 218);
             this.reportViewer1.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 514);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(129, 20);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Top productos";
             // 
             // FormReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1456, 706);
+            this.ClientSize = new System.Drawing.Size(1347, 706);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.lblIvaTitle);
             this.Controls.Add(this.lblTotalTitle);
@@ -269,5 +284,6 @@
         private System.Windows.Forms.Label lblTotalTitle;
         private System.Windows.Forms.Label lblIvaTitle;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -1,8 +1,6 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
-using WindowsFormsApp1.Data;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Security;
 
@@ -10,45 +8,76 @@ namespace WindowsFormsApp1.Forms
 {
     public partial class FormProductos : Form
     {
-        private Producto seleccion; // puede quedar null
+        private Producto _seleccion;
 
         public FormProductos()
         {
             InitializeComponent();
-            Load += SecureLoad_Productos;
+            // NO enganches Load aquí; el Designer llama a FormProductos_Load
+            // grid_SelectionChanged lo llama el Designer; no es necesario re-enganchar
         }
 
+        // ====== LO QUE PIDE EL DESIGNER ======
         private void FormProductos_Load(object sender, EventArgs e)
         {
-            // grid
+            try { Acl.Require(Feature.Productos); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); return; }
+
+            ConfigurarGrid();
+            ApplyLocalPermissions();
+            ConfigurarNumericos();
+            CargarCategoriasCombo();
+            Cargar();
+        }
+        private void btnNuevo_Click(object sender, EventArgs e) => Limpiar();
+        private void btnGuardar_Click(object sender, EventArgs e) => Guardar();
+        private void btnEliminar_Click(object sender, EventArgs e) => Eliminar();
+        private void grid_SelectionChanged(object sender, EventArgs e) => RellenarDesdeSeleccion();
+        // =====================================
+
+        private void ApplyLocalPermissions()
+        {
+            bool canCreate = Acl.Can(Feature.ProductosCreate);
+            bool canUpdate = Acl.Can(Feature.ProductosUpdate);
+            bool canDelete = Acl.Can(Feature.ProductosDelete);
+            bool canEdit = canCreate || canUpdate;
+
+            btnNuevo.Enabled = canCreate;
+            btnGuardar.Enabled = canEdit;
+            btnEliminar.Enabled = canDelete;
+
+            bool ro = !canEdit;
+            cboCategoria.Enabled = !ro;
+            txtNombre.ReadOnly = ro;
+            numCosto.Enabled = !ro;
+            numPrecio.Enabled = !ro;
+            numStock.Enabled = !ro;
+        }
+
+        private void ConfigurarGrid()
+        {
             grid.AutoGenerateColumns = false;
-            if (grid.Columns.Count == 0)
-            {
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "ID", DataPropertyName = "Id", Width = 40 });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Categoria", HeaderText = "Categoría", DataPropertyName = "Categoria", Width = 80 });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "CategoriaId", HeaderText = "CategoríaId", DataPropertyName = "CategoriaId", Width = 80 });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Nombre", HeaderText = "Nombre", DataPropertyName = "Nombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Costo", HeaderText = "Costo", DataPropertyName = "Costo", Width = 80 });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "PrecioVenta", HeaderText = "Precio Venta", DataPropertyName = "PrecioVenta", Width = 100 });
-                grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Stock", HeaderText = "Stock", DataPropertyName = "Stock", Width = 90 });
-            }
+            grid.Columns.Clear();
+
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "ID", DataPropertyName = "Id", Width = 60 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Categoria", HeaderText = "Categoría", DataPropertyName = "Categoria", Width = 120 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "CategoriaId", HeaderText = "CategoríaId", DataPropertyName = "CategoriaId", Width = 90 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Nombre", HeaderText = "Nombre", DataPropertyName = "Nombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Costo", HeaderText = "Costo", DataPropertyName = "Costo", Width = 90, DefaultCellStyle = { Format = "N2" } });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "PrecioVenta", HeaderText = "Precio Venta", DataPropertyName = "PrecioVenta", Width = 110, DefaultCellStyle = { Format = "N2" } });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { Name = "Stock", HeaderText = "Stock", DataPropertyName = "Stock", Width = 90, DefaultCellStyle = { Format = "N2" } });
 
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.MultiSelect = false;
             grid.ReadOnly = true;
             grid.AllowUserToAddRows = false;
-
-            ConfigurarNumericos();
-
-            // combos y datos
-            CargarCategoriasCombo();
-            Cargar();
         }
 
-        private void SecureLoad_Productos(object sender, EventArgs e)
+        private void ConfigurarNumericos()
         {
-            try { Acl.Require(Feature.Productos); }
-            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); Close(); }
+            numCosto.DecimalPlaces = 2; numCosto.Minimum = 0; numCosto.Maximum = 1_000_000_000m;
+            numPrecio.DecimalPlaces = 2; numPrecio.Minimum = 0; numPrecio.Maximum = 1_000_000_000m;
+            numStock.DecimalPlaces = 2; numStock.Minimum = 0; numStock.Maximum = 1_000_000_000m;
         }
 
         private void CargarCategoriasCombo()
@@ -65,10 +94,9 @@ namespace WindowsFormsApp1.Forms
             Limpiar();
         }
 
-
         private void Limpiar()
         {
-            seleccion = null;
+            _seleccion = null;
             if (cboCategoria.Items.Count > 0) cboCategoria.SelectedIndex = 0;
             txtNombre.Text = "";
             numCosto.Value = 0;
@@ -77,11 +105,11 @@ namespace WindowsFormsApp1.Forms
             grid.ClearSelection();
         }
 
-        private void grid_SelectionChanged(object sender, EventArgs e)
+        private void RellenarDesdeSeleccion()
         {
             if (grid.CurrentRow != null && grid.CurrentRow.DataBoundItem is Producto p)
             {
-                seleccion = p;
+                _seleccion = p;
                 cboCategoria.SelectedValue = p.CategoriaId;
                 txtNombre.Text = p.Nombre;
 
@@ -91,74 +119,52 @@ namespace WindowsFormsApp1.Forms
             }
         }
 
-        private void SetNumericValue(NumericUpDown ctrl, decimal value)
+        private static void SetNumericValue(NumericUpDown ctrl, decimal value)
         {
             if (value < ctrl.Minimum) ctrl.Minimum = value;
             if (value > ctrl.Maximum) ctrl.Maximum = value;
             ctrl.Value = value;
         }
 
-        private void ConfigurarNumericos()
+        private void Guardar()
         {
-            // Costo
-            numCosto.DecimalPlaces = 2;
-            numCosto.Minimum = 0;
-            numCosto.Maximum = 1000000000m; // 1,000,000,000
+            if (cboCategoria.SelectedValue == null) { MessageBox.Show("Selecciona una categoría"); return; }
+            if (string.IsNullOrWhiteSpace(txtNombre.Text)) { MessageBox.Show("Nombre es obligatorio"); return; }
 
-            // Precio
-            numPrecio.DecimalPlaces = 2;
-            numPrecio.Minimum = 0;
-            numPrecio.Maximum = 1000000000m;
-
-            // Stock (si manejas enteros, deja DecimalPlaces = 0)
-            numStock.DecimalPlaces = 2; // o 0 si es entero
-            numStock.Minimum = 0;
-            numStock.Maximum = 1000000000m;
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e) => Limpiar();
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (cboCategoria.SelectedValue == null)
+            var p = new Producto
             {
-                MessageBox.Show("Selecciona una categoría"); return;
-            }
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                CategoriaId = (decimal)cboCategoria.SelectedValue,
+                Nombre = txtNombre.Text.Trim(),
+                Costo = numCosto.Value,
+                PrecioVenta = numPrecio.Value,
+                Stock = numStock.Value
+            };
+
+            if (_seleccion == null)
             {
-                MessageBox.Show("Nombre es obligatorio"); return;
-            }
-
-            var p = new Producto();
-            p.CategoriaId = (decimal)cboCategoria.SelectedValue;
-            p.Nombre = txtNombre.Text.Trim();
-            p.Costo = numCosto.Value;
-            p.PrecioVenta = numPrecio.Value;
-            p.Stock = numStock.Value;
-
-            if (seleccion == null)  // insertar
+                if (!Acl.Can(Feature.ProductosCreate)) { MessageBox.Show("Sin permiso para crear."); return; }
                 ProductoDAO.Insertar(p);
-            else                    // actualizar
+            }
+            else
             {
-                p.Id = seleccion.Id;
+                if (!Acl.Can(Feature.ProductosUpdate)) { MessageBox.Show("Sin permiso para actualizar."); return; }
+                p.Id = _seleccion.Id;
                 ProductoDAO.Actualizar(p);
             }
 
             Cargar();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void Eliminar()
         {
-            if (seleccion == null)
-            {
-                MessageBox.Show("Selecciona un registro"); return;
-            }
+            if (!Acl.Can(Feature.ProductosDelete)) { MessageBox.Show("Sin permiso para eliminar."); return; }
+            if (_seleccion == null) { MessageBox.Show("Selecciona un registro"); return; }
+
             if (MessageBox.Show("¿Eliminar el producto seleccionado?", "Confirmar",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                ProductoDAO.Eliminar(seleccion.Id);
-                Cargar();
-            }
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            ProductoDAO.Eliminar(_seleccion.Id);
+            Cargar();
         }
     }
 }

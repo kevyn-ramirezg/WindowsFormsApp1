@@ -34,6 +34,7 @@
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid = new System.Windows.Forms.DataGridView();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -55,6 +56,14 @@
             this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Location = new System.Drawing.Point(13, 76);
             this.grid.Margin = new System.Windows.Forms.Padding(4);
@@ -71,11 +80,11 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.Location = new System.Drawing.Point(13, 409);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(73, 20);
+            this.lblNombre.Size = new System.Drawing.Size(80, 20);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -83,7 +92,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.Info;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(94, 406);
+            this.txtNombre.Location = new System.Drawing.Point(101, 407);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(399, 26);
@@ -92,11 +101,11 @@
             // lblIva
             // 
             this.lblIva.AutoSize = true;
-            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIva.Location = new System.Drawing.Point(565, 409);
             this.lblIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIva.Name = "lblIva";
-            this.lblIva.Size = new System.Drawing.Size(72, 20);
+            this.lblIva.Size = new System.Drawing.Size(80, 20);
             this.lblIva.TabIndex = 3;
             this.lblIva.Text = "IVA (%):";
             // 
@@ -105,7 +114,7 @@
             this.numIva.BackColor = System.Drawing.SystemColors.Info;
             this.numIva.DecimalPlaces = 2;
             this.numIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numIva.Location = new System.Drawing.Point(645, 407);
+            this.numIva.Location = new System.Drawing.Point(663, 406);
             this.numIva.Margin = new System.Windows.Forms.Padding(4);
             this.numIva.Name = "numIva";
             this.numIva.Size = new System.Drawing.Size(107, 26);
@@ -114,11 +123,11 @@
             // lblUtilidad
             // 
             this.lblUtilidad.AutoSize = true;
-            this.lblUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUtilidad.Location = new System.Drawing.Point(791, 409);
             this.lblUtilidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUtilidad.Name = "lblUtilidad";
-            this.lblUtilidad.Size = new System.Drawing.Size(102, 20);
+            this.lblUtilidad.Size = new System.Drawing.Size(115, 20);
             this.lblUtilidad.TabIndex = 5;
             this.lblUtilidad.Text = "Utilidad (%):";
             // 
@@ -127,7 +136,7 @@
             this.numUtilidad.BackColor = System.Drawing.SystemColors.Info;
             this.numUtilidad.DecimalPlaces = 2;
             this.numUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numUtilidad.Location = new System.Drawing.Point(901, 406);
+            this.numUtilidad.Location = new System.Drawing.Point(923, 407);
             this.numUtilidad.Margin = new System.Windows.Forms.Padding(4);
             this.numUtilidad.Name = "numUtilidad";
             this.numUtilidad.Size = new System.Drawing.Size(107, 26);
@@ -136,8 +145,9 @@
             // btnNuevo
             // 
             this.btnNuevo.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnNuevo.Location = new System.Drawing.Point(222, 529);
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Location = new System.Drawing.Point(231, 500);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(152, 48);
@@ -149,8 +159,9 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnGuardar.Location = new System.Drawing.Point(425, 529);
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(434, 500);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(152, 48);
@@ -162,8 +173,9 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnEliminar.Location = new System.Drawing.Point(633, 529);
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(642, 500);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(152, 48);

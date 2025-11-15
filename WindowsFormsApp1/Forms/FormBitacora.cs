@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormBitacora()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += (_, __) =>
             {

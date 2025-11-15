@@ -19,6 +19,8 @@ namespace WindowsFormsApp1.Forms
 
         public FormReporteVentas()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
 
             // Eventos
@@ -30,6 +32,8 @@ namespace WindowsFormsApp1.Forms
 
         private void FormReporteVentas_Load(object sender, EventArgs e)
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             // Rango por defecto: mes actual
             var ini = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             var fin = ini.AddMonths(1).AddDays(-1);

@@ -13,6 +13,8 @@ namespace WindowsFormsApp1.Forms
 
         public FormUsuarios()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
 
             // Conexión explícita de eventos (por si el diseñador no los generó)
@@ -108,6 +110,11 @@ namespace WindowsFormsApp1.Forms
             var login = (txtUsername.Text ?? "").Trim();
             if (login.Length == 0) { MessageBox.Show("Ingresa el usuario (login)."); return; }
 
+            var nombre = string.IsNullOrWhiteSpace(txtNombre.Text) ? null : txtNombre.Text.Trim();
+            var email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+            var nivel = (int)numNivel.Value;
+            var activo = chkActivo.Checked ? 1 : 0;
+
             var id = ObtenerIdParaGuardar();
 
             using (var cn = Db.Open())
@@ -117,16 +124,17 @@ namespace WindowsFormsApp1.Forms
                     // INSERT
                     using (var cmd = new OracleCommand(
                         @"INSERT INTO usuario (login, nombre, email, clave_hash, nivel, activo)
-                  VALUES (:lg, :nm, :em, :ph, :nv, 1)", cn))
+                  VALUES (:lg, :nm, :em, :ph, :nv, :ac)", cn))
                     {
                         cmd.BindByName = true;
                         cmd.Parameters.Add(":lg", login);
-                        cmd.Parameters.Add(":nm", DBNull.Value); // si tienes txtNombre úsalo aquí
-                        cmd.Parameters.Add(":em", DBNull.Value); // si tienes txtEmail úsalo aquí
+                        cmd.Parameters.Add(":nm", nombre == null ? (object)DBNull.Value : nombre);
+                        cmd.Parameters.Add(":em", email == null ? (object)DBNull.Value : email);
                         cmd.Parameters.Add(":ph", string.IsNullOrWhiteSpace(txtPassword.Text)
                                                 ? (object)DBNull.Value
                                                 : HashHelper.Sha256(txtPassword.Text));
-                        cmd.Parameters.Add(":nv", (int)numNivel.Value);
+                        cmd.Parameters.Add(":nv", nivel);
+                        cmd.Parameters.Add(":ac", activo);
 
                         try
                         {
@@ -142,19 +150,27 @@ namespace WindowsFormsApp1.Forms
                 }
                 else
                 {
-                    // UPDATE
+                    // UPDATE (sin tocar hash)
                     using (var cmd = new OracleCommand(
                         @"UPDATE usuario 
-                     SET login = :lg, nivel = :nv
+                     SET login  = :lg,
+                         nombre = :nm,
+                         email  = :em,
+                         nivel  = :nv,
+                         activo = :ac
                    WHERE id = :id", cn))
                     {
                         cmd.BindByName = true;
                         cmd.Parameters.Add(":lg", login);
-                        cmd.Parameters.Add(":nv", (int)numNivel.Value);
+                        cmd.Parameters.Add(":nm", nombre == null ? (object)DBNull.Value : nombre);
+                        cmd.Parameters.Add(":em", email == null ? (object)DBNull.Value : email);
+                        cmd.Parameters.Add(":nv", nivel);
+                        cmd.Parameters.Add(":ac", activo);
                         cmd.Parameters.Add(":id", id);
                         cmd.ExecuteNonQuery();
                     }
 
+                    // Actualiza la clave solo si escribiste algo
                     if (!string.IsNullOrWhiteSpace(txtPassword.Text))
                     {
                         using (var cmd = new OracleCommand(
@@ -176,6 +192,7 @@ namespace WindowsFormsApp1.Forms
             txtPassword.Clear();
             Listar();
         }
+
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -242,10 +259,13 @@ namespace WindowsFormsApp1.Forms
         private void LimpiarFormulario()
         {
             txtUsername.Clear();
+            txtNombre.Clear();
+            txtEmail.Clear();
             txtPassword.Clear();
             numNivel.Value = 1;
-            // Si tienes txtNombre / txtEmail: límpialos también.
+            chkActivo.Checked = true; // por defecto activo
         }
+
 
         private void EntrarEnModoCreacion()
         {
@@ -267,14 +287,23 @@ namespace WindowsFormsApp1.Forms
         private void grid_SelectionChanged(object sender, EventArgs e)
         {
             if (grid.CurrentRow == null) return;
-            // Al seleccionar, sales de modo creación
+
+            // Al seleccionar, salimos de modo creación
             creando = false;
 
             txtUsername.Text = grid.CurrentRow.Cells["LOGIN"]?.Value?.ToString() ?? "";
-            var val = grid.CurrentRow.Cells["NIVEL"]?.Value;
-            numNivel.Value = (val == null || val == DBNull.Value) ? 1 : Convert.ToDecimal(val);
-            txtPassword.Clear();
+            txtNombre.Text = grid.CurrentRow.Cells["NOMBRE"]?.Value?.ToString() ?? "";
+            txtEmail.Text = grid.CurrentRow.Cells["EMAIL"]?.Value?.ToString() ?? "";
+
+            var vNivel = grid.CurrentRow.Cells["NIVEL"]?.Value;
+            numNivel.Value = (vNivel == null || vNivel == DBNull.Value) ? 1 : Convert.ToDecimal(vNivel);
+
+            var vActivo = grid.CurrentRow.Cells["ACTIVO"]?.Value;
+            chkActivo.Checked = (vActivo != null && vActivo != DBNull.Value && Convert.ToInt32(vActivo) == 1);
+
+            txtPassword.Clear(); // nunca mostramos hashes
         }
+
 
     }
 }

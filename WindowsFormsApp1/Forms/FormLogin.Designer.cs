@@ -42,10 +42,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(873, 448);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(808, 441);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 24);
+            this.label1.Size = new System.Drawing.Size(85, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario:";
             // 
@@ -53,18 +53,18 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.SystemColors.Info;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtUsuario.Location = new System.Drawing.Point(955, 448);
+            this.txtUsuario.Location = new System.Drawing.Point(921, 440);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(123, 26);
+            this.txtUsuario.Size = new System.Drawing.Size(166, 26);
             this.txtUsuario.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label2.Location = new System.Drawing.Point(876, 502);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(811, 495);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 24);
+            this.label2.Size = new System.Drawing.Size(67, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Clave:";
             // 
@@ -72,17 +72,18 @@
             // 
             this.txtClave.BackColor = System.Drawing.SystemColors.Info;
             this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtClave.Location = new System.Drawing.Point(955, 502);
+            this.txtClave.Location = new System.Drawing.Point(921, 494);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(123, 26);
+            this.txtClave.Size = new System.Drawing.Size(166, 26);
             this.txtClave.TabIndex = 3;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // btnIngresar
             // 
             this.btnIngresar.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnIngresar.Location = new System.Drawing.Point(796, 609);
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Location = new System.Drawing.Point(731, 602);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(146, 47);
             this.btnIngresar.TabIndex = 4;
@@ -93,8 +94,9 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancelar.Location = new System.Drawing.Point(975, 609);
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(910, 602);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(146, 47);
             this.btnCancelar.TabIndex = 5;
@@ -104,30 +106,31 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 23F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(715, 296);
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 22.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(650, 289);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(753, 40);
+            this.label3.Size = new System.Drawing.Size(731, 40);
             this.label3.TabIndex = 6;
             this.label3.Text = "BIENVENIDOS A LA TIENDA DE ORLO";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(872, 406);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(807, 374);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 24);
+            this.label4.Size = new System.Drawing.Size(201, 25);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Ingrese sus datos";
+            this.label4.Text = "Ingrese sus datos...";
             // 
             // btnCrearCuenta
             // 
             this.btnCrearCuenta.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnCrearCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCrearCuenta.Location = new System.Drawing.Point(1156, 609);
+            this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearCuenta.Location = new System.Drawing.Point(1091, 602);
             this.btnCrearCuenta.Name = "btnCrearCuenta";
-            this.btnCrearCuenta.Size = new System.Drawing.Size(146, 47);
+            this.btnCrearCuenta.Size = new System.Drawing.Size(172, 47);
             this.btnCrearCuenta.TabIndex = 8;
             this.btnCrearCuenta.Text = "Crear cuenta";
             this.btnCrearCuenta.UseVisualStyleBackColor = false;

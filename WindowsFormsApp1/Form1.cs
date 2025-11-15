@@ -41,13 +41,26 @@ namespace WindowsFormsApp1
             clientesToolStripMenuItem.Click += (_, __) => OpenChild<FormClientes>();
             categoriasToolStripMenuItem.Click += (_, __) => OpenChild<FormCategorias>();
             productosToolStripMenuItem.Click += (_, __) => OpenChild<FormProductos>();
-            usuariosToolStripMenuItem.Click += (_, __) => OpenChild<FormUsuarios>();
+
+            usuariosToolStripMenuItem.Click += (_, __) =>
+            {
+                if (Guard(Session.Nivel < 3, "Sólo el Administrador puede gestionar usuarios.")) return;
+                OpenChild<FormUsuarios>();
+            };
 
             // TRANSACCIONES
-            ventasToolStripMenuItem.Click += (_, __) => OpenChild<FormVenta>();
-            creditosToolStripMenuItem.Click += (_, __) => OpenChild<FormCreditos>();
+            ventasToolStripMenuItem.Click += (_, __) =>
+            {
+                if (Guard(Session.Nivel < 2, "No tienes permisos para Transacciones.")) return;
+                OpenChild<FormVenta>();
+            };
+            creditosToolStripMenuItem.Click += (_, __) =>
+            {
+                if (Guard(Session.Nivel < 2, "No tienes permisos para Transacciones.")) return;
+                OpenChild<FormCreditos>();
+            };
 
-            // REPORTES
+            // REPORTES (consultas): siempre que canReports sea true ya estarán habilitados
             facturaToolStripMenuItem.Click += (_, __) => OpenChild<FormRptFactura>();
             ventasPorRangoToolStripMenuItem.Click += (_, __) => OpenChild<FormReporteVentas>();
             morososToolStripMenuItem.Click += (_, __) => OpenChild<FormMorosos>();
@@ -58,12 +71,17 @@ namespace WindowsFormsApp1
             calculadoraToolStripMenuItem.Click += (_, __) => LaunchCalc();
             calendarioToolStripMenuItem.Click += (_, __) => OpenChild<FormCalendario>();
             exportarCsvToolStripMenuItem.Click += (_, __) => OpenChild<FormExportadorCsv>();
-            bitacoraToolStripMenuItem.Click += (_, __) => OpenChild<FormBitacora>();
+            bitacoraToolStripMenuItem.Click += (_, __) =>
+            {
+                if (Guard(Session.Nivel < 3, "Sólo el Administrador puede ver la bitácora.")) return;
+                OpenChild<FormBitacora>();
+            };
 
             // AYUDA
             acercaDeToolStripMenuItem.Click += (_, __) => OpenChild<FormAcercaDe>();
             salirToolStripMenuItem.Click += (_, __) => Close();
         }
+
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
@@ -117,42 +135,60 @@ namespace WindowsFormsApp1
         }
 
         private void Form1_Load(object sender, EventArgs e)
+
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             Text = $"Principal - {Session.Username} (Nivel {Session.Nivel})";
-
-            switch (Session.Nivel)
-            {
-                case 3: // Admin
-                    Habilitar(true, true, true, true, true, true, true, true, true);
-                    break;
-
-                case 2: // Paramétrico
-                    Habilitar(true, true, true, true, true, true, true, true, true);
-                    break;
-
-                default: // 1 Esporádico
-                    Habilitar(false, false, false, false, true, false, false, false, true);
-                    break;
-            }
-
-
+            ApplyRolePermissions(Session.Nivel);
         }
 
-        private void Habilitar(bool categorias, bool productos, bool clientes, bool ventas,
-            bool probar, bool creditos, bool factura, bool ivaTrimestre, bool ventasMensuales)
+        // ======= AGREGA ESTOS MÉTODOS DE APOYO =======
+
+        // Mensaje estándar cuando no tiene permiso
+        private bool Guard(bool condition, string msg)
         {
-            // Si alguno de estos botones NO existe en tu diseñador,
-            // comenta su línea correspondiente.
-            btnCategorias.Enabled = categorias;
-            btnProductos.Enabled = productos;
-            btnClientes.Enabled = clientes;
-            btnVentas.Enabled = ventas;
-            btnProbar.Enabled = probar;
-            if (btnCreditos != null) btnCreditos.Enabled = creditos;
-            if (btnFactura != null) btnFactura.Enabled = factura;
-            if (btnIvaTrimestre != null) btnIvaTrimestre.Enabled = ivaTrimestre;
-            if (btnVentasMes != null) btnVentasMes.Enabled = ventasMensuales;
+            if (condition)
+            {
+                MessageBox.Show(msg, "Acceso restringido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            return false;
         }
+
+        // Aplica permisos por nivel: 3 Admin, 2 Paramétrico, 1 Esporádico
+        private void ApplyRolePermissions(int _)
+        {
+            // Menú
+            clientesToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Clientes);
+            categoriasToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Categorias);
+            productosToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Productos);
+            usuariosToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Usuarios);
+            ventasToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Ventas);
+            creditosToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Creditos);
+
+            facturaToolStripMenuItem.Enabled = Acl.Can(Feature.ReporteFactura);
+            ventasPorRangoToolStripMenuItem.Enabled = Acl.Can(Feature.ReporteVentasMes);
+            morososToolStripMenuItem.Enabled = Acl.Can(Feature.ReporteMorosos);
+            topProductosToolStripMenuItem.Enabled = Acl.Can(Feature.ReporteTopProductos);
+            existenciasBajasToolStripMenuItem.Enabled = Acl.Can(Feature.ReporteExistenciasBajas);
+
+            calculadoraToolStripMenuItem.Enabled = Acl.Can(Feature.Util_Calculadora);
+            calendarioToolStripMenuItem.Enabled = Acl.Can(Feature.Util_Calendario);
+            exportarCsvToolStripMenuItem.Enabled = Acl.Can(Feature.Util_ExportarCsv);
+            bitacoraToolStripMenuItem.Enabled = Acl.CanOpen(Feature.Bitacora);
+
+            // Botones laterales (si existen)
+            btnClientes.Enabled = Acl.CanOpen(Feature.Clientes);
+            btnCategorias.Enabled = Acl.CanOpen(Feature.Categorias);
+            btnProductos.Enabled = Acl.CanOpen(Feature.Productos);
+            btnUsuarios.Enabled = Acl.CanOpen(Feature.Usuarios);
+            btnVentas.Enabled = Acl.CanOpen(Feature.Ventas);
+            btnCreditos.Enabled = Acl.CanOpen(Feature.Creditos);
+            btnFactura.Enabled = Acl.Can(Feature.ReporteFactura);
+            btnVentasMes.Enabled = Acl.Can(Feature.ReporteVentasMes);
+            btnIvaTrimestre.Enabled = Acl.Can(Feature.ReporteIvaTrimestre);
+        }  
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {

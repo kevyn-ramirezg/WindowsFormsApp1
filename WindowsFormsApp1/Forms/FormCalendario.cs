@@ -15,6 +15,8 @@ namespace WindowsFormsApp1.Forms
     {
         public FormCalendario()
         {
+            this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
+
             InitializeComponent();
             Load += (_, __) => { cal.SetSelectionRange(DateTime.Today, DateTime.Today); };
             btnHoy.Click += (_, __) => cal.SetSelectionRange(DateTime.Today, DateTime.Today);
