@@ -74,6 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.ivaTrimestreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.pnlNav.SuspendLayout();
             this.SuspendLayout();
@@ -274,7 +275,8 @@
             // 
             this.transaccionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ventasToolStripMenuItem,
-            this.creditosToolStripMenuItem});
+            this.creditosToolStripMenuItem,
+            this.ivaTrimestreToolStripMenuItem});
             this.transaccionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transaccionesToolStripMenuItem.Name = "transaccionesToolStripMenuItem";
             this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
@@ -546,6 +548,12 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Entidades";
             // 
+            // ivaTrimestreToolStripMenuItem
+            // 
+            this.ivaTrimestreToolStripMenuItem.Name = "ivaTrimestreToolStripMenuItem";
+            this.ivaTrimestreToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.ivaTrimestreToolStripMenuItem.Text = "Iva Trimestre";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -616,6 +624,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem ivaTrimestreToolStripMenuItem;
     }
 }
 

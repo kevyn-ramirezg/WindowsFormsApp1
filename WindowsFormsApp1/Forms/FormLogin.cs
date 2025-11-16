@@ -17,9 +17,15 @@ namespace WindowsFormsApp1.Forms
 {
     public partial class FormLogin : Form
     {
+        private Panel pCenter;
+
         public FormLogin()
         {
             InitializeComponent();
+
+            CenterAllContent();                  // <- crea el panel y mete todo adentro centrado
+            this.Resize += (_, __) => RecenterContent();
+
             // Asegura que el click esté conectado por código:
             btnIngresar.Click += btnIngresar_Click;
             btnCancelar.Click += (s, e) => { this.DialogResult = DialogResult.Cancel; this.Close(); };
@@ -40,6 +46,69 @@ namespace WindowsFormsApp1.Forms
             this.AcceptButton = btnIngresar;
             this.CancelButton = btnCancelar;
         }
+
+        // Crea un panel, mueve dentro TODOS los controles actuales del formulario
+        // y centra ese panel en el cliente del form.
+        private void CenterAllContent()
+        {
+            // Si ya se hizo, no repetir
+            if (pCenter != null && !pCenter.IsDisposed) return;
+
+            // Creamos el panel contenedor
+            pCenter = new Panel
+            {
+                AutoSize = false,
+                BackColor = Color.Transparent
+            };
+            this.Controls.Add(pCenter);
+
+            // Tomamos un snapshot de los controles que ya existen en el form
+            // (excepto el pCenter recién agregado)
+            var items = this.Controls.Cast<Control>()
+                          .Where(c => c != pCenter)
+                          .ToList();
+
+            if (items.Count == 0) return;
+
+            // Calculamos el rectángulo que los contiene a todos
+            int minX = items.Min(c => c.Left);
+            int minY = items.Min(c => c.Top);
+            int maxR = items.Max(c => c.Right);
+            int maxB = items.Max(c => c.Bottom);
+
+            // Los reparentamos al panel, ajustando su ubicación relativa
+            foreach (var c in items)
+            {
+                c.Parent = pCenter;
+                c.Left -= minX;
+                c.Top -= minY;
+
+                // Para títulos largos, centramos el texto horizontalmente si aplica
+                if (c is Label lbl)
+                {
+                    lbl.AutoSize = true;
+                    lbl.TextAlign = ContentAlignment.MiddleCenter;
+                    // Si quieres que algún label ocupe todo el ancho del panel:
+                    // lbl.Width = Math.Max(lbl.Width, maxR - minX);
+                }
+            }
+
+            // El panel toma el tamaño del rectángulo envolvente
+            pCenter.Size = new Size(maxR - minX, maxB - minY);
+
+            // Lo centramos en el form
+            RecenterContent();
+        }
+
+        // Recentrar el panel contenedor según el tamaño actual del form
+        private void RecenterContent()
+        {
+            if (pCenter == null || pCenter.IsDisposed) return;
+            pCenter.Left = (this.ClientSize.Width - pCenter.Width) / 2;
+            pCenter.Top = (this.ClientSize.Height - pCenter.Height) / 2;
+            pCenter.BringToFront();
+        }
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {

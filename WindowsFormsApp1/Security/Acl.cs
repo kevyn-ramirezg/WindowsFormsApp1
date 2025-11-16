@@ -30,7 +30,8 @@ namespace WindowsFormsApp1.Security
                 // Transacciones: 2+
                 case Feature.Ventas:
                 case Feature.Creditos:
-                    return n >= 2;
+                case Feature.ReporteIvaTrimestre:
+                    return n >= 2;   // <-- sólo Paramétrico (2) y Admin (3)
 
                 // Usuarios y Bitácora: solo Admin
                 case Feature.Usuarios:
@@ -40,7 +41,6 @@ namespace WindowsFormsApp1.Security
                 // Reportes: 1+
                 case Feature.ReporteFactura:
                 case Feature.ReporteVentasMes:
-                case Feature.ReporteIvaTrimestre:
                 case Feature.ReporteMorosos:
                 case Feature.ReporteTopProductos:
                 case Feature.ReporteExistenciasBajas:
@@ -82,7 +82,8 @@ namespace WindowsFormsApp1.Security
                 case Feature.VentasCreate:
                 case Feature.VentasAnular:
                 case Feature.CreditosPagar:
-                    return n >= 2;
+                case Feature.ReporteIvaTrimestre:
+                    return n >= 2;   // <-- sólo Paramétrico (2) y Admin (3)
 
                 // Usuarios: solo Admin
                 case Feature.UsuariosCreate:
@@ -95,7 +96,6 @@ namespace WindowsFormsApp1.Security
                 // Reportes: 1+
                 case Feature.ReporteFactura:
                 case Feature.ReporteVentasMes:
-                case Feature.ReporteIvaTrimestre:
                 case Feature.ReporteMorosos:
                 case Feature.ReporteTopProductos:
                 case Feature.ReporteExistenciasBajas:

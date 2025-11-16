@@ -50,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 25);
+            this.label1.Location = new System.Drawing.Point(361, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(276, 34);
             this.label1.TabIndex = 0;
@@ -194,7 +194,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(767, 531);
+            this.btnCancelar.Location = new System.Drawing.Point(685, 540);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(138, 57);
             this.btnCancelar.TabIndex = 14;
@@ -206,7 +206,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.SkyBlue;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(548, 531);
+            this.btnGuardar.Location = new System.Drawing.Point(466, 540);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(138, 57);
             this.btnGuardar.TabIndex = 15;
