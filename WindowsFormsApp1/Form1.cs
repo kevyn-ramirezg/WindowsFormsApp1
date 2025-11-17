@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
 
 
             // 0) Color común de fondo para todo el welcome
-            var bg = Color.FromArgb(235, 242, 250); // el azul claro que ya usas
+            var bg = Color.DarkSeaGreen; // el azul claro que ya usas
 
             // 2) Panel que cubre la zona gris (lo ocultamos cuando haya formularios hijos)
             pWelcome = new Panel
@@ -108,8 +108,8 @@ namespace WindowsFormsApp1
             lblTitulo = new Label
             {
                 AutoSize = true,
-                Font = new Font("Modern No. 20", 35, FontStyle.Bold),
-                ForeColor = Color.FromArgb(32, 72, 110),
+                Font = new Font("Elephant", 35, FontStyle.Bold),
+                ForeColor = Color.DarkGreen,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Margin = new Padding(0, 0, 0, 6),
                 MinimumSize = new Size(CONTENT_WIDTH, 0),   // ⬅️ mismo ancho
@@ -122,8 +122,8 @@ namespace WindowsFormsApp1
             lblSubtitulo = new Label
             {
                 AutoSize = true,
-                Font = new Font("Modern No. 20", 20, FontStyle.Bold),
-                ForeColor = Color.FromArgb(32, 72, 100),
+                Font = new Font("Elephant", 20, FontStyle.Bold),
+                ForeColor = Color.DarkGreen,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Margin = new Padding(0, 0, 0, 16),
                 MinimumSize = new Size(CONTENT_WIDTH, 0),   // ⬅️ mismo ancho
@@ -136,8 +136,8 @@ namespace WindowsFormsApp1
             lblTips = new Label
             {
                 AutoSize = true,
-                Font = new Font("Modern No. 20", 15, FontStyle.Regular),
-                ForeColor = Color.FromArgb(25, 46, 64),
+                Font = new Font("Elephant", 15, FontStyle.Regular),
+                ForeColor = Color.Green,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Margin = new Padding(0, 0, 0, 16),
                 MinimumSize = new Size(CONTENT_WIDTH, 0),   // ⬅️ mismo ancho

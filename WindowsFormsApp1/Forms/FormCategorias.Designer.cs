@@ -34,7 +34,6 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid = new System.Windows.Forms.DataGridView();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -55,24 +54,16 @@
             // 
             this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grid.BackgroundColor = System.Drawing.Color.DarkSeaGreen;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(13, 76);
-            this.grid.Margin = new System.Windows.Forms.Padding(4);
+            this.grid.Location = new System.Drawing.Point(18, 95);
+            this.grid.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(1196, 308);
+            this.grid.Size = new System.Drawing.Size(1644, 385);
             this.grid.TabIndex = 0;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
@@ -80,77 +71,80 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 409);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(18, 511);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(80, 20);
+            this.lblNombre.Size = new System.Drawing.Size(84, 22);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre:";
             // 
             // txtNombre
             // 
-            this.txtNombre.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(101, 407);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(158, 511);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(399, 26);
+            this.txtNombre.Size = new System.Drawing.Size(547, 29);
             this.txtNombre.TabIndex = 2;
             // 
             // lblIva
             // 
             this.lblIva.AutoSize = true;
-            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIva.Location = new System.Drawing.Point(565, 409);
-            this.lblIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIva.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIva.ForeColor = System.Drawing.Color.White;
+            this.lblIva.Location = new System.Drawing.Point(777, 511);
+            this.lblIva.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblIva.Name = "lblIva";
-            this.lblIva.Size = new System.Drawing.Size(80, 20);
+            this.lblIva.Size = new System.Drawing.Size(87, 22);
             this.lblIva.TabIndex = 3;
             this.lblIva.Text = "IVA (%):";
             // 
             // numIva
             // 
-            this.numIva.BackColor = System.Drawing.SystemColors.Info;
+            this.numIva.BackColor = System.Drawing.Color.White;
             this.numIva.DecimalPlaces = 2;
-            this.numIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numIva.Location = new System.Drawing.Point(663, 406);
-            this.numIva.Margin = new System.Windows.Forms.Padding(4);
+            this.numIva.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numIva.Location = new System.Drawing.Point(930, 512);
+            this.numIva.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.numIva.Name = "numIva";
-            this.numIva.Size = new System.Drawing.Size(107, 26);
+            this.numIva.Size = new System.Drawing.Size(147, 29);
             this.numIva.TabIndex = 4;
             // 
             // lblUtilidad
             // 
             this.lblUtilidad.AutoSize = true;
-            this.lblUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUtilidad.Location = new System.Drawing.Point(791, 409);
-            this.lblUtilidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUtilidad.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUtilidad.ForeColor = System.Drawing.Color.White;
+            this.lblUtilidad.Location = new System.Drawing.Point(1144, 511);
+            this.lblUtilidad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblUtilidad.Name = "lblUtilidad";
-            this.lblUtilidad.Size = new System.Drawing.Size(115, 20);
+            this.lblUtilidad.Size = new System.Drawing.Size(123, 22);
             this.lblUtilidad.TabIndex = 5;
             this.lblUtilidad.Text = "Utilidad (%):";
             // 
             // numUtilidad
             // 
-            this.numUtilidad.BackColor = System.Drawing.SystemColors.Info;
+            this.numUtilidad.BackColor = System.Drawing.Color.White;
             this.numUtilidad.DecimalPlaces = 2;
-            this.numUtilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numUtilidad.Location = new System.Drawing.Point(923, 407);
-            this.numUtilidad.Margin = new System.Windows.Forms.Padding(4);
+            this.numUtilidad.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUtilidad.Location = new System.Drawing.Point(1338, 509);
+            this.numUtilidad.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.numUtilidad.Name = "numUtilidad";
-            this.numUtilidad.Size = new System.Drawing.Size(107, 26);
+            this.numUtilidad.Size = new System.Drawing.Size(147, 29);
             this.numUtilidad.TabIndex = 6;
             // 
             // btnNuevo
             // 
-            this.btnNuevo.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnNuevo.BackColor = System.Drawing.Color.White;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(231, 500);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNuevo.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Location = new System.Drawing.Point(318, 625);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(152, 48);
+            this.btnNuevo.Size = new System.Drawing.Size(209, 60);
             this.btnNuevo.TabIndex = 7;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -158,13 +152,13 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnGuardar.BackColor = System.Drawing.Color.White;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(434, 500);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(597, 625);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(152, 48);
+            this.btnGuardar.Size = new System.Drawing.Size(209, 60);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -172,13 +166,13 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnEliminar.BackColor = System.Drawing.Color.White;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(642, 500);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(883, 625);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(152, 48);
+            this.btnEliminar.Size = new System.Drawing.Size(209, 60);
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -187,19 +181,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(18, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 34);
+            this.label1.Size = new System.Drawing.Size(298, 43);
             this.label1.TabIndex = 10;
             this.label1.Text = "CATEGORÍAS";
             // 
             // FormCategorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1228, 705);
+            this.BackColor = System.Drawing.Color.DarkGreen;
+            this.ClientSize = new System.Drawing.Size(1688, 881);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
@@ -211,7 +207,8 @@
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FormCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorías";

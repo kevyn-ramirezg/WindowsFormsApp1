@@ -56,28 +56,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(346, 35);
+            this.label1.Size = new System.Drawing.Size(423, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "CRÉDITOS Y PAGOS";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 69);
+            this.label2.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(18, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.Size = new System.Drawing.Size(82, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Venta #:";
             // 
             // numVentaId
             // 
-            this.numVentaId.BackColor = System.Drawing.SystemColors.Info;
-            this.numVentaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numVentaId.Location = new System.Drawing.Point(116, 67);
+            this.numVentaId.BackColor = System.Drawing.Color.White;
+            this.numVentaId.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numVentaId.Location = new System.Drawing.Point(131, 70);
             this.numVentaId.Maximum = new decimal(new int[] {
             1661992959,
             1808227885,
@@ -89,7 +91,7 @@
             0,
             0});
             this.numVentaId.Name = "numVentaId";
-            this.numVentaId.Size = new System.Drawing.Size(120, 26);
+            this.numVentaId.Size = new System.Drawing.Size(135, 29);
             this.numVentaId.TabIndex = 2;
             this.numVentaId.Value = new decimal(new int[] {
             1,
@@ -99,12 +101,12 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(307, 59);
+            this.btnBuscar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(346, 62);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 41);
+            this.btnBuscar.Size = new System.Drawing.Size(112, 44);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -113,9 +115,10 @@
             // 
             this.gridCuotas.AllowUserToAddRows = false;
             this.gridCuotas.AllowUserToDeleteRows = false;
-            this.gridCuotas.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gridCuotas.BackgroundColor = System.Drawing.Color.DarkSeaGreen;
+            this.gridCuotas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCuotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCuotas.Location = new System.Drawing.Point(12, 121);
+            this.gridCuotas.Location = new System.Drawing.Point(12, 126);
             this.gridCuotas.MultiSelect = false;
             this.gridCuotas.Name = "gridCuotas";
             this.gridCuotas.ReadOnly = true;
@@ -123,22 +126,23 @@
             this.gridCuotas.RowHeadersWidth = 51;
             this.gridCuotas.RowTemplate.Height = 24;
             this.gridCuotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCuotas.Size = new System.Drawing.Size(1325, 308);
+            this.gridCuotas.Size = new System.Drawing.Size(1338, 327);
             this.gridCuotas.TabIndex = 4;
             // 
             // grpTotales
             // 
-            this.grpTotales.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.grpTotales.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.grpTotales.Controls.Add(this.lblPendiente);
             this.grpTotales.Controls.Add(this.lblPagado);
             this.grpTotales.Controls.Add(this.lblTotal);
             this.grpTotales.Controls.Add(this.lblPendienteTitle);
             this.grpTotales.Controls.Add(this.lblPagadoTitle);
             this.grpTotales.Controls.Add(this.lblTotalTitle);
-            this.grpTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpTotales.Location = new System.Drawing.Point(19, 452);
+            this.grpTotales.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpTotales.ForeColor = System.Drawing.Color.White;
+            this.grpTotales.Location = new System.Drawing.Point(131, 480);
             this.grpTotales.Name = "grpTotales";
-            this.grpTotales.Size = new System.Drawing.Size(635, 286);
+            this.grpTotales.Size = new System.Drawing.Size(451, 304);
             this.grpTotales.TabIndex = 5;
             this.grpTotales.TabStop = false;
             this.grpTotales.Text = "Totales";
@@ -146,80 +150,82 @@
             // lblPendiente
             // 
             this.lblPendiente.AutoSize = true;
-            this.lblPendiente.Location = new System.Drawing.Point(169, 231);
+            this.lblPendiente.Location = new System.Drawing.Point(190, 245);
             this.lblPendiente.Name = "lblPendiente";
-            this.lblPendiente.Size = new System.Drawing.Size(19, 20);
+            this.lblPendiente.Size = new System.Drawing.Size(23, 22);
             this.lblPendiente.TabIndex = 5;
             this.lblPendiente.Text = "0";
             // 
             // lblPagado
             // 
             this.lblPagado.AutoSize = true;
-            this.lblPagado.Location = new System.Drawing.Point(169, 138);
+            this.lblPagado.Location = new System.Drawing.Point(190, 147);
             this.lblPagado.Name = "lblPagado";
-            this.lblPagado.Size = new System.Drawing.Size(19, 20);
+            this.lblPagado.Size = new System.Drawing.Size(23, 22);
             this.lblPagado.TabIndex = 4;
             this.lblPagado.Text = "0";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(169, 40);
+            this.lblTotal.Location = new System.Drawing.Point(190, 42);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(19, 20);
+            this.lblTotal.Size = new System.Drawing.Size(23, 22);
             this.lblTotal.TabIndex = 3;
             this.lblTotal.Text = "0";
             // 
             // lblPendienteTitle
             // 
             this.lblPendienteTitle.AutoSize = true;
-            this.lblPendienteTitle.Location = new System.Drawing.Point(22, 231);
+            this.lblPendienteTitle.Location = new System.Drawing.Point(25, 245);
             this.lblPendienteTitle.Name = "lblPendienteTitle";
-            this.lblPendienteTitle.Size = new System.Drawing.Size(98, 20);
+            this.lblPendienteTitle.Size = new System.Drawing.Size(102, 22);
             this.lblPendienteTitle.TabIndex = 2;
             this.lblPendienteTitle.Text = "Pendiente:";
             // 
             // lblPagadoTitle
             // 
             this.lblPagadoTitle.AutoSize = true;
-            this.lblPagadoTitle.Location = new System.Drawing.Point(22, 138);
+            this.lblPagadoTitle.Location = new System.Drawing.Point(25, 147);
             this.lblPagadoTitle.Name = "lblPagadoTitle";
-            this.lblPagadoTitle.Size = new System.Drawing.Size(123, 20);
+            this.lblPagadoTitle.Size = new System.Drawing.Size(127, 22);
             this.lblPagadoTitle.TabIndex = 1;
             this.lblPagadoTitle.Text = "Total pagado:";
             // 
             // lblTotalTitle
             // 
             this.lblTotalTitle.AutoSize = true;
-            this.lblTotalTitle.Location = new System.Drawing.Point(22, 40);
+            this.lblTotalTitle.Location = new System.Drawing.Point(25, 42);
             this.lblTotalTitle.Name = "lblTotalTitle";
-            this.lblTotalTitle.Size = new System.Drawing.Size(121, 20);
+            this.lblTotalTitle.Size = new System.Drawing.Size(127, 22);
             this.lblTotalTitle.TabIndex = 0;
             this.lblTotalTitle.Text = "Total credito:";
             // 
             // grpPago
             // 
-            this.grpPago.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.grpPago.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.grpPago.Controls.Add(this.btnPagar);
             this.grpPago.Controls.Add(this.dtpFecha);
             this.grpPago.Controls.Add(this.lblFecha);
             this.grpPago.Controls.Add(this.numMonto);
             this.grpPago.Controls.Add(this.lblMonto);
-            this.grpPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpPago.Location = new System.Drawing.Point(717, 452);
+            this.grpPago.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPago.ForeColor = System.Drawing.Color.White;
+            this.grpPago.Location = new System.Drawing.Point(722, 480);
             this.grpPago.Name = "grpPago";
-            this.grpPago.Size = new System.Drawing.Size(620, 286);
+            this.grpPago.Size = new System.Drawing.Size(473, 304);
             this.grpPago.TabIndex = 6;
             this.grpPago.TabStop = false;
             this.grpPago.Text = "Registrar Pago";
             // 
             // btnPagar
             // 
-            this.btnPagar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnPagar.BackColor = System.Drawing.Color.White;
             this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagar.Location = new System.Drawing.Point(109, 205);
+            this.btnPagar.ForeColor = System.Drawing.Color.Black;
+            this.btnPagar.Location = new System.Drawing.Point(123, 218);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(168, 57);
+            this.btnPagar.Size = new System.Drawing.Size(189, 61);
             this.btnPagar.TabIndex = 4;
             this.btnPagar.Text = "Registrar Pago";
             this.btnPagar.UseVisualStyleBackColor = false;
@@ -228,53 +234,53 @@
             // 
             this.dtpFecha.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(109, 133);
+            this.dtpFecha.Location = new System.Drawing.Point(123, 141);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(168, 27);
+            this.dtpFecha.Size = new System.Drawing.Size(188, 29);
             this.dtpFecha.TabIndex = 3;
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(24, 137);
+            this.lblFecha.Location = new System.Drawing.Point(27, 146);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(66, 20);
+            this.lblFecha.Size = new System.Drawing.Size(67, 22);
             this.lblFecha.TabIndex = 2;
             this.lblFecha.Text = "Fecha:";
             // 
             // numMonto
             // 
-            this.numMonto.BackColor = System.Drawing.SystemColors.Info;
+            this.numMonto.BackColor = System.Drawing.Color.White;
             this.numMonto.Increment = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numMonto.Location = new System.Drawing.Point(109, 38);
+            this.numMonto.Location = new System.Drawing.Point(123, 40);
             this.numMonto.Maximum = new decimal(new int[] {
             -279969792,
             451204834,
             27,
             0});
             this.numMonto.Name = "numMonto";
-            this.numMonto.Size = new System.Drawing.Size(168, 27);
+            this.numMonto.Size = new System.Drawing.Size(189, 29);
             this.numMonto.TabIndex = 1;
             // 
             // lblMonto
             // 
             this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(24, 43);
+            this.lblMonto.Location = new System.Drawing.Point(27, 46);
             this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(66, 20);
+            this.lblMonto.Size = new System.Drawing.Size(71, 22);
             this.lblMonto.TabIndex = 0;
             this.lblMonto.Text = "Monto:";
             // 
             // FormCreditos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1349, 764);
+            this.BackColor = System.Drawing.Color.DarkGreen;
+            this.ClientSize = new System.Drawing.Size(1365, 812);
             this.Controls.Add(this.grpPago);
             this.Controls.Add(this.grpTotales);
             this.Controls.Add(this.gridCuotas);
@@ -282,6 +288,7 @@
             this.Controls.Add(this.numVentaId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Elephant", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormCreditos";
             this.Text = "Creditos/Pagos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

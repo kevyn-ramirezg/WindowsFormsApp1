@@ -48,6 +48,7 @@
             this.transaccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ivaTrimestreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasPorRangoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,16 +75,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.ivaTrimestreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.pnlNav.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCategorias
             // 
-            this.btnCategorias.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnCategorias.BackColor = System.Drawing.Color.White;
             this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorias.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategorias.Location = new System.Drawing.Point(13, 159);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(182, 32);
@@ -94,9 +94,9 @@
             // 
             // btnProductos
             // 
-            this.btnProductos.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnProductos.BackColor = System.Drawing.Color.White;
             this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductos.Location = new System.Drawing.Point(13, 197);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(182, 32);
@@ -107,9 +107,9 @@
             // 
             // btnClientes
             // 
-            this.btnClientes.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnClientes.BackColor = System.Drawing.Color.White;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.Location = new System.Drawing.Point(13, 121);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(182, 32);
@@ -121,18 +121,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(2, 26);
+            this.label1.BackColor = System.Drawing.Color.DarkGreen;
+            this.label1.Font = new System.Drawing.Font("Elephant", 9.5F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(10, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 25);
+            this.label1.Size = new System.Drawing.Size(168, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Productos ORLO";
             // 
             // btnProbar
             // 
-            this.btnProbar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnProbar.BackColor = System.Drawing.SystemColors.Info;
             this.btnProbar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProbar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProbar.Location = new System.Drawing.Point(22, 785);
             this.btnProbar.Name = "btnProbar";
             this.btnProbar.Size = new System.Drawing.Size(162, 30);
@@ -143,9 +145,9 @@
             // 
             // btnVentas
             // 
-            this.btnVentas.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnVentas.BackColor = System.Drawing.Color.White;
             this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentas.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.Location = new System.Drawing.Point(13, 334);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(182, 32);
@@ -156,9 +158,9 @@
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCerrarSesion.BackColor = System.Drawing.SystemColors.Info;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.Location = new System.Drawing.Point(22, 735);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(162, 29);
@@ -169,9 +171,9 @@
             // 
             // btnFactura
             // 
-            this.btnFactura.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnFactura.BackColor = System.Drawing.Color.White;
             this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnFactura.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFactura.Location = new System.Drawing.Point(13, 518);
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Size = new System.Drawing.Size(182, 32);
@@ -182,9 +184,9 @@
             // 
             // btnVentasMes
             // 
-            this.btnVentasMes.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnVentasMes.BackColor = System.Drawing.Color.White;
             this.btnVentasMes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentasMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnVentasMes.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentasMes.Location = new System.Drawing.Point(13, 556);
             this.btnVentasMes.Name = "btnVentasMes";
             this.btnVentasMes.Size = new System.Drawing.Size(182, 32);
@@ -195,9 +197,9 @@
             // 
             // btnIvaTrimestre
             // 
-            this.btnIvaTrimestre.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnIvaTrimestre.BackColor = System.Drawing.Color.White;
             this.btnIvaTrimestre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIvaTrimestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIvaTrimestre.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIvaTrimestre.Location = new System.Drawing.Point(13, 410);
             this.btnIvaTrimestre.Name = "btnIvaTrimestre";
             this.btnIvaTrimestre.Size = new System.Drawing.Size(182, 32);
@@ -208,9 +210,9 @@
             // 
             // btnCreditos
             // 
-            this.btnCreditos.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnCreditos.BackColor = System.Drawing.Color.White;
             this.btnCreditos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreditos.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreditos.Location = new System.Drawing.Point(13, 372);
             this.btnCreditos.Name = "btnCreditos";
             this.btnCreditos.Size = new System.Drawing.Size(182, 32);
@@ -221,7 +223,8 @@
             // 
             // menu
             // 
-            this.menu.BackColor = System.Drawing.Color.SkyBlue;
+            this.menu.BackColor = System.Drawing.Color.Azure;
+            this.menu.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.entidadesToolStripMenuItem,
@@ -231,7 +234,7 @@
             this.ayudaToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1584, 26);
+            this.menu.Size = new System.Drawing.Size(1584, 28);
             this.menu.TabIndex = 12;
             this.menu.Text = "menuStrip1";
             // 
@@ -242,33 +245,34 @@
             this.categoriasToolStripMenuItem,
             this.productosToolStripMenuItem,
             this.usuariosToolStripMenuItem});
-            this.entidadesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entidadesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entidadesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.entidadesToolStripMenuItem.Name = "entidadesToolStripMenuItem";
-            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.entidadesToolStripMenuItem.Text = "Entidades";
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.categoriasToolStripMenuItem.Text = "Categorías";
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.productosToolStripMenuItem.Text = "Productos";
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // transaccionesToolStripMenuItem
@@ -277,7 +281,7 @@
             this.ventasToolStripMenuItem,
             this.creditosToolStripMenuItem,
             this.ivaTrimestreToolStripMenuItem});
-            this.transaccionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transaccionesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transaccionesToolStripMenuItem.Name = "transaccionesToolStripMenuItem";
             this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
             this.transaccionesToolStripMenuItem.Text = "Transacciones";
@@ -285,14 +289,20 @@
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // creditosToolStripMenuItem
             // 
             this.creditosToolStripMenuItem.Name = "creditosToolStripMenuItem";
-            this.creditosToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.creditosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.creditosToolStripMenuItem.Text = "Creditos / Abonos";
+            // 
+            // ivaTrimestreToolStripMenuItem
+            // 
+            this.ivaTrimestreToolStripMenuItem.Name = "ivaTrimestreToolStripMenuItem";
+            this.ivaTrimestreToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ivaTrimestreToolStripMenuItem.Text = "Iva Trimestre";
             // 
             // reportesToolStripMenuItem
             // 
@@ -302,39 +312,39 @@
             this.morososToolStripMenuItem,
             this.topProductosToolStripMenuItem,
             this.existenciasBajasToolStripMenuItem});
-            this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
             // facturaToolStripMenuItem
             // 
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.facturaToolStripMenuItem.Text = "Factura";
             // 
             // ventasPorRangoToolStripMenuItem
             // 
             this.ventasPorRangoToolStripMenuItem.Name = "ventasPorRangoToolStripMenuItem";
-            this.ventasPorRangoToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.ventasPorRangoToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.ventasPorRangoToolStripMenuItem.Text = "Ventas por rango/mes";
             // 
             // morososToolStripMenuItem
             // 
             this.morososToolStripMenuItem.Name = "morososToolStripMenuItem";
-            this.morososToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.morososToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.morososToolStripMenuItem.Text = "Morosos";
             // 
             // topProductosToolStripMenuItem
             // 
             this.topProductosToolStripMenuItem.Name = "topProductosToolStripMenuItem";
-            this.topProductosToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.topProductosToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.topProductosToolStripMenuItem.Text = "Top Productos";
             // 
             // existenciasBajasToolStripMenuItem
             // 
             this.existenciasBajasToolStripMenuItem.Name = "existenciasBajasToolStripMenuItem";
-            this.existenciasBajasToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.existenciasBajasToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.existenciasBajasToolStripMenuItem.Text = "Existencias Bajas";
             // 
             // utilidadesToolStripMenuItem
@@ -344,33 +354,33 @@
             this.calendarioToolStripMenuItem,
             this.bitacoraToolStripMenuItem,
             this.exportarCsvToolStripMenuItem});
-            this.utilidadesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.utilidadesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.utilidadesToolStripMenuItem.Name = "utilidadesToolStripMenuItem";
-            this.utilidadesToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.utilidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.utilidadesToolStripMenuItem.Text = "Utilidades";
             // 
             // calculadoraToolStripMenuItem
             // 
             this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.calculadoraToolStripMenuItem.Text = "Calculadora";
             // 
             // calendarioToolStripMenuItem
             // 
             this.calendarioToolStripMenuItem.Name = "calendarioToolStripMenuItem";
-            this.calendarioToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.calendarioToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.calendarioToolStripMenuItem.Text = "Calendario";
             // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
-            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.bitacoraToolStripMenuItem.Text = "Bitacora";
             // 
             // exportarCsvToolStripMenuItem
             // 
             this.exportarCsvToolStripMenuItem.Name = "exportarCsvToolStripMenuItem";
-            this.exportarCsvToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.exportarCsvToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.exportarCsvToolStripMenuItem.Text = "Exportar CSV";
             // 
             // ayudaToolStripMenuItem
@@ -378,9 +388,9 @@
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.acercaDeToolStripMenuItem,
             this.salirToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ayudaToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // acercaDeToolStripMenuItem
@@ -397,6 +407,7 @@
             // 
             // pnlNav
             // 
+            this.pnlNav.BackColor = System.Drawing.Color.DarkGreen;
             this.pnlNav.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlNav.Controls.Add(this.label8);
             this.pnlNav.Controls.Add(this.label1);
@@ -421,9 +432,9 @@
             this.pnlNav.Controls.Add(this.btnProductos);
             this.pnlNav.Controls.Add(this.btnVentas);
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNav.Location = new System.Drawing.Point(0, 26);
+            this.pnlNav.Location = new System.Drawing.Point(0, 28);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(213, 829);
+            this.pnlNav.Size = new System.Drawing.Size(213, 827);
             this.pnlNav.TabIndex = 14;
             // 
             // label8
@@ -448,6 +459,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.DarkGreen;
             this.label6.Location = new System.Drawing.Point(-3, 445);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(217, 16);
@@ -457,6 +469,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.DarkGreen;
             this.label5.Location = new System.Drawing.Point(-3, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 16);
@@ -465,9 +478,9 @@
             // 
             // btnExistenciasBajas
             // 
-            this.btnExistenciasBajas.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnExistenciasBajas.BackColor = System.Drawing.Color.White;
             this.btnExistenciasBajas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExistenciasBajas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnExistenciasBajas.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExistenciasBajas.Location = new System.Drawing.Point(13, 670);
             this.btnExistenciasBajas.Name = "btnExistenciasBajas";
             this.btnExistenciasBajas.Size = new System.Drawing.Size(182, 32);
@@ -478,9 +491,9 @@
             // 
             // btnTopProductos
             // 
-            this.btnTopProductos.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnTopProductos.BackColor = System.Drawing.Color.White;
             this.btnTopProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTopProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTopProductos.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTopProductos.Location = new System.Drawing.Point(13, 632);
             this.btnTopProductos.Name = "btnTopProductos";
             this.btnTopProductos.Size = new System.Drawing.Size(182, 32);
@@ -491,9 +504,9 @@
             // 
             // btnMorosos
             // 
-            this.btnMorosos.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnMorosos.BackColor = System.Drawing.Color.White;
             this.btnMorosos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMorosos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.btnMorosos.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMorosos.Location = new System.Drawing.Point(13, 594);
             this.btnMorosos.Name = "btnMorosos";
             this.btnMorosos.Size = new System.Drawing.Size(182, 32);
@@ -506,10 +519,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(13, 479);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 24);
+            this.label4.Size = new System.Drawing.Size(113, 28);
             this.label4.TabIndex = 11;
             this.label4.Text = "Reportes";
             // 
@@ -517,18 +531,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(13, 300);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 24);
+            this.label3.Size = new System.Drawing.Size(174, 28);
             this.label3.TabIndex = 4;
             this.label3.Text = "Transacciones";
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnUsuarios.BackColor = System.Drawing.Color.White;
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.Location = new System.Drawing.Point(13, 235);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(182, 32);
@@ -541,24 +556,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(13, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 24);
+            this.label2.Size = new System.Drawing.Size(125, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "Entidades";
-            // 
-            // ivaTrimestreToolStripMenuItem
-            // 
-            this.ivaTrimestreToolStripMenuItem.Name = "ivaTrimestreToolStripMenuItem";
-            this.ivaTrimestreToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
-            this.ivaTrimestreToolStripMenuItem.Text = "Iva Trimestre";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(1584, 855);
             this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.menu);

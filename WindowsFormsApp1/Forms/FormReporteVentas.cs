@@ -62,8 +62,8 @@ namespace WindowsFormsApp1.Forms
             g.EnableHeadersVisualStyles = false;
             g.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(230, 235, 245);
             g.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            g.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            g.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            g.ColumnHeadersDefaultCellStyle.Font = new Font("Elephant", 10, FontStyle.Bold);
+            g.DefaultCellStyle.Font = new Font("Elephant", 10, FontStyle.Regular);
             g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 248, 255);
             g.RowTemplate.Height = 28;
         }

@@ -26,5 +26,10 @@ namespace WindowsFormsApp1.Forms
             btnCerrar.Click += (_, __) => Close();
             lnkRepo.LinkClicked += (_, __) => System.Diagnostics.Process.Start("https://github.com/kevyn-ramirezg/WindowsFormsApp1");
         }
+
+        private void FormAcercaDe_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

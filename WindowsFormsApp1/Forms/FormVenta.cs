@@ -32,8 +32,8 @@ namespace WindowsFormsApp1
             // rbContado
             this.rbContado = new RadioButton();
             this.rbContado.AutoSize = true;
-            this.rbContado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbContado.Location = new System.Drawing.Point(170, 470);
+            this.rbContado.Font = new System.Drawing.Font("Elephant", 10F);
+            this.rbContado.Location = new System.Drawing.Point(260, 620);
             this.rbContado.Name = "rbContado";
             this.rbContado.Size = new System.Drawing.Size(100, 21);
             this.rbContado.TabIndex = 14;
@@ -45,8 +45,8 @@ namespace WindowsFormsApp1
             // rbCredito
             this.rbCredito = new RadioButton();
             this.rbCredito.AutoSize = true;
-            this.rbCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbCredito.Location = new System.Drawing.Point(260, 470);
+            this.rbCredito.Font = new System.Drawing.Font("Elephant", 10F);
+            this.rbCredito.Location = new System.Drawing.Point(360, 620);
             this.rbCredito.Name = "rbCredito";
             this.rbCredito.Size = new System.Drawing.Size(78, 21);
             this.rbCredito.TabIndex = 15;
@@ -57,8 +57,8 @@ namespace WindowsFormsApp1
             this.cboMeses = new ComboBox();
             this.cboMeses.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cboMeses.BackColor = System.Drawing.SystemColors.Info;
-            this.cboMeses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cboMeses.Location = new System.Drawing.Point(360, 470);
+            this.cboMeses.Font = new System.Drawing.Font("Elephant", 10F);
+            this.cboMeses.Location = new System.Drawing.Point(500, 620);
             this.cboMeses.Name = "cboMeses";
             this.cboMeses.Size = new System.Drawing.Size(120, 28);
             this.cboMeses.TabIndex = 16;
@@ -67,8 +67,8 @@ namespace WindowsFormsApp1
             // lblCuotaInicial
             this.lblCuotaInicial = new Label();
             this.lblCuotaInicial.AutoSize = true;
-            this.lblCuotaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCuotaInicial.Location = new System.Drawing.Point(515, 470);
+            this.lblCuotaInicial.Font = new System.Drawing.Font("Elephant", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCuotaInicial.Location = new System.Drawing.Point(700, 620);
             this.lblCuotaInicial.Name = "lblCuotaInicial";
             this.lblCuotaInicial.Size = new System.Drawing.Size(142, 20);
             this.lblCuotaInicial.TabIndex = 17;
@@ -78,8 +78,8 @@ namespace WindowsFormsApp1
             // lblCuotaMensual
             this.lblCuotaMensual = new Label();
             this.lblCuotaMensual.AutoSize = true;
-            this.lblCuotaMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCuotaMensual.Location = new System.Drawing.Point(700, 470);
+            this.lblCuotaMensual.Font = new System.Drawing.Font("Elephant", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCuotaMensual.Location = new System.Drawing.Point(920, 620);
             this.lblCuotaMensual.Name = "lblCuotaMensual";
             this.lblCuotaMensual.Size = new System.Drawing.Size(165, 20);
             this.lblCuotaMensual.TabIndex = 18;

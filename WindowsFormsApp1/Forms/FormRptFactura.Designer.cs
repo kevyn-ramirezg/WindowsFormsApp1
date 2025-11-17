@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.numVentaId = new System.Windows.Forms.NumericUpDown();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
@@ -42,9 +41,9 @@
             // 
             // numVentaId
             // 
-            this.numVentaId.BackColor = System.Drawing.SystemColors.Info;
-            this.numVentaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.numVentaId.Location = new System.Drawing.Point(122, 124);
+            this.numVentaId.BackColor = System.Drawing.Color.White;
+            this.numVentaId.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numVentaId.Location = new System.Drawing.Point(137, 132);
             this.numVentaId.Maximum = new decimal(new int[] {
             -1530494977,
             232830,
@@ -56,7 +55,7 @@
             0,
             0});
             this.numVentaId.Name = "numVentaId";
-            this.numVentaId.Size = new System.Drawing.Size(140, 26);
+            this.numVentaId.Size = new System.Drawing.Size(158, 29);
             this.numVentaId.TabIndex = 0;
             this.numVentaId.Value = new decimal(new int[] {
             1,
@@ -66,12 +65,12 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(312, 108);
+            this.btnBuscar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(351, 115);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(123, 56);
+            this.btnBuscar.Size = new System.Drawing.Size(138, 60);
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -82,70 +81,65 @@
             this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grid.BackgroundColor = System.Drawing.Color.DarkSeaGreen;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(12, 201);
+            this.grid.Location = new System.Drawing.Point(14, 214);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1392, 303);
+            this.grid.Size = new System.Drawing.Size(1265, 322);
             this.grid.TabIndex = 2;
             // 
             // lblTotales
             // 
             this.lblTotales.AutoSize = true;
-            this.lblTotales.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotales.Location = new System.Drawing.Point(475, 124);
+            this.lblTotales.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotales.ForeColor = System.Drawing.Color.White;
+            this.lblTotales.Location = new System.Drawing.Point(534, 132);
             this.lblTotales.Name = "lblTotales";
-            this.lblTotales.Size = new System.Drawing.Size(392, 34);
+            this.lblTotales.Size = new System.Drawing.Size(239, 22);
             this.lblTotales.TabIndex = 3;
             this.lblTotales.Text = "Subtotal: 0 IVA: 0 Total: 0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 126);
+            this.label1.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(20, 134);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.Size = new System.Drawing.Size(82, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "Venta #:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 22.2F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(22, 30);
+            this.label2.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(25, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(454, 38);
+            this.label2.Size = new System.Drawing.Size(514, 43);
             this.label2.TabIndex = 5;
             this.label2.Text = "REPORTE DE FACTURA";
             // 
             // reportViewer1
             // 
-            this.reportViewer1.BackColor = System.Drawing.Color.Silver;
-            this.reportViewer1.Location = new System.Drawing.Point(12, 540);
+            this.reportViewer1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.reportViewer1.Location = new System.Drawing.Point(14, 574);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1392, 428);
+            this.reportViewer1.Size = new System.Drawing.Size(1262, 301);
             this.reportViewer1.TabIndex = 6;
             // 
             // FormRptFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1416, 980);
+            this.BackColor = System.Drawing.Color.DarkGreen;
+            this.ClientSize = new System.Drawing.Size(1292, 893);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -153,6 +147,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.numVentaId);
+            this.Font = new System.Drawing.Font("Elephant", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormRptFactura";
             this.Text = "FormRptFactura";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
