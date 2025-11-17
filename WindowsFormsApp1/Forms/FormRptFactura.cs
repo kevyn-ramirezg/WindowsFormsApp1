@@ -134,7 +134,7 @@ namespace WindowsFormsApp1.Forms
             reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
 
             // 2) Ruta del RDLC (ajústala si lo moviste de carpeta)
-            reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.ReporteFactura.rdlc";
+            reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.Reports.ReporteFactura.rdlc";
             // Si lo pusiste como Embedded Resource, usa:
             // reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.ReporteFactura.rdlc";
 

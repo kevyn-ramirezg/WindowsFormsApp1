@@ -248,7 +248,7 @@
             this.entidadesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entidadesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.entidadesToolStripMenuItem.Name = "entidadesToolStripMenuItem";
-            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.entidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
             this.entidadesToolStripMenuItem.Text = "Entidades";
             // 
             // clientesToolStripMenuItem
@@ -283,7 +283,7 @@
             this.ivaTrimestreToolStripMenuItem});
             this.transaccionesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transaccionesToolStripMenuItem.Name = "transaccionesToolStripMenuItem";
-            this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
+            this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.transaccionesToolStripMenuItem.Text = "Transacciones";
             // 
             // ventasToolStripMenuItem
@@ -314,7 +314,7 @@
             this.existenciasBajasToolStripMenuItem});
             this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(92, 26);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
             // facturaToolStripMenuItem
@@ -356,7 +356,7 @@
             this.exportarCsvToolStripMenuItem});
             this.utilidadesToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.utilidadesToolStripMenuItem.Name = "utilidadesToolStripMenuItem";
-            this.utilidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.utilidadesToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
             this.utilidadesToolStripMenuItem.Text = "Utilidades";
             // 
             // calculadoraToolStripMenuItem
@@ -390,7 +390,7 @@
             this.salirToolStripMenuItem});
             this.ayudaToolStripMenuItem.Font = new System.Drawing.Font("Elephant", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // acercaDeToolStripMenuItem

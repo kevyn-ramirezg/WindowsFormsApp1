@@ -76,7 +76,7 @@ namespace WindowsFormsApp1.Forms
 
             // Opción recomendada: RDLC como Embedded Resource
             // Si tu proyecto se llama distinto o el RDLC está en carpeta, cambia el namespace:
-            reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.ReporteVentasMes.rdlc";
+            reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp1.Reports.ReporteVentasMes.rdlc";
             // Si prefieres ruta en disco:
             // var ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ReporteVentasMes.rdlc");
             // reportViewer1.LocalReport.ReportPath = ruta;

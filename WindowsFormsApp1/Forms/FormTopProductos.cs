@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Data;
+using Microsoft.Reporting.WinForms;
+
 
 
 namespace WindowsFormsApp1.Forms
@@ -17,6 +19,8 @@ namespace WindowsFormsApp1.Forms
 
     public partial class FormTopProductos : Form
     {
+        private DataTable _lastTop;
+
         public FormTopProductos()
         {
             this.Text += $"  | Nivel={WindowsFormsApp1.Security.Session.Nivel}";
@@ -32,16 +36,69 @@ namespace WindowsFormsApp1.Forms
             };
 
             btnConsultar.Click += (_, __) => Consultar();
+            btnImprimir.Click += (_, __) => Imprimir();
+            this.Controls.Add(btnImprimir);
         }
 
         private void Consultar()
         {
-            int topN = (int)numTop.Value; // o 10
+            int topN = (int)numTop.Value;
             var dt = ConsultarTop(dtpIni.Value, dtpFin.Value, topN);
             grid.DataSource = dt;
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.ReadOnly = true;
+
+            _lastTop = dt; // <-- guarda para imprimir
         }
+
+        private void Imprimir()
+        {
+            if (_lastTop == null || _lastTop.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para imprimir.");
+                return;
+            }
+
+            var rdlc = "WindowsFormsApp1.Reports.RptTopProductos.rdlc"; // Embedded
+            var dsName = "DsTopProductos"; // Debe coincidir con el RDLC
+
+            var prms = new[]
+            {
+        new ReportParameter("pFechaIni", dtpIni.Value.ToString("dd/MM/yyyy")),
+        new ReportParameter("pFechaFin", dtpFin.Value.ToString("dd/MM/yyyy")),
+        new ReportParameter("pTopN", ((int)numTop.Value).ToString()),
+        new ReportParameter("pUsuario", WindowsFormsApp1.Security.Session.Username ?? "Desconocido")
+    };
+
+            ShowReport(rdlc, dsName, _lastTop, prms, "Top Productos");
+        }
+
+        private void ShowReport(string embeddedReportPath, string dataSetName, DataTable table, ReportParameter[] parameters, string tituloVentana)
+        {
+            var rv = new ReportViewer
+            {
+                Dock = DockStyle.Fill,
+                ProcessingMode = ProcessingMode.Local
+            };
+            rv.LocalReport.DataSources.Clear();
+            rv.LocalReport.ReportEmbeddedResource = embeddedReportPath;
+            rv.LocalReport.DataSources.Add(new ReportDataSource(dataSetName, table));
+            if (parameters != null && parameters.Length > 0)
+                rv.LocalReport.SetParameters(parameters);
+            rv.RefreshReport();
+
+            var frm = new Form
+            {
+                Text = $"Vista previa - {tituloVentana}",
+                StartPosition = FormStartPosition.CenterParent,
+                Width = 1000,
+                Height = 700
+            };
+            frm.Controls.Add(rv);
+            frm.ShowDialog(this);
+        }
+
+
 
 
         // using System.Data; using Oracle.ManagedDataAccess.Client;

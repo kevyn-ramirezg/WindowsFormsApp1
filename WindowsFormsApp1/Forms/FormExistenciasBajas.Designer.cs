@@ -30,7 +30,7 @@
         {
             this.numUmbral = new System.Windows.Forms.NumericUpDown();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,17 +64,17 @@
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = false;
             // 
-            // btnExportar
+            // btnImprimir
             // 
-            this.btnExportar.BackColor = System.Drawing.Color.White;
-            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportar.Location = new System.Drawing.Point(691, 119);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(147, 61);
-            this.btnExportar.TabIndex = 2;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnImprimir.BackColor = System.Drawing.Color.White;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(691, 119);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(147, 61);
+            this.btnImprimir.TabIndex = 2;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
             // grid
             // 
@@ -84,7 +84,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1337, 427);
+            this.grid.Size = new System.Drawing.Size(1332, 427);
             this.grid.TabIndex = 3;
             // 
             // label1
@@ -118,7 +118,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grid);
-            this.Controls.Add(this.btnExportar);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.numUmbral);
             this.Font = new System.Drawing.Font("Elephant", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,7 +136,7 @@
 
         private System.Windows.Forms.NumericUpDown numUmbral;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

@@ -267,6 +267,7 @@
     <Compile Include="Security\Session.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Utils\HashHelper.cs" />
+    <Compile Include="Utils\ReportUtils.cs" />
     <Compile Include="Utils\ThemeHelper.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -335,8 +336,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReporteFactura.rdlc" />
-    <EmbeddedResource Include="ReporteVentasMes.rdlc" />
+    <EmbeddedResource Include="Reports\ReporteFactura.rdlc" />
+    <EmbeddedResource Include="Reports\ReporteVentasMes.rdlc" />
+    <EmbeddedResource Include="Reports\RptExistenciasBajas.rdlc" />
+    <EmbeddedResource Include="Reports\RptTopProductos.rdlc" />
     <None Include="DsReportes.xsc">
       <DependentUpon>DsReportes.xsd</DependentUpon>
     </None>
