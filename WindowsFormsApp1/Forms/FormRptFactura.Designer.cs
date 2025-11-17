@@ -83,13 +83,13 @@
             this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grid.BackgroundColor = System.Drawing.Color.DarkSeaGreen;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(14, 214);
+            this.grid.Location = new System.Drawing.Point(14, 192);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1265, 322);
+            this.grid.Size = new System.Drawing.Size(1340, 322);
             this.grid.TabIndex = 2;
             // 
             // lblTotales
@@ -121,17 +121,17 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(25, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(514, 43);
+            this.label2.Size = new System.Drawing.Size(499, 42);
             this.label2.TabIndex = 5;
             this.label2.Text = "REPORTE DE FACTURA";
             // 
             // reportViewer1
             // 
             this.reportViewer1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.reportViewer1.Location = new System.Drawing.Point(14, 574);
+            this.reportViewer1.Location = new System.Drawing.Point(14, 532);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1262, 301);
+            this.reportViewer1.Size = new System.Drawing.Size(1340, 203);
             this.reportViewer1.TabIndex = 6;
             // 
             // FormRptFactura
@@ -139,7 +139,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1292, 893);
+            this.ClientSize = new System.Drawing.Size(1367, 746);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

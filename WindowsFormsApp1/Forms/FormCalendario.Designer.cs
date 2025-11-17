@@ -43,7 +43,7 @@
             this.cal.CalendarDimensions = new System.Drawing.Size(5, 1);
             this.cal.Font = new System.Drawing.Font("Elephant", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cal.Location = new System.Drawing.Point(67, 63);
-            this.cal.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.cal.Margin = new System.Windows.Forms.Padding(8);
             this.cal.MaxSelectionCount = 31;
             this.cal.Name = "cal";
             this.cal.TabIndex = 0;
@@ -96,7 +96,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1269, 223);
+            this.grid.Size = new System.Drawing.Size(1357, 370);
             this.grid.TabIndex = 4;
             // 
             // label1
@@ -115,7 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1290, 600);
+            this.ClientSize = new System.Drawing.Size(1438, 747);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnHoy);

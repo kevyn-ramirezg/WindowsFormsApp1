@@ -72,7 +72,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(39, 264);
+            this.btnBuscar.Location = new System.Drawing.Point(201, 264);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(164, 44);
             this.btnBuscar.TabIndex = 3;
@@ -87,7 +87,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1558, 301);
+            this.grid.Size = new System.Drawing.Size(1353, 384);
             this.grid.TabIndex = 4;
             // 
             // lblResumen
@@ -95,7 +95,7 @@
             this.lblResumen.AutoSize = true;
             this.lblResumen.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResumen.ForeColor = System.Drawing.Color.White;
-            this.lblResumen.Location = new System.Drawing.Point(35, 668);
+            this.lblResumen.Location = new System.Drawing.Point(28, 738);
             this.lblResumen.Name = "lblResumen";
             this.lblResumen.Size = new System.Drawing.Size(90, 22);
             this.lblResumen.TabIndex = 5;
@@ -150,7 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1583, 795);
+            this.ClientSize = new System.Drawing.Size(1379, 795);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

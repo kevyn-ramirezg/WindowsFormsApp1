@@ -83,16 +83,6 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ChatGPT_Image_16_nov_2025__16_02_17 {
-            get {
-                object obj = ResourceManager.GetObject("ChatGPT Image 16 nov 2025, 16_02_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap OrloWelcome {
             get {
                 object obj = ResourceManager.GetObject("OrloWelcome", resourceCulture);

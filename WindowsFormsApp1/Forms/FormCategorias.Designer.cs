@@ -84,7 +84,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.White;
             this.txtNombre.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(158, 511);
+            this.txtNombre.Location = new System.Drawing.Point(114, 508);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(547, 29);
@@ -95,7 +95,7 @@
             this.lblIva.AutoSize = true;
             this.lblIva.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIva.ForeColor = System.Drawing.Color.White;
-            this.lblIva.Location = new System.Drawing.Point(777, 511);
+            this.lblIva.Location = new System.Drawing.Point(738, 511);
             this.lblIva.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblIva.Name = "lblIva";
             this.lblIva.Size = new System.Drawing.Size(87, 22);
@@ -107,7 +107,7 @@
             this.numIva.BackColor = System.Drawing.Color.White;
             this.numIva.DecimalPlaces = 2;
             this.numIva.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numIva.Location = new System.Drawing.Point(930, 512);
+            this.numIva.Location = new System.Drawing.Point(837, 509);
             this.numIva.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.numIva.Name = "numIva";
             this.numIva.Size = new System.Drawing.Size(147, 29);
@@ -118,7 +118,7 @@
             this.lblUtilidad.AutoSize = true;
             this.lblUtilidad.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUtilidad.ForeColor = System.Drawing.Color.White;
-            this.lblUtilidad.Location = new System.Drawing.Point(1144, 511);
+            this.lblUtilidad.Location = new System.Drawing.Point(1040, 511);
             this.lblUtilidad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblUtilidad.Name = "lblUtilidad";
             this.lblUtilidad.Size = new System.Drawing.Size(123, 22);
@@ -130,7 +130,7 @@
             this.numUtilidad.BackColor = System.Drawing.Color.White;
             this.numUtilidad.DecimalPlaces = 2;
             this.numUtilidad.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUtilidad.Location = new System.Drawing.Point(1338, 509);
+            this.numUtilidad.Location = new System.Drawing.Point(1175, 508);
             this.numUtilidad.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.numUtilidad.Name = "numUtilidad";
             this.numUtilidad.Size = new System.Drawing.Size(147, 29);
@@ -186,7 +186,7 @@
             this.label1.Location = new System.Drawing.Point(18, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 43);
+            this.label1.Size = new System.Drawing.Size(290, 42);
             this.label1.TabIndex = 10;
             this.label1.Text = "CATEGORÍAS";
             // 

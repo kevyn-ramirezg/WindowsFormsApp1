@@ -142,7 +142,7 @@
             this.grpTotales.ForeColor = System.Drawing.Color.White;
             this.grpTotales.Location = new System.Drawing.Point(131, 480);
             this.grpTotales.Name = "grpTotales";
-            this.grpTotales.Size = new System.Drawing.Size(451, 304);
+            this.grpTotales.Size = new System.Drawing.Size(451, 276);
             this.grpTotales.TabIndex = 5;
             this.grpTotales.TabStop = false;
             this.grpTotales.Text = "Totales";
@@ -150,7 +150,7 @@
             // lblPendiente
             // 
             this.lblPendiente.AutoSize = true;
-            this.lblPendiente.Location = new System.Drawing.Point(190, 245);
+            this.lblPendiente.Location = new System.Drawing.Point(190, 193);
             this.lblPendiente.Name = "lblPendiente";
             this.lblPendiente.Size = new System.Drawing.Size(23, 22);
             this.lblPendiente.TabIndex = 5;
@@ -159,7 +159,7 @@
             // lblPagado
             // 
             this.lblPagado.AutoSize = true;
-            this.lblPagado.Location = new System.Drawing.Point(190, 147);
+            this.lblPagado.Location = new System.Drawing.Point(190, 110);
             this.lblPagado.Name = "lblPagado";
             this.lblPagado.Size = new System.Drawing.Size(23, 22);
             this.lblPagado.TabIndex = 4;
@@ -177,7 +177,7 @@
             // lblPendienteTitle
             // 
             this.lblPendienteTitle.AutoSize = true;
-            this.lblPendienteTitle.Location = new System.Drawing.Point(25, 245);
+            this.lblPendienteTitle.Location = new System.Drawing.Point(25, 193);
             this.lblPendienteTitle.Name = "lblPendienteTitle";
             this.lblPendienteTitle.Size = new System.Drawing.Size(102, 22);
             this.lblPendienteTitle.TabIndex = 2;
@@ -186,7 +186,7 @@
             // lblPagadoTitle
             // 
             this.lblPagadoTitle.AutoSize = true;
-            this.lblPagadoTitle.Location = new System.Drawing.Point(25, 147);
+            this.lblPagadoTitle.Location = new System.Drawing.Point(25, 110);
             this.lblPagadoTitle.Name = "lblPagadoTitle";
             this.lblPagadoTitle.Size = new System.Drawing.Size(127, 22);
             this.lblPagadoTitle.TabIndex = 1;
@@ -213,7 +213,7 @@
             this.grpPago.ForeColor = System.Drawing.Color.White;
             this.grpPago.Location = new System.Drawing.Point(722, 480);
             this.grpPago.Name = "grpPago";
-            this.grpPago.Size = new System.Drawing.Size(473, 304);
+            this.grpPago.Size = new System.Drawing.Size(473, 276);
             this.grpPago.TabIndex = 6;
             this.grpPago.TabStop = false;
             this.grpPago.Text = "Registrar Pago";
@@ -223,7 +223,7 @@
             this.btnPagar.BackColor = System.Drawing.Color.White;
             this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagar.ForeColor = System.Drawing.Color.Black;
-            this.btnPagar.Location = new System.Drawing.Point(123, 218);
+            this.btnPagar.Location = new System.Drawing.Point(123, 163);
             this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(189, 61);
             this.btnPagar.TabIndex = 4;
@@ -234,7 +234,7 @@
             // 
             this.dtpFecha.CalendarTitleBackColor = System.Drawing.SystemColors.Info;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(123, 141);
+            this.dtpFecha.Location = new System.Drawing.Point(123, 105);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(188, 29);
             this.dtpFecha.TabIndex = 3;
@@ -242,7 +242,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(27, 146);
+            this.lblFecha.Location = new System.Drawing.Point(27, 110);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(67, 22);
             this.lblFecha.TabIndex = 2;
@@ -280,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1365, 812);
+            this.ClientSize = new System.Drawing.Size(1365, 761);
             this.Controls.Add(this.grpPago);
             this.Controls.Add(this.grpTotales);
             this.Controls.Add(this.gridCuotas);

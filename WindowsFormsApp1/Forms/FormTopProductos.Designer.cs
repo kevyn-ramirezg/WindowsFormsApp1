@@ -95,7 +95,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1366, 440);
+            this.grid.Size = new System.Drawing.Size(1346, 440);
             this.grid.TabIndex = 4;
             // 
             // label1
@@ -105,7 +105,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(15, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(386, 43);
+            this.label1.Size = new System.Drawing.Size(373, 42);
             this.label1.TabIndex = 5;
             this.label1.Text = "TOP PRODUCTOS";
             // 
@@ -147,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1390, 668);
+            this.ClientSize = new System.Drawing.Size(1370, 668);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

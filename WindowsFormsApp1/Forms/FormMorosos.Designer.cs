@@ -55,7 +55,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1549, 434);
+            this.grid.Size = new System.Drawing.Size(1348, 434);
             this.grid.TabIndex = 1;
             // 
             // btnExportar
@@ -86,7 +86,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1576, 669);
+            this.ClientSize = new System.Drawing.Size(1366, 669);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.grid);

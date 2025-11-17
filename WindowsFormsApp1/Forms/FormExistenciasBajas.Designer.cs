@@ -84,7 +84,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(1556, 427);
+            this.grid.Size = new System.Drawing.Size(1337, 427);
             this.grid.TabIndex = 3;
             // 
             // label1
@@ -94,7 +94,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(15, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(450, 43);
+            this.label1.Size = new System.Drawing.Size(439, 42);
             this.label1.TabIndex = 4;
             this.label1.Text = "EXISTENCIAS BAJAS";
             // 
@@ -114,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1583, 662);
+            this.ClientSize = new System.Drawing.Size(1358, 662);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grid);
