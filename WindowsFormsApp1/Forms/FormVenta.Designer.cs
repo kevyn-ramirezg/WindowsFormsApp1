@@ -95,14 +95,13 @@
             this.lblTotal.ForeColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(1026, 676);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(136, 43);
+            this.lblTotal.Size = new System.Drawing.Size(131, 42);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "Total: ";
             // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.White;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(370, 669);
             this.btnAgregar.Name = "btnAgregar";
@@ -115,7 +114,6 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.White;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(559, 669);
             this.btnGuardar.Name = "btnGuardar";
@@ -202,7 +200,6 @@
             // btnQuitar
             // 
             this.btnQuitar.BackColor = System.Drawing.Color.White;
-            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitar.Location = new System.Drawing.Point(742, 669);
             this.btnQuitar.Name = "btnQuitar";
@@ -215,11 +212,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(15, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(187, 43);
+            this.label5.Size = new System.Drawing.Size(184, 44);
             this.label5.TabIndex = 14;
             this.label5.Text = "VENTAS";
             // 

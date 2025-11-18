@@ -52,12 +52,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(19, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(470, 42);
+            this.label1.Size = new System.Drawing.Size(472, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "REPORTE DE VENTAS";
             // 
@@ -233,7 +234,7 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.reportViewer1.BackColor = System.Drawing.Color.Silver;
             this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.reportViewer1.Location = new System.Drawing.Point(764, 13);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);

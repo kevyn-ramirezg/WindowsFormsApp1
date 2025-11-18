@@ -314,7 +314,7 @@ namespace WindowsFormsApp1
 
             // AYUDA
             acercaDeToolStripMenuItem.Click += (_, __) => OpenChild<FormAcercaDe>();
-            salirToolStripMenuItem.Click += (_, __) => Close();
+            salirToolStripMenuItem.Click += (_, __) => Application.Restart();
         }
 
 

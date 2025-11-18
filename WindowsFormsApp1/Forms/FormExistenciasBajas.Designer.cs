@@ -57,7 +57,7 @@
             this.btnConsultar.BackColor = System.Drawing.Color.White;
             this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsultar.Location = new System.Drawing.Point(511, 119);
+            this.btnConsultar.Location = new System.Drawing.Point(549, 119);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(147, 61);
             this.btnConsultar.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.btnImprimir.BackColor = System.Drawing.Color.White;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(691, 119);
+            this.btnImprimir.Location = new System.Drawing.Point(789, 119);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(147, 61);
             this.btnImprimir.TabIndex = 2;
@@ -90,11 +90,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("Elephant", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(15, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(439, 42);
+            this.label1.Size = new System.Drawing.Size(452, 45);
             this.label1.TabIndex = 4;
             this.label1.Text = "EXISTENCIAS BAJAS";
             // 

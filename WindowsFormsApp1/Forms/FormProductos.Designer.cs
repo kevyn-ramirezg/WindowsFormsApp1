@@ -213,11 +213,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(15, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(288, 43);
+            this.label6.Size = new System.Drawing.Size(280, 44);
             this.label6.TabIndex = 14;
             this.label6.Text = "PRODUCTOS";
             // 

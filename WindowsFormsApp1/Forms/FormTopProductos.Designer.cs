@@ -102,11 +102,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(15, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(373, 42);
+            this.label1.Size = new System.Drawing.Size(375, 44);
             this.label1.TabIndex = 5;
             this.label1.Text = "TOP PRODUCTOS";
             // 
@@ -149,7 +150,7 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
-            this.btnImprimir.Location = new System.Drawing.Point(960, 103);
+            this.btnImprimir.Location = new System.Drawing.Point(1002, 103);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(202, 58);
             this.btnImprimir.TabIndex = 9;

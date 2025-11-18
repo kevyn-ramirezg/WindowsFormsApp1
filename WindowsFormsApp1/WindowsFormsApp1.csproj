@@ -339,6 +339,7 @@
     <EmbeddedResource Include="Reports\ReporteFactura.rdlc" />
     <EmbeddedResource Include="Reports\ReporteVentasMes.rdlc" />
     <EmbeddedResource Include="Reports\RptExistenciasBajas.rdlc" />
+    <EmbeddedResource Include="Reports\RptMorosos.rdlc" />
     <EmbeddedResource Include="Reports\RptTopProductos.rdlc" />
     <None Include="DsReportes.xsc">
       <DependentUpon>DsReportes.xsd</DependentUpon>

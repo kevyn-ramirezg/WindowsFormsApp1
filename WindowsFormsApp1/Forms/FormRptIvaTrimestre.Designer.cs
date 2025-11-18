@@ -114,11 +114,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(18, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(587, 43);
+            this.label1.Size = new System.Drawing.Size(573, 44);
             this.label1.TabIndex = 5;
             this.label1.Text = "REPORTE IVA TRIMESTRE";
             // 

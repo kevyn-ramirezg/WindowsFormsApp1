@@ -42,7 +42,7 @@
             this.cal.BackColor = System.Drawing.SystemColors.Info;
             this.cal.CalendarDimensions = new System.Drawing.Size(5, 1);
             this.cal.Font = new System.Drawing.Font("Elephant", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cal.Location = new System.Drawing.Point(67, 63);
+            this.cal.Location = new System.Drawing.Point(60, 73);
             this.cal.Margin = new System.Windows.Forms.Padding(8);
             this.cal.MaxSelectionCount = 31;
             this.cal.Name = "cal";
@@ -53,10 +53,10 @@
             this.btnReporteVentas.BackColor = System.Drawing.Color.White;
             this.btnReporteVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporteVentas.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteVentas.Location = new System.Drawing.Point(321, 292);
+            this.btnReporteVentas.Location = new System.Drawing.Point(313, 304);
             this.btnReporteVentas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReporteVentas.Name = "btnReporteVentas";
-            this.btnReporteVentas.Size = new System.Drawing.Size(153, 44);
+            this.btnReporteVentas.Size = new System.Drawing.Size(183, 44);
             this.btnReporteVentas.TabIndex = 1;
             this.btnReporteVentas.Text = "Reporte de Ventas";
             this.btnReporteVentas.UseVisualStyleBackColor = false;
@@ -66,10 +66,10 @@
             this.btnCargarGrilla.BackColor = System.Drawing.Color.White;
             this.btnCargarGrilla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarGrilla.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarGrilla.Location = new System.Drawing.Point(527, 292);
+            this.btnCargarGrilla.Location = new System.Drawing.Point(555, 304);
             this.btnCargarGrilla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCargarGrilla.Name = "btnCargarGrilla";
-            this.btnCargarGrilla.Size = new System.Drawing.Size(153, 44);
+            this.btnCargarGrilla.Size = new System.Drawing.Size(180, 44);
             this.btnCargarGrilla.TabIndex = 2;
             this.btnCargarGrilla.Text = "Cargar Grid";
             this.btnCargarGrilla.UseVisualStyleBackColor = false;
@@ -79,10 +79,10 @@
             this.btnHoy.BackColor = System.Drawing.Color.White;
             this.btnHoy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHoy.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoy.Location = new System.Drawing.Point(739, 292);
+            this.btnHoy.Location = new System.Drawing.Point(781, 304);
             this.btnHoy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoy.Name = "btnHoy";
-            this.btnHoy.Size = new System.Drawing.Size(153, 44);
+            this.btnHoy.Size = new System.Drawing.Size(179, 44);
             this.btnHoy.TabIndex = 3;
             this.btnHoy.Text = "Hoy";
             this.btnHoy.UseVisualStyleBackColor = false;
@@ -102,11 +102,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(17, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 42);
+            this.label1.Size = new System.Drawing.Size(301, 44);
             this.label1.TabIndex = 5;
             this.label1.Text = "CALENDARIO";
             // 
