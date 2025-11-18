@@ -69,7 +69,7 @@
             this.btnImprimir.BackColor = System.Drawing.Color.White;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(789, 119);
+            this.btnImprimir.Location = new System.Drawing.Point(879, 119);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(147, 61);
             this.btnImprimir.TabIndex = 2;

@@ -48,9 +48,9 @@ namespace WindowsFormsApp1.Forms
             g.MultiSelect = false;
             g.RowHeadersVisible = false;
             g.AutoGenerateColumns = true;
-            g.BackgroundColor = Color.LightSteelBlue;
+            g.BackgroundColor = Color.DarkSeaGreen;
 
-            g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 246, 255);
+            g.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkSeaGreen;
             g.ColumnHeadersDefaultCellStyle.Font = new Font(g.Font, FontStyle.Bold);
         }
 
